@@ -1,7 +1,7 @@
 ---
 title: scRNAseq Processing Workflows
 type: guide
-contributors: 
+contributors: Sarah Williams
 description: How-to guide for scRNAseq workflows on Galaxy Australia
 affiliations: QCIF
 toc: false
@@ -99,8 +99,11 @@ With multi-sample experiments, each sample is loaded independently and then comb
 
 ![Load counts matrix launch](./images/screen_load_counts_matrix_launch.png)
 
+{% include callout.html type="note" content="Older datasets will have genes.tsv(.gz), where as newer dataset will have features.tsv(.gz). Either works" %}
 
 
+
+{% include callout.html type="note" content="Sometimes, if you have an uncompressed barcodes.tsv file, galaxy will determine that it is a text file, rather than the desired '.tabular', which will prevent it from being selected as input (will be missing from the dropdown). This is fixed by manually telling galaxy to change the datatype to .tabular. [Instructions](https://training.galaxyproject.org/training-material/faqs/galaxy/datasets_change_datatype.html)" %}
 
 
 This part of the workflow will load the counts matrix into an anndata object, and then adds an extra column in the metadata called ‘sample’. This means the sample information can be tracked when multiple samples are combined. 
@@ -191,12 +194,12 @@ An alternative option is the STARsolo workflow, distributed under an MIT licence
 
 Otherwise, useage of these workflows is depenant on the (generally permissive) licences of the underlying tools and platforms; including;
 
-* Cell Ranger : https://github.com/10XGenomics/cellranger/blob/master/LICENSE
-* STARSolo : https://github.com/alexdobin/STAR/blob/master/LICENSE
-* Galaxy : https://galaxyproject.org/admin/license/
-* Galaxy australia terms of service: https://site.usegalaxy.org.au/about#terms-of-service
-* Scanpy : https://github.com/scverse/scanpy/blob/master/LICENSE\
-* Scanpy Scripts: https://github.com/ebi-gene-expression-group/scanpy-scripts/blob/develop/LICENSE
+* Cell Ranger : (https://github.com/10XGenomics/cellranger/blob/master/LICENSE)
+* STARSolo : (https://github.com/alexdobin/STAR/blob/master/LICENSE)
+* Galaxy : (https://galaxyproject.org/admin/license/)
+* Galaxy Sustralia terms of service: (https://site.usegalaxy.org.au/about#terms-of-service)
+* Scanpy : (https://github.com/scverse/scanpy/blob/master/LICENSE\)
+* Scanpy Scripts: (https://github.com/ebi-gene-expression-group/scanpy-scripts/blob/develop/LICENSE)
 
 
 
