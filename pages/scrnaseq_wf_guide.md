@@ -6,21 +6,20 @@ description: How-to guide for scRNAseq workflows on Galaxy Australia
 affiliations: QCIF
 toc: false
 ---
-
-- [Analysis overview](#analysis-overview)
-- [Example output](#example-output)
+- [Background](#background-and-tutorials)
+- [Overview](#analysis-overview)
 - [User guide](#user-guide)
     + [Running a single sample workflow](#running-a-single-sample-workflow)
     + [Running a multi sample experiment](#running-a-multi-sample-experiment)
     + [Next steps](#next-steps)
-- [Background and Tutorials](#background-and-tutorials)
+    + [CellRanger and starSOLO](#star-solo-vs-cell-ranger)
+- [Licences](#licenses)
 
 This document describes how to use some scanpy-based scRNAseq workflows on galaxy Australia. 
 
 The aim of these workflows is to handle the routine ‘boring’ part of single cell RNAseq data processing. It will produces an ‘AnnData’ object, which can then be used as a base for downstream analysis – either within galaxy or outside of it. AnnData is a standard format used by the ‘scanpy’ python package. 
 
 These workflows represent just one way of processing data for a ‘typical’ scRNAseq experiment – there are many other options!  
-
 
 
 This document describes 3 sub-workflows for processing single cell RNAseq data with scanpy 
@@ -33,22 +32,27 @@ This document describes 3 sub-workflows for processing single cell RNAseq data w
 For single sample experiments, there is a streamlined workflow that runs all 3 sub-workflows all at once 
 * **Single sample workflow:** [link](https://usegalaxy.org.au/u/s.williams/w/copy-of-scrnaseqcountsmatrixtoqc) This workflow loads counts matrix, does some basic processing, suitable for a single sample.
 
-
 These workflows are all available on galaxy australia.
+
+
+# Background
+
+There are many general resources online about the princials of single cell analysis. The [Scanpy preprocessing and clustering tutorial](https://scanpy-tutorials.readthedocs.io/en/latest/pbmc3k.html) may be of particular use becuase it describes the scanpy methods used in this workflow. Even if you don't use the python code, it works through and explains many of the plots these workflows generate.  
+
+General information on **using galaxy** can be found on the [galaxy training website](https://training.galaxyproject.org/training-material/)
+ 
+For more general information about **single cell RNAseq processing on galaxy**; there are some excellent tutorials to be found here on the [galaxy training website scRNA section](https://training.galaxyproject.org/training-material/topics/single-cell/). The workflow implemented here is heavily influenced by the [Clustering 3kPBMCs with Scanpy tutorial](https://training.galaxyproject.org/training-material/topics/single-cell/tutorials/scrna-scanpy-pbmc3k/tutorial.html )
 
 # Analysis overview
 
 ![Processing flowchart](./images/workflow_diagram_simple.png)
 
 1. Start with fastq files  
-2. Cellranger|starSOLO will align the reads to the genome, and make a table of the number of times each gene is counted per cell. 
+2. Cellranger or starSOLO will align the reads to the genome, and make a table of the number of times each gene is counted per cell. 
 3. Perform some basic QC on the counts matrix, and filter out ‘cells’ that have too little RNA counts or too much mitochondrial gene content 
-4. Run some basic single cell analyses: Normalisation, PCA, UMAP, clustering and identify cluster markesr 
+4. Run some basic single cell analyses: Normalisation, PCA, UMAP, clustering and identify cluster markers 
 5. The resulting AnnData object can be analysed further. See ‘Next steps’ 
 
-
-# Example output
- 
 When run in full, these workflows produce the following main outputs
 
 * A processed [AnnData](https://anndata.readthedocs.io/en/latest/) file, which contains gene expression and annotation information ready for downstream analysis.
@@ -95,9 +99,11 @@ With multi-sample experiments, each sample is loaded independently and then comb
 
 ![Load counts matrix launch](./images/screen_load_counts_matrix_launch.png)
 
-```
-**IF USING the 3 file input, describe how to change barcodes.tsv to tabular, and note that features == genes, and that .tsv.gz will work fine. ** 
-```
+
+{% include callout.html type="important" content="Sometimes, if you have an uncompressed barcodes.tsv file, galaxy will determine that it is a text file, rather than the desired '.tabular', which will prevent it from being selected as input (will be missing from the dropdown). This is fixed by manually telling galaxy to change the datatype to .tabular; as described [here](https://training.galaxyproject.org/training-material/faqs/galaxy/datasets_change_datatype.html)" %}
+
+
+{% include callout.html type="note" content="Older datasets will have genes.tsv(.gz), where as newer dataset will have features.tsv(.gz). Either works" %)
 
 This part of the workflow will load the counts matrix into an anndata object, and then adds an extra column in the metadata called ‘sample’. This means the sample information can be tracked when multiple samples are combined. 
 
@@ -177,15 +183,6 @@ You can supply links to that data directly to a galaxy history via `upload data 
 Note that STARsolo will not produce a .cloupe object for the cell loupe browser.
 
 
-# Background and Tutorials 
-
-For more general information about **single cell RNAseq processing on galaxy**; there are some excellent tutorials to be found here on the [galaxy training website scRNA section](https://training.galaxyproject.org/training-material/topics/single-cell/). The workflow implemented here is heavily influenced by the [Clustering 3kPBMCs with Scanpy tutorial](https://training.galaxyproject.org/training-material/topics/single-cell/tutorials/scrna-scanpy-pbmc3k/tutorial.html )
-
-More general information on **using galaxy** can be found on the [galaxy training website](https://training.galaxyproject.org/training-material/)
- 
-There are many general resources online about the princials of single cell analysis. The [Scanpy preprocessing and clustering tutorial](https://scanpy-tutorials.readthedocs.io/en/latest/pbmc3k.html) may be of particular use becuase it describes the scanpy methods used in this workflow. Even if you don't use the python code, it works through and explains many of the plots these workflows generate.  
-
-
 
 # License(s)
 
@@ -205,7 +202,3 @@ Otherwise, useage of these workflows is depenant on the (generally permissive) l
 
 
 
-
-# Acknowledgements/citations/credits
-
-The workflow implemented here is heavily influenced by the [Clustering 3kPBMCs with Scanpy tutorial](https://training.galaxyproject.org/training-material/topics/single-cell/tutorials/scrna-scanpy-pbmc3k/tutorial.html )
