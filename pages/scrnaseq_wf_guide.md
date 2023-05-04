@@ -1,7 +1,7 @@
 ---
 title: scRNAseq Processing Workflows
 type: guide
-contributors: Sarah Williams
+contributors: 
 description: How-to guide for scRNAseq workflows on Galaxy Australia
 affiliations: QCIF
 toc: false
