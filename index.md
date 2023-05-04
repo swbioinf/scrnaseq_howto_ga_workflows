@@ -29,11 +29,11 @@ This guide makes use of the ELIXIR toolkit theme: [![theme badge](https://img.sh
 
 These workflows depend on the following tools and resources;
 
-* Scanpy : (https://scanpy.readthedocs.io/en/stable/) [publication](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-017-1382-0)
-* Cell Ranger (10X): (https://support.10xgenomics.com/docs/citations)
+* Scanpy : [Scanpy docs](https://scanpy.readthedocs.io/en/stable/) [publication](https://genomebiology.biomedcentral.com/articles/10.1186/s13059-017-1382-0)
+* Cell Ranger: [10X citation guidelines](https://support.10xgenomics.com/docs/citations)
 * STARSolo : [publication](https://www.biorxiv.org/content/10.1101/2021.05.05.442755v1.full)
-* Galaxy : (https://galaxyproject.org/) 
-* Galaxy Australia: (https://usegalaxy.org.au/)
-* Scanpy Scripts: (https://github.com/ebi-gene-expression-group/scanpy-scripts)
+* Galaxy : [Galaxy project](https://galaxyproject.org/) 
+* Galaxy Australia: [Galaxy Australia service](https://usegalaxy.org.au/)
+* Scanpy Scripts: [scanpy scripts](https://github.com/ebi-gene-expression-group/scanpy-scripts)
 
 
