@@ -1,22 +1,19 @@
 ---
-title: [Individual How-to Guide page]
+title: scRNAseq Processing Workflows
 type: guide
-contributors: 
-description: Add a plain text description here.
-affiliations: 
+contributors: Sarah Williams
+description: How-to guide for scRNAseq workflows on Galaxy Australia
+affiliations: QCIF
+toc: false
 ---
 
-  - [Analysis overview](#analysis-overview)
-  - [Example output](#example-output)
-  - [User guide](#user-guide)
-      + [Running a single sample workflow](#running-a-single-sample-workflow)
-      + [Running a multi sample experiment](#running-a-multi-sample-experiment)
-      + [Next steps](#next-steps)
-  - [Background and Tutorials](#background-and-tutorials)
-  - [Licence(s)](#licences)
-  - [Acknowledgements/citations/credits](#acknowledgementscitationscredits)
-
----
+- [Analysis overview](#analysis-overview)
+- [Example output](#example-output)
+- [User guide](#user-guide)
+    + [Running a single sample workflow](#running-a-single-sample-workflow)
+    + [Running a multi sample experiment](#running-a-multi-sample-experiment)
+    + [Next steps](#next-steps)
+- [Background and Tutorials](#background-and-tutorials)
 
 This document describes how to use some scanpy-based scRNAseq workflows on galaxy Australia. 
 
@@ -39,11 +36,9 @@ For single sample experiments, there is a streamlined workflow that runs all 3 s
 
 These workflows are all available on galaxy australia.
 
----
-
 # Analysis overview
 
-![Processing flowchart](/images/workflow_diagram_simple.png)
+![Processing flowchart](./images/workflow_diagram_simple.png)
 
 1. Start with fastq files  
 2. Cellranger|starSOLO will align the reads to the genome, and make a table of the number of times each gene is counted per cell. 
@@ -51,7 +46,6 @@ These workflows are all available on galaxy australia.
 4. Run some basic single cell analyses: Normalisation, PCA, UMAP, clustering and identify cluster markesr 
 5. The resulting AnnData object can be analysed further. See ‘Next steps’ 
 
----
 
 # Example output
  
@@ -63,8 +57,6 @@ When run in full, these workflows produce the following main outputs
   + Single cell QC report [(example)](https://usegalaxy.org.au/u/s.williams/p/invocation-report-ede7b160ea86b66e) : This shows QC metrics at the cell level, to evaluate filtering thresholds and data quality. 
   + Single cell basic processing report [(example)](https://usegalaxy.org.au/u/s.williams/p/invocation-report-21aa7559fbcd167e) : Some basic UMAP, clustering and cluster marker results to begin an analysis with. 
 
-
----
 
 # User guide
 
@@ -176,17 +168,16 @@ If you are unable to use cellranger, an alternate version of the workflow use ST
 * Genome and matching annotation reference (see below).
 
 StarSOLO will require a genome sequence file (fasta format), and a .gtf or .gff file of the gene positions. Take care to ensure these are from the same genome version. A good source of suitable refernece/annotation pairs for a wide range of species is the [ensembl download index](https://asia.ensembl.org/info/data/ftp/index.html). For example, human reference data at ensembl v109:
-    - GRCH38 primary assembly: [Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa.gz](https://ftp.ensembl.org/pub/release-109/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa.gz)
-    - Gene Annotation : [Homo_sapiens.GRCh38.109.gtf.gz](https://ftp.ensembl.org/pub/release-109/gtf/homo_sapiens/Homo_sapiens.GRCh38.109.gtf.gz)
 
-You can supply links to that data direclty to a galaxy history via `upload data > Paste/Fetch data`, so there's no need to download/upload large files from your computer. And since you'll likely want to reuse the same refernece in new analyses, [its possible to copy to new histories as needed](https://training.galaxyproject.org/training-material/faqs/galaxy/histories_copy_dataset.html)
+* GRCH38 primary assembly: [Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa.gz](https://ftp.ensembl.org/pub/release-109/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa.gz)
+* Gene Annotation : [Homo_sapiens.GRCh38.109.gtf.gz](https://ftp.ensembl.org/pub/release-109/gtf/homo_sapiens/Homo_sapiens.GRCh38.109.gtf.gz)
+
+You can supply links to that data directly to a galaxy history via `upload data > Paste/Fetch data`, so there's no need to download/upload large files from your computer. And since you'll likely want to reuse the same refernece in new analyses, [its possible to copy to new histories as needed](https://training.galaxyproject.org/training-material/faqs/galaxy/histories_copy_dataset.html)
 
 Note that STARsolo will not produce a .cloupe object for the cell loupe browser.
 
----
 
 # Background and Tutorials 
-
 
 For more general information about **single cell RNAseq processing on galaxy**; there are some excellent tutorials to be found here on the [galaxy training website scRNA section](https://training.galaxyproject.org/training-material/topics/single-cell/). The workflow implemented here is heavily influenced by the [Clustering 3kPBMCs with Scanpy tutorial](https://training.galaxyproject.org/training-material/topics/single-cell/tutorials/scrna-scanpy-pbmc3k/tutorial.html )
 
@@ -195,7 +186,6 @@ More general information on **using galaxy** can be found on the [galaxy trainin
 There are many general resources online about the princials of single cell analysis. The [Scanpy preprocessing and clustering tutorial](https://scanpy-tutorials.readthedocs.io/en/latest/pbmc3k.html) may be of particular use becuase it describes the scanpy methods used in this workflow. Even if you don't use the python code, it works through and explains many of the plots these workflows generate.  
 
 
----
 
 # License(s)
 
@@ -215,10 +205,7 @@ Otherwise, useage of these workflows is depenant on the (generally permissive) l
 
 
 
----
 
 # Acknowledgements/citations/credits
 
 The workflow implemented here is heavily influenced by the [Clustering 3kPBMCs with Scanpy tutorial](https://training.galaxyproject.org/training-material/topics/single-cell/tutorials/scrna-scanpy-pbmc3k/tutorial.html )
-
----
