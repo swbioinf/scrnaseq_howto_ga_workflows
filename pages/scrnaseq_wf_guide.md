@@ -100,8 +100,6 @@ With multi-sample experiments, each sample is loaded independently and then comb
 ![Load counts matrix launch](./images/screen_load_counts_matrix_launch.png)
 
 
-{% include callout.html type="important" content="Sometimes, if you have an uncompressed barcodes.tsv file, galaxy will determine that it is a text file, rather than the desired '.tabular', which will prevent it from being selected as input (will be missing from the dropdown). This is fixed by manually telling galaxy to change the datatype to .tabular; as described [here](https://training.galaxyproject.org/training-material/faqs/galaxy/datasets_change_datatype.html)" %}
-
 
 
 
