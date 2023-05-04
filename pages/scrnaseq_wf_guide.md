@@ -103,7 +103,7 @@ With multi-sample experiments, each sample is loaded independently and then comb
 {% include callout.html type="important" content="Sometimes, if you have an uncompressed barcodes.tsv file, galaxy will determine that it is a text file, rather than the desired '.tabular', which will prevent it from being selected as input (will be missing from the dropdown). This is fixed by manually telling galaxy to change the datatype to .tabular; as described [here](https://training.galaxyproject.org/training-material/faqs/galaxy/datasets_change_datatype.html)" %}
 
 
-{% include callout.html type="note" content="Older datasets will have genes.tsv(.gz), where as newer dataset will have features.tsv(.gz). Either works" %)
+
 
 This part of the workflow will load the counts matrix into an anndata object, and then adds an extra column in the metadata called ‘sample’. This means the sample information can be tracked when multiple samples are combined. 
 
