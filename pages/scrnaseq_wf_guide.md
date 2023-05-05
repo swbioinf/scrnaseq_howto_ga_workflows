@@ -12,7 +12,7 @@ toc: false
     + [Running a multi sample experiment](#running-a-multi-sample-experiment)
     + [Next steps](#next-steps)
     + [CellRanger and starSOLO](#star-solo-vs-cell-ranger)
-- [Licences](#licenses)
+- [Licenses](#licenses)
 
 This document describes how to use some scanpy-based scRNAseq workflows on galaxy Australia. 
 
@@ -36,7 +36,7 @@ These workflows are all available on galaxy australia.
 
 # Background
 
-There are many general resources online about the princials of single cell analysis. The [Scanpy preprocessing and clustering tutorial](https://scanpy-tutorials.readthedocs.io/en/latest/pbmc3k.html) may be of particular use becuase it describes the scanpy methods used in this workflow. Even if you don't use the python code, it works through and explains many of the plots these workflows generate.  
+There are many general resources online about the principals of single cell analysis. The [Scanpy preprocessing and clustering tutorial](https://scanpy-tutorials.readthedocs.io/en/latest/pbmc3k.html) may be of particular use because it describes the scanpy methods used in this workflow. Even if you don't use the python code, it works through and explains many of the plots these workflows generate.  
 
 General information on **using galaxy** can be found on the [galaxy training website](https://training.galaxyproject.org/training-material/)
  
@@ -47,7 +47,7 @@ For more general information about **single cell RNAseq processing on galaxy**; 
 ![Processing flowchart](./images/workflow_diagram_simple.png)
 
 1. Start with fastq files  
-2. Cellranger or starSOLO will align the reads to the genome, and make a table of the number of times each gene is counted per cell. 
+2. CellRanger or starSOLO will align the reads to the genome, and make a table of the number of times each gene is counted per cell. 
 3. Perform some basic QC on the counts matrix, and filter out ‘cells’ that have too little RNA counts or too much mitochondrial gene content 
 4. Run some basic single cell analyses: Normalisation, PCA, UMAP, clustering and identify cluster markers 
 5. The resulting AnnData object can be analysed further. See ‘Next steps’ 
@@ -55,7 +55,7 @@ For more general information about **single cell RNAseq processing on galaxy**; 
 When run in full, these workflows produce the following main outputs
 
 * A processed [AnnData](https://anndata.readthedocs.io/en/latest/) file, which contains gene expression and annotation information ready for downstream analysis.
-* Tables of 'marker' gene information - to aid detemination of cell types present in the experiment
+* Tables of 'marker' gene information - to aid determination of cell types present in the experiment
 * Two report summaries. 
   + Single cell QC report [(example)](https://usegalaxy.org.au/u/s.williams/p/invocation-report-ede7b160ea86b66e) : This shows QC metrics at the cell level, to evaluate filtering thresholds and data quality. 
   + Single cell basic processing report [(example)](https://usegalaxy.org.au/u/s.williams/p/invocation-report-21aa7559fbcd167e) : Some basic UMAP, clustering and cluster marker results to begin an analysis with. 
@@ -83,7 +83,7 @@ _User Menu > Workflow Invocations_
 This brings up the history of workflow invocations. This particular workflow runs a number of sub-workflows. The **Cell QC** and **QC to Basic Processing** subworkflows produce reports, which can be viewed shared and saved.
 
 * Cell QC : Generates the cell level QC plots  
-* QC to Basic Processing: Shows the subsetquent UMAP, clustering and marker information. Includes links to download the processed AnnData object for downstream work 
+* QC to Basic Processing: Shows the subsequent UMAP, clustering and marker information. Includes links to download the processed AnnData object for downstream work 
 
 ![workflow invocations screen](./images/screen_invocations.png)
 
@@ -105,7 +105,7 @@ With multi-sample experiments, each sample is loaded independently and then comb
 {% include callout.html type="note" content="Sometimes, if you have an uncompressed barcodes.tsv file, galaxy will determine that it is a text file, rather than the desired '.tabular', which will prevent it from being selected as input (will be missing from the dropdown). This is fixed by manually telling galaxy to change the datatype to .tabular. [Instructions](https://training.galaxyproject.org/training-material/faqs/galaxy/datasets_change_datatype.html)" %}
 
 
-This part of the workflow will load the counts matrix into an anndata object, and then adds an extra column in the metadata called ‘sample’. This means the sample information can be tracked when multiple samples are combined. 
+This part of the workflow will load the counts matrix into an annData object, and then adds an extra column in the metadata called ‘sample’. This means the sample information can be tracked when multiple samples are combined. 
 
 The AnnData object that it produces in your history will probably be named something like ‘Manipulate AnnData (add_annotation) on data 20 and data 17’. You may choose to rename this object via the ‘edit attributes’ option in the history panel, so its easier to find later. 
 
@@ -155,7 +155,7 @@ The first umap now shows the different samples that make up the data.
 
 The AnnData object generated is ready for analysis! Options include
 
-* CellXgene : CellXgene is a tool for browsing and exploring single cell data. It use the AnnData object, and all of the annotation stored within it (expression, clusters, sample names). See 
+* CellXene : CellXgene is a tool for browsing and exploring single cell data. It use the AnnData object, and all of the annotation stored within it (expression, clusters, sample names). See 
 [CellXgene documentation](https://cellxgene.cziscience.com/docs/01__CellxGene), and a [user guide](https://icbi-lab.github.io/cellxgene-user-guide/). This can be launched within galaxy.
 * Scanpy : [Scanpy](https://scanpy.readthedocs.io/en/stable/) is a python based suite of tool for working with single cell data. 
   + Many scanpy functions are available within galaxy (and are used within this workflow). Explore the [galaxy scRNAseq tutorials](https://training.galaxyproject.org/training-material/topics/single-cell/) for more information
@@ -167,10 +167,10 @@ Note that there are toolkits other than scanpy (e.g. Seurat, SingleCellExperimen
 
 ## STAR Solo vs Cell Ranger
 
-If you are unable to use cellranger, an alternate version of the workflow use STAR solo (which uses a MIT liscence and can be configured to support different sequencing technologies)
+If you are unable to use cellranger, an alternate version of the workflow use STAR solo (which uses a MIT license and can be configured to support different sequencing technologies)
 
 * Your fastq files
-* Whitelist files: The list of expected barcodes in the kit - which varys by technology and chemistry. For 10X chromium data see here; https://kb.10xgenomics.com/hc/en-us/articles/115004506263-What-is-a-barcode-whitelist-
+* Whitelist files: The list of expected barcodes in the kit - which varies by technology and chemistry. For 10X chromium data see here; https://kb.10xgenomics.com/hc/en-us/articles/115004506263-What-is-a-barcode-whitelist-
 * Genome and matching annotation reference (see below).
 
 StarSOLO will require a genome sequence file (fasta format), and a .gtf or .gff file of the gene positions. Take care to ensure these are from the same genome version. A good source of suitable refernece/annotation pairs for a wide range of species is the [ensembl download index](https://asia.ensembl.org/info/data/ftp/index.html). For example, human reference data at ensembl v109:
@@ -178,7 +178,7 @@ StarSOLO will require a genome sequence file (fasta format), and a .gtf or .gff 
 * GRCH38 primary assembly: [Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa.gz](https://ftp.ensembl.org/pub/release-109/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa.gz)
 * Gene Annotation : [Homo_sapiens.GRCh38.109.gtf.gz](https://ftp.ensembl.org/pub/release-109/gtf/homo_sapiens/Homo_sapiens.GRCh38.109.gtf.gz)
 
-You can supply links to that data directly to a galaxy history via `upload data > Paste/Fetch data`, so there's no need to download/upload large files from your computer. And since you'll likely want to reuse the same refernece in new analyses, [its possible to copy to new histories as needed](https://training.galaxyproject.org/training-material/faqs/galaxy/histories_copy_dataset.html)
+You can supply links to that data directly to a galaxy history via `upload data > Paste/Fetch data`, so there's no need to download/upload large files from your computer. And since you'll likely want to reuse the same reference in new analyses, [its possible to copy to new histories as needed](https://training.galaxyproject.org/training-material/faqs/galaxy/histories_copy_dataset.html)
 
 Note that STARsolo will not produce a .cloupe object for the cell loupe browser.
 
@@ -187,11 +187,11 @@ Note that STARsolo will not produce a .cloupe object for the cell loupe browser.
 # Licenses
 
 
-Note that CellRanger is subject to a [custom licence](https://github.com/10XGenomics/cellranger/blob/master/LICENSE). Most notably, it can only be used with 10X technology. Any use of these workflows that use these cellRanger must adhere to that licence. 
+Note that CellRanger is subject to a [custom license](https://github.com/10XGenomics/cellranger/blob/master/LICENSE). Most notably, it can only be used with 10X technology. Any use of these workflows that use these cellRanger must adhere to that license. 
 
-An alternative option is the STARsolo, distributed under an MIT licence. 
+An alternative option is the STARsolo, distributed under an MIT license. 
 
-Otherwise, useage of these workflows is dependant on the (generally permissive) licences of the underlying tools and platforms; including;
+Otherwise, usage of these workflows is dependant on the (generally permissive) licenses of the underlying tools and platforms; including;
 
 * [Cell Ranger](https://github.com/10XGenomics/cellranger/blob/master/LICENSE)
 * [STARSolo](https://github.com/alexdobin/STAR/blob/master/LICENSE)
