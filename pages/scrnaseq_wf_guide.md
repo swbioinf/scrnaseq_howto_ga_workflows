@@ -187,11 +187,11 @@ Note that STARsolo will not produce a .cloupe object for the cell loupe browser.
 # Licenses
 
 
-Note that Cellranger is subject to a [custom licence](https://github.com/10XGenomics/cellranger/blob/master/LICENSE). Most notably, it can only be used with 10X technology. Any use of these workflows that use these cellRanger must adhere to that licence. 
+Note that CellRanger is subject to a [custom licence](https://github.com/10XGenomics/cellranger/blob/master/LICENSE). Most notably, it can only be used with 10X technology. Any use of these workflows that use these cellRanger must adhere to that licence. 
 
 An alternative option is the STARsolo, distributed under an MIT licence. 
 
-Otherwise, useage of these workflows is depenant on the (generally permissive) licences of the underlying tools and platforms; including;
+Otherwise, useage of these workflows is dependant on the (generally permissive) licences of the underlying tools and platforms; including;
 
 * [Cell Ranger](https://github.com/10XGenomics/cellranger/blob/master/LICENSE)
 * [STARSolo](https://github.com/alexdobin/STAR/blob/master/LICENSE)
