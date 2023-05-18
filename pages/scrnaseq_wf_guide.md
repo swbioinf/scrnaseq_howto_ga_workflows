@@ -23,13 +23,17 @@ These workflows represent just one way of processing data for a ‘typical’ sc
 
 This document describes 3 sub-workflows for processing single cell RNAseq data with scanpy 
 
-* **Load counts matrix:** [link](https://usegalaxy.org.au/u/s.williams/w/scrnaseq-load-counts-matrix-subworkflow)   This workflow adds a sample name, which enables multi-sample analyses 
-* **Single cell QC:** [link](https://usegalaxy.org.au/u/s.williams/w/scrnaseqcellqc)  This workflow generates some basic QC plots and applies filtering 
-* **Single cell QC to basic processing:** [link](https://usegalaxy.org.au/u/s.williams/w/copy-of-scanpyqcplusdraft ) This generates a UMAP, does clustering and calculates cluster marker genes. 
+* **Load counts matrix (CellRanger):**    This workflow adds a sample name, which enables multi-sample analyses. NB: Does not yet run cellranger. 
+* **Count and load (starSOLO):** [import](https://usegalaxy.org.au/workflows/trs_import?trs_server=workflowhub.eu&trs_id=466&trs_version=2)   This workflow takes fastq files, uses starSOLO to generate a counts matrix, loads the data into a standard AnnData format and adds a sample name. 
+* **Single cell QC:** [import](https://usegalaxy.org.au/workflows/trs_import?trs_server=workflowhub.eu&trs_id=467&trs_version=2)  This workflow generates some basic QC plots and applies filtering 
+* **Single cell QC to basic processing:** [import](https://usegalaxy.org.au/workflows/trs_import?trs_server=workflowhub.eu&trs_id=468&trs_version=2)  This generates a UMAP, does clustering and calculates cluster marker genes. 
 
  
-For single sample experiments, there is a streamlined workflow that runs all 3 sub-workflows all at once 
-* **Single sample workflow:** [link](https://usegalaxy.org.au/u/s.williams/w/copy-of-scrnaseqcountsmatrixtoqc) This workflow loads counts matrix, does some basic processing, suitable for a single sample.
+For single sample experiments, there are streamlined workflows that runs all 3 sub-workflows all at once 
+* **Single sample workflow (CellRanger):** [import](https://usegalaxy.org.au/workflows/trs_import?trs_server=workflowhub.eu&trs_id=464&trs_version=2)  This workflow loads counts matrix, does some basic processing, suitable for a single sample.
+* **Single sample workflow (StarSOLO):** [import](https://usegalaxy.org.au/workflows/trs_import?trs_server=workflowhub.eu&trs_id=465&trs_version=2)  This workflow loads counts matrix, does some basic processing, suitable for a single sample.
+
+
 
 These workflows are all available on galaxy australia.
 
@@ -61,7 +65,12 @@ When run in full, these workflows produce the following main outputs
   + Single cell basic processing report [(example)](https://usegalaxy.org.au/u/s.williams/p/invocation-report-21aa7559fbcd167e) : Some basic UMAP, clustering and cluster marker results to begin an analysis with. 
 
 
+
 # User guide
+
+This diagram shows how the different workflows work together - the choice dpends on whether you have a single or multiple samples, or are using CellRanger or StarSOLO. 
+
+![workflow options](./images/workflow_options.png)
 
 ## Running a single sample workflow
 
@@ -178,7 +187,7 @@ StarSOLO will require a genome sequence file (fasta format), and a .gtf or .gff 
 * GRCH38 primary assembly: [Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa.gz](https://ftp.ensembl.org/pub/release-109/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa.gz)
 * Gene Annotation : [Homo_sapiens.GRCh38.109.gtf.gz](https://ftp.ensembl.org/pub/release-109/gtf/homo_sapiens/Homo_sapiens.GRCh38.109.gtf.gz)
 
-You can supply links to that data directly to a galaxy history via `upload data > Paste/Fetch data`, so there's no need to download/upload large files from your computer. And since you'll likely want to reuse the same reference in new analyses, [its possible to copy to new histories as needed](https://training.galaxyproject.org/training-material/faqs/galaxy/histories_copy_dataset.html)
+You can supply links to that data directly to a galaxy history via `upload data > Paste/Fetch data`, so there's no need to download/upload large files from your computer. And since you'll likely want to reuse the same reference in new analyses, [its possible to copy to new histories as needed](https://training.galaxyproject.org/training-material/faqs/galaxy/histories_copy_dataset.html). Note that the current configuration of StarSOLO will build a reference every time it is run, which can take some time. 
 
 Note that STARsolo will not produce a .cloupe object for the cell loupe browser.
 
