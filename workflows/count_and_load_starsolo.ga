@@ -5,29 +5,29 @@
     "name": "scRNAseq: Count and Load with starSOLO",
     "steps": {
         "0": {
-            "annotation": "",
+            "annotation": "Typically the Forward reads are labelled _R1, barcodes. R2 is Reverse, mRNA sequences. List should contain seq for one biological sample only.",
             "content_id": null,
             "errors": null,
             "id": 0,
             "input_connections": {},
             "inputs": [
                 {
-                    "description": "",
-                    "name": "Reference Genome fasta"
+                    "description": "Typically the Forward reads are labelled _R1, barcodes. R2 is Reverse, mRNA sequences. List should contain seq for one biological sample only.",
+                    "name": "Paired Fastqs for one sample"
                 }
             ],
-            "label": "Reference Genome fasta",
-            "name": "Input dataset",
+            "label": "Paired Fastqs for one sample",
+            "name": "Input dataset collection",
             "outputs": [],
             "position": {
-                "left": 0,
-                "top": 35.03125
+                "left": 0.0,
+                "top": 239
             },
             "tool_id": null,
-            "tool_state": "{\"optional\": false, \"tag\": \"\"}",
+            "tool_state": "{\"optional\": false, \"tag\": \"\", \"collection_type\": \"list:paired\"}",
             "tool_version": null,
-            "type": "data_input",
-            "uuid": "1b405418-8a0a-46fa-b55a-789676a1a8f6",
+            "type": "data_collection_input",
+            "uuid": "fe50073f-80f7-4daa-803c-f291bdd54159",
             "workflow_outputs": []
         },
         "1": {
@@ -39,6 +39,32 @@
             "inputs": [
                 {
                     "description": "",
+                    "name": "Reference Genome fasta"
+                }
+            ],
+            "label": "Reference Genome fasta",
+            "name": "Input dataset",
+            "outputs": [],
+            "position": {
+                "left": 359.0,
+                "top": 0
+            },
+            "tool_id": null,
+            "tool_state": "{\"optional\": false, \"tag\": \"\"}",
+            "tool_version": null,
+            "type": "data_input",
+            "uuid": "1b405418-8a0a-46fa-b55a-789676a1a8f6",
+            "workflow_outputs": []
+        },
+        "2": {
+            "annotation": "",
+            "content_id": null,
+            "errors": null,
+            "id": 2,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "",
                     "name": "Reference annotation"
                 }
             ],
@@ -46,8 +72,8 @@
             "name": "Input dataset",
             "outputs": [],
             "position": {
-                "left": 2.9375,
-                "top": 130.171875
+                "left": 361.859375,
+                "top": 95.203125
             },
             "tool_id": null,
             "tool_state": "{\"optional\": false, \"tag\": \"\"}",
@@ -56,75 +82,11 @@
             "uuid": "d39e446d-7f8c-429e-b5be-c47ffdd1d5f4",
             "workflow_outputs": []
         },
-        "2": {
-            "annotation": "R1 Fastq file",
-            "content_id": null,
-            "errors": null,
-            "id": 2,
-            "input_connections": {},
-            "inputs": [
-                {
-                    "description": "R1 Fastq file",
-                    "name": "R1"
-                }
-            ],
-            "label": "R1",
-            "name": "Input dataset",
-            "outputs": [],
-            "position": {
-                "left": 12,
-                "top": 226
-            },
-            "tool_id": null,
-            "tool_state": "{\"optional\": false, \"tag\": \"\"}",
-            "tool_version": null,
-            "type": "data_input",
-            "uuid": "f3363024-fb72-4df8-b082-e1da465b9587",
-            "workflow_outputs": [
-                {
-                    "label": null,
-                    "output_name": "output",
-                    "uuid": "93e78c82-1de5-447f-b2a6-29de63371dda"
-                }
-            ]
-        },
         "3": {
-            "annotation": "R2 Fastq file",
-            "content_id": null,
-            "errors": null,
-            "id": 3,
-            "input_connections": {},
-            "inputs": [
-                {
-                    "description": "R2 Fastq file",
-                    "name": "R2"
-                }
-            ],
-            "label": "R2",
-            "name": "Input dataset",
-            "outputs": [],
-            "position": {
-                "left": 10,
-                "top": 328
-            },
-            "tool_id": null,
-            "tool_state": "{\"optional\": false, \"tag\": \"\"}",
-            "tool_version": null,
-            "type": "data_input",
-            "uuid": "8012bab2-4d13-4a01-9010-3177edf6aed8",
-            "workflow_outputs": [
-                {
-                    "label": null,
-                    "output_name": "output",
-                    "uuid": "667313a4-0e68-4e0b-9d60-4d16d4621789"
-                }
-            ]
-        },
-        "4": {
             "annotation": "Obtain from kit supplier e.g. 10X",
             "content_id": null,
             "errors": null,
-            "id": 4,
+            "id": 3,
             "input_connections": {},
             "inputs": [
                 {
@@ -136,8 +98,8 @@
             "name": "Input dataset",
             "outputs": [],
             "position": {
-                "left": 11.03125,
-                "top": 459.15625
+                "left": 388.984375,
+                "top": 611.171875
             },
             "tool_id": null,
             "tool_state": "{\"optional\": false, \"tag\": \"\"}",
@@ -145,6 +107,38 @@
             "type": "data_input",
             "uuid": "b27feddc-84ea-4a7d-a86f-ec07d02e7150",
             "workflow_outputs": []
+        },
+        "4": {
+            "annotation": "Approximately how many cells are expected in this sample?",
+            "content_id": null,
+            "errors": null,
+            "id": 4,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "Approximately how many cells are expected in this sample?",
+                    "name": "Expected Cells"
+                }
+            ],
+            "label": "Expected Cells",
+            "name": "Input parameter",
+            "outputs": [],
+            "position": {
+                "left": 405.890625,
+                "top": 701.0625
+            },
+            "tool_id": null,
+            "tool_state": "{\"default\": 5000, \"parameter_type\": \"integer\", \"optional\": true}",
+            "tool_version": null,
+            "type": "parameter_input",
+            "uuid": "e9823880-213e-4900-bda2-131a002ba2ca",
+            "workflow_outputs": [
+                {
+                    "label": null,
+                    "output_name": "output",
+                    "uuid": "8920a551-b0f0-4346-a725-cb21fa492eae"
+                }
+            ]
         },
         "5": {
             "annotation": "Short, unique sample name",
@@ -162,8 +156,8 @@
             "name": "Input parameter",
             "outputs": [],
             "position": {
-                "left": 485.40625,
-                "top": 0
+                "left": 862.421875,
+                "top": 914.0625
             },
             "tool_id": null,
             "tool_state": "{\"parameter_type\": \"text\", \"optional\": false}",
@@ -174,70 +168,188 @@
                 {
                     "label": null,
                     "output_name": "output",
-                    "uuid": "24282351-983e-4e63-b2f7-1afe7e9d3dae"
+                    "uuid": "48581a7e-ccee-4086-a214-a92e16cd81fa"
                 }
             ]
         },
         "6": {
-            "annotation": "Approximately how many cells are expected in this sample?",
-            "content_id": null,
+            "annotation": "",
+            "content_id": "__UNZIP_COLLECTION__",
             "errors": null,
             "id": 6,
-            "input_connections": {},
+            "input_connections": {
+                "input": {
+                    "id": 0,
+                    "output_name": "output"
+                }
+            },
             "inputs": [
                 {
-                    "description": "Approximately how many cells are expected in this sample?",
-                    "name": "Expected Cells"
+                    "description": "runtime parameter for tool Unzip collection",
+                    "name": "input"
                 }
             ],
-            "label": "Expected Cells",
-            "name": "Input parameter",
-            "outputs": [],
-            "position": {
-                "left": 10.90625,
-                "top": 558.046875
-            },
-            "tool_id": null,
-            "tool_state": "{\"default\": 5000, \"parameter_type\": \"integer\", \"optional\": true}",
-            "tool_version": null,
-            "type": "parameter_input",
-            "uuid": "e9823880-213e-4900-bda2-131a002ba2ca",
-            "workflow_outputs": [
+            "label": null,
+            "name": "Unzip collection",
+            "outputs": [
                 {
-                    "label": null,
-                    "output_name": "output",
-                    "uuid": "16c20883-633c-4851-9a67-7476c644fd13"
+                    "name": "forward",
+                    "type": "input"
+                },
+                {
+                    "name": "reverse",
+                    "type": "input"
                 }
-            ]
+            ],
+            "position": {
+                "left": 241.5,
+                "top": 240
+            },
+            "post_job_actions": {
+                "HideDatasetActionforward": {
+                    "action_arguments": {},
+                    "action_type": "HideDatasetAction",
+                    "output_name": "forward"
+                },
+                "HideDatasetActionreverse": {
+                    "action_arguments": {},
+                    "action_type": "HideDatasetAction",
+                    "output_name": "reverse"
+                }
+            },
+            "tool_id": "__UNZIP_COLLECTION__",
+            "tool_state": "{\"input\": {\"__class__\": \"RuntimeValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "1.0.0",
+            "type": "tool",
+            "uuid": "7b9a6b64-59b1-4270-b0c4-80dcffd9de11",
+            "workflow_outputs": []
         },
         "7": {
             "annotation": "",
-            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/rna_starsolo/rna_starsolo/2.7.10b+galaxy2",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/nml/collapse_collections/collapse_dataset/5.1.0",
             "errors": null,
             "id": 7,
             "input_connections": {
-                "refGenomeSource|genomeFastaFiles": {
-                    "id": 0,
+                "input_list": {
+                    "id": 6,
+                    "output_name": "forward"
+                }
+            },
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Collapse Collection",
+                    "name": "input_list"
+                }
+            ],
+            "label": "Forward/R1/barcode Fastq Concat",
+            "name": "Collapse Collection",
+            "outputs": [
+                {
+                    "name": "output",
+                    "type": "input"
+                }
+            ],
+            "position": {
+                "left": 495.5,
+                "top": 209
+            },
+            "post_job_actions": {
+                "HideDatasetActionoutput": {
+                    "action_arguments": {},
+                    "action_type": "HideDatasetAction",
                     "output_name": "output"
-                },
-                "refGenomeSource|sjdbGTFfile": {
+                }
+            },
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/nml/collapse_collections/collapse_dataset/5.1.0",
+            "tool_shed_repository": {
+                "changeset_revision": "90981f86000f",
+                "name": "collapse_collections",
+                "owner": "nml",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"filename\": {\"add_name\": \"false\", \"__current_case__\": 1}, \"input_list\": {\"__class__\": \"RuntimeValue\"}, \"one_header\": \"false\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "5.1.0",
+            "type": "tool",
+            "uuid": "9c5d5a0e-8e9a-450c-9faa-c64cb84ce803",
+            "workflow_outputs": []
+        },
+        "8": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/nml/collapse_collections/collapse_dataset/5.1.0",
+            "errors": null,
+            "id": 8,
+            "input_connections": {
+                "input_list": {
+                    "id": 6,
+                    "output_name": "reverse"
+                }
+            },
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Collapse Collection",
+                    "name": "input_list"
+                }
+            ],
+            "label": "Reverse/R2/mRNA Fastq concat",
+            "name": "Collapse Collection",
+            "outputs": [
+                {
+                    "name": "output",
+                    "type": "input"
+                }
+            ],
+            "position": {
+                "left": 490.5,
+                "top": 385
+            },
+            "post_job_actions": {
+                "HideDatasetActionoutput": {
+                    "action_arguments": {},
+                    "action_type": "HideDatasetAction",
+                    "output_name": "output"
+                }
+            },
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/nml/collapse_collections/collapse_dataset/5.1.0",
+            "tool_shed_repository": {
+                "changeset_revision": "90981f86000f",
+                "name": "collapse_collections",
+                "owner": "nml",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"filename\": {\"add_name\": \"false\", \"__current_case__\": 1}, \"input_list\": {\"__class__\": \"RuntimeValue\"}, \"one_header\": \"false\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "5.1.0",
+            "type": "tool",
+            "uuid": "03660885-065d-4710-b0f6-a56af943da75",
+            "workflow_outputs": []
+        },
+        "9": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/rna_starsolo/rna_starsolo/2.7.10b+galaxy2",
+            "errors": null,
+            "id": 9,
+            "input_connections": {
+                "refGenomeSource|genomeFastaFiles": {
                     "id": 1,
                     "output_name": "output"
                 },
-                "sc|input_types|input1": {
+                "refGenomeSource|sjdbGTFfile": {
                     "id": 2,
                     "output_name": "output"
                 },
+                "sc|input_types|input1": {
+                    "id": 7,
+                    "output_name": "output"
+                },
                 "sc|input_types|input2": {
-                    "id": 3,
+                    "id": 8,
                     "output_name": "output"
                 },
                 "sc|soloCBwhitelist": {
-                    "id": 4,
+                    "id": 3,
                     "output_name": "output"
                 },
                 "solo|filter|n_expected": {
-                    "id": 6,
+                    "id": 4,
                     "output_name": "output"
                 }
             },
@@ -271,8 +383,8 @@
                 }
             ],
             "position": {
-                "left": 485.15625,
-                "top": 115.828125
+                "left": 995.125,
+                "top": 40.828125
             },
             "post_job_actions": {},
             "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/rna_starsolo/rna_starsolo/2.7.10b+galaxy2",
@@ -288,53 +400,53 @@
             "uuid": "30d0e46a-7224-4511-b302-f6fe1cdce4b0",
             "workflow_outputs": [
                 {
-                    "label": "RNA STARSolo on input dataset(s): log",
-                    "output_name": "output_log",
-                    "uuid": "eb9c3bed-0f4a-4e2e-96a9-58b3c6913715"
-                },
-                {
-                    "label": "RNA STARSolo on input dataset(s): Genes filtered",
-                    "output_name": "output_genes_filtered",
-                    "uuid": "241dca40-4feb-4288-a962-ac722ae0886d"
-                },
-                {
-                    "label": "RNA STARSolo on input dataset(s): Barcodes filtered",
-                    "output_name": "output_barcodes_filtered",
-                    "uuid": "9a9ad631-ca90-475f-9674-8851da8aa57e"
-                },
-                {
-                    "label": "RNA STARSolo on input dataset(s): Matrix Gene Counts filtered",
-                    "output_name": "output_matrix_filtered",
-                    "uuid": "d37091dd-4a9c-4910-b48d-f6ee4d44983c"
-                },
-                {
                     "label": "RNA STARSolo on input dataset(s): Alignments",
                     "output_name": "output_BAM",
-                    "uuid": "da86d77b-b178-44b8-bb72-e87e36034fe3"
+                    "uuid": "8f96e549-f78d-4a04-b2a5-0fcd1df99950"
                 },
                 {
                     "label": "RNA STARSolo on input dataset(s): Barcode/Feature Statistic Summaries",
                     "output_name": "output_stats",
-                    "uuid": "26f92e37-3812-4d3d-874f-025af5f7c857"
+                    "uuid": "c11fa5cc-bb76-4eb8-97b7-ff8c8ee80f74"
+                },
+                {
+                    "label": "RNA STARSolo on input dataset(s): log",
+                    "output_name": "output_log",
+                    "uuid": "3f6b78d6-df5d-4754-a3fd-f661b01a8f2d"
+                },
+                {
+                    "label": "RNA STARSolo on input dataset(s): Genes filtered",
+                    "output_name": "output_genes_filtered",
+                    "uuid": "11c008ca-f9a4-4685-9110-f0f3b8465847"
+                },
+                {
+                    "label": "RNA STARSolo on input dataset(s): Barcodes filtered",
+                    "output_name": "output_barcodes_filtered",
+                    "uuid": "53d82ffb-db81-4b8c-b472-0215ddc160c6"
+                },
+                {
+                    "label": "RNA STARSolo on input dataset(s): Matrix Gene Counts filtered",
+                    "output_name": "output_matrix_filtered",
+                    "uuid": "4b35bfcd-7eae-4647-b148-62843e40c005"
                 }
             ]
         },
-        "8": {
+        "10": {
             "annotation": "",
             "content_id": "toolshed.g2.bx.psu.edu/repos/ebi-gxa/scanpy_read_10x/scanpy_read_10x/1.8.1+1+galaxy0",
             "errors": null,
-            "id": 8,
+            "id": 10,
             "input_connections": {
                 "barcodes": {
-                    "id": 7,
+                    "id": 9,
                     "output_name": "output_barcodes_filtered"
                 },
                 "genes": {
-                    "id": 7,
+                    "id": 9,
                     "output_name": "output_genes_filtered"
                 },
                 "matrix": {
-                    "id": 7,
+                    "id": 9,
                     "output_name": "output_matrix_filtered"
                 }
             },
@@ -357,8 +469,8 @@
                 }
             ],
             "position": {
-                "left": 1004.796875,
-                "top": 239.234375
+                "left": 1363.828125,
+                "top": 204.234375
             },
             "post_job_actions": {
                 "HideDatasetActionoutput_h5ad": {
@@ -380,14 +492,14 @@
             "uuid": "ed90753e-ec36-406f-ad29-c5eba1cbeb1e",
             "workflow_outputs": []
         },
-        "9": {
+        "11": {
             "annotation": "",
             "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.7.5+galaxy1",
             "errors": null,
-            "id": 9,
+            "id": 11,
             "input_connections": {
                 "input": {
-                    "id": 8,
+                    "id": 10,
                     "output_name": "output_h5ad"
                 }
             },
@@ -401,8 +513,8 @@
                 }
             ],
             "position": {
-                "left": 980.640625,
-                "top": 851.96875
+                "left": 1339.6875,
+                "top": 817
             },
             "post_job_actions": {
                 "HideDatasetActionobs": {
@@ -424,18 +536,18 @@
             "uuid": "dd8757f2-6d93-4490-ad80-459ce58ed1c8",
             "workflow_outputs": []
         },
-        "10": {
+        "12": {
             "annotation": "",
             "content_id": "toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_text_file_with_recurring_lines/1.1.0",
             "errors": null,
-            "id": 10,
+            "id": 12,
             "input_connections": {
                 "token_set_0|line": {
                     "id": 5,
                     "output_name": "output"
                 },
                 "token_set_0|repeat_select|infile": {
-                    "id": 9,
+                    "id": 11,
                     "output_name": "obs"
                 }
             },
@@ -449,8 +561,8 @@
                 }
             ],
             "position": {
-                "left": 1427.328125,
-                "top": 1153.515625
+                "left": 1786.359375,
+                "top": 1118.59375
             },
             "post_job_actions": {
                 "HideDatasetActionoutfile": {
@@ -472,14 +584,14 @@
             "uuid": "81c761a8-4b71-4db4-9bad-864fdfa636f4",
             "workflow_outputs": []
         },
-        "11": {
+        "13": {
             "annotation": "This step replaces the first line with a header. Because the annotated data matrix also had a header, this works. ",
             "content_id": "toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_sed_tool/1.1.1",
             "errors": null,
-            "id": 11,
+            "id": 13,
             "input_connections": {
                 "infile": {
-                    "id": 10,
+                    "id": 12,
                     "output_name": "outfile"
                 }
             },
@@ -493,8 +605,8 @@
                 }
             ],
             "position": {
-                "left": 1844.75,
-                "top": 1224.390625
+                "left": 2203.84375,
+                "top": 1189.4375
             },
             "post_job_actions": {
                 "HideDatasetActionoutput": {
@@ -516,18 +628,18 @@
             "uuid": "a3f8b0c3-356a-46e1-89bf-3a15f88cd580",
             "workflow_outputs": []
         },
-        "12": {
+        "14": {
             "annotation": "AnnData object with supplied sample id.",
             "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/anndata_manipulate/anndata_manipulate/0.7.5+galaxy1",
             "errors": null,
-            "id": 12,
+            "id": 14,
             "input_connections": {
                 "input": {
-                    "id": 8,
+                    "id": 10,
                     "output_name": "output_h5ad"
                 },
                 "manipulate|new_annot": {
-                    "id": 11,
+                    "id": 13,
                     "output_name": "output"
                 }
             },
@@ -541,10 +653,18 @@
                 }
             ],
             "position": {
-                "left": 2260.953125,
-                "top": 427.9375
+                "left": 2620.0,
+                "top": 392.984375
             },
-            "post_job_actions": {},
+            "post_job_actions": {
+                "RenameDatasetActionanndata": {
+                    "action_arguments": {
+                        "newname": "AnnDataLoaded"
+                    },
+                    "action_type": "RenameDatasetAction",
+                    "output_name": "anndata"
+                }
+            },
             "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/anndata_manipulate/anndata_manipulate/0.7.5+galaxy1",
             "tool_shed_repository": {
                 "changeset_revision": "3d748954434b",
@@ -560,14 +680,15 @@
                 {
                     "label": "AnnData Loaded",
                     "output_name": "anndata",
-                    "uuid": "4f8e31bb-32f5-4c46-96ca-4053f7b430fb"
+                    "uuid": "5bfc6582-edfa-4f16-8b28-b7eeb40e493c"
                 }
             ]
         }
     },
     "tags": [
-        "scRNAseq"
+        "scRNAseq",
+        "GUCFG2Galaxy"
     ],
-    "uuid": "2b80e214-c04c-4468-8717-69a266762dad",
-    "version": 12
+    "uuid": "384e7621-d5ad-4b57-b43d-c7276d96c78f",
+    "version": 18
 }

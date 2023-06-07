@@ -366,7 +366,8 @@
         }
     },
     "tags": [
-        "scRNAseq"
+        "scRNAseq",
+        "GUCFG2galaxy"
     ],
     "uuid": "b11e0f65-5f2c-4b92-8d06-82a71f60ab36",
     "version": 7

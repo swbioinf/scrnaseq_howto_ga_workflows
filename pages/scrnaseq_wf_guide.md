@@ -68,9 +68,28 @@ When run in full, these workflows produce the following main outputs
 
 # User guide
 
-This diagram shows how the different workflows work together - the choice dpends on whether you have a single or multiple samples, or are using CellRanger or StarSOLO. 
+This diagram shows how the different workflows work together - the choice depends on whether you have a single or multiple samples, or are using CellRanger or StarSOLO. 
 
 ![workflow options](./images/workflow_options.png)
+
+## Prepare your fastq inputs
+
+Single cell sequencing data is typically generated as paired-end sequencing data.
+
+In galaxy, we can store paired sequencing data in a 'paired collection' - that way the R1 and matched R2 will always be together. These workflows expect a paired collection of data for one sample. Its possible, to have multiple fastq pairs for one biological sample - but this workflow will usually be run on a paired collection of one pair.
+
+You may also have I1 and I2 fastq datasets, but these are indicies not used in these pipelines. If necessary, data should be demultiplexed before starting - each R1/R2 file pair should only contain data from one sample. 
+
+{% include callout.html type="note" content="In galaxy, collections (paired or not) are usually used group multiple samples. In this workflow however, we will have each sample in its own collection" %}
+
+
+1. Load the _R1 and _R2 fastq files into your galaxy history
+2. Build a paired collection from these files. Also, see a [guide to collections in galaxy](https://training.galaxyproject.org/training-material/topics/galaxy-interface/tutorials/collections/tutorial.html)  
+  (SCREENSHOTS)
+
+
+
+
 
 ## Running a single sample workflow
 
@@ -114,7 +133,7 @@ With multi-sample experiments, each sample is loaded independently and then comb
 {% include callout.html type="note" content="Sometimes, if you have an uncompressed barcodes.tsv file, galaxy will determine that it is a text file, rather than the desired '.tabular', which will prevent it from being selected as input (will be missing from the dropdown). This is fixed by manually telling galaxy to change the datatype to .tabular. [Instructions](https://training.galaxyproject.org/training-material/faqs/galaxy/datasets_change_datatype.html)" %}
 
 
-This part of the workflow will load the counts matrix into an annData object, and then adds an extra column in the metadata called ‘sample’. This means the sample information can be tracked when multiple samples are combined. 
+This part of the workflow will load the counts matrix into an AnnData object, and then adds an extra column in the metadata called ‘sample’. This means the sample information can be tracked when multiple samples are combined. 
 
 The AnnData object that it produces in your history will probably be named something like ‘Manipulate AnnData (add_annotation) on data 20 and data 17’. You may choose to rename this object via the ‘edit attributes’ option in the history panel, so its easier to find later. 
 
@@ -129,15 +148,18 @@ This tool can do several different operations – listed under ‘Function to ma
  
 Choose the AnnData object of one of your samples in the  ‘Annotated data matrix’ dropdown. Then, choose the rest of your samples under ‘Annotated matrix to add’. Use ctrl-select / option-select to highlight multiple samples. 
 
-_Note:_ Be careful not to select the sample in the ‘Annotated data matrix’ dropdown again – else it will be joined to itself! In this example there is only two samples, so only pbmc8k is selected to be added to pbmc1k. 
+
+{% include callout.html type="important" content="Be careful not to select the sample in the ‘Annotated data matrix’ dropdown again – else it will be joined to itself! In this example there is only two samples, so only pbmc8k is selected to be added to pbmc1k." %}
+
+
 
 ![join anndatas](./images/screen_multi_merge.png)
 
-A combined anndata object will created in your history. 
+A combined AnnData object will created in your history. 
 
-4. Next, run the **scRNAseq Cell QC** workflow on your combined anndata object.  
+4. Next, run the **scRNAseq Cell QC** workflow on your combined AnnData object.  
 
-This workflow plots some basic cell-level QC thresholds, and applies the QC thresholds to produce a filtered Anndata object.  
+This workflow plots some basic cell-level QC thresholds, and applies the QC thresholds to produce a filtered AnnData object.  
 
 ![](./images/screen_cellQC_launch.png)
 
@@ -148,7 +170,7 @@ You’ll notice you can see each sample plotted separately in the QC plots. You 
 ![](./images/cell_qc_plot.png)
 
 
-6. If you are happy with the filtering thresholds, you can  launch the next workflow, **scRNAseq QC to Basic Processing** to do some routine single cell calculations.  It only asks for the filtered Anndata Object (typically the last AnnData in your history, with a name ending in ‘Filtered Cells Anndata’.) 
+6. If you are happy with the filtering thresholds, you can  launch the next workflow, **scRNAseq QC to Basic Processing** to do some routine single cell calculations.  It only asks for the filtered AnnData Object (typically the last AnnData in your history, with a name ending in ‘Filtered Cells AnnData’.) 
 
 ![launch basic processing](./images/screen_qc_to_basic_processing_launch.png)
 
@@ -158,6 +180,7 @@ You’ll notice you can see each sample plotted separately in the QC plots. You 
 The first umap now shows the different samples that make up the data. 
 
 ![umap samples](./images/umap_by_sample.png)
+
 
 
 ## Next steps
