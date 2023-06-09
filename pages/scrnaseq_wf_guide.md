@@ -76,33 +76,74 @@ This diagram shows how the different workflows work together - the choice depend
 
 Single cell sequencing data is typically generated as paired-end sequencing data.
 
-In galaxy, we can store paired sequencing data in a 'paired collection' - that way the R1 and matched R2 will always be together. These workflows expect a paired collection of data for one sample. Its possible, to have multiple fastq pairs for one biological sample - but this workflow will usually be run on a paired collection of one pair.
+In galaxy, we can store paired sequencing data in a 'paired collection' - that way the R1 and matched R2 will always be together. For more information what a galaxy _collection_ is see [guide to collections in galaxy](https://training.galaxyproject.org/training-material/topics/galaxy-interface/tutorials/collections/tutorial.html)  
 
-You may also have I1 and I2 fastq datasets, but these are indicies not used in these pipelines. If necessary, data should be demultiplexed before starting - each R1/R2 file pair should only contain data from one sample. 
+These workflows expect a paired collection of data for one sample. Its possible to have multiple fastq pairs for one biological sample - but this workflow will usually be run on a paired collection of one pair.
 
 {% include callout.html type="note" content="In galaxy, collections (paired or not) are usually used group multiple samples. In this workflow however, we will have each sample in its own collection" %}
 
-
-1. Load the _R1 and _R2 fastq files into your galaxy history
-2. Build a paired collection from these files. Also, see a [guide to collections in galaxy](https://training.galaxyproject.org/training-material/topics/galaxy-interface/tutorials/collections/tutorial.html)  
-  (SCREENSHOTS)
+You may also have I1 and I2 fastq datasets, but these are indicies not used in these pipelines. If necessary, data should be demultiplexed before starting - each R1/R2 file pair should only contain data from one sample. 
 
 
+1. Load the _R1 and _R2 fastq files into your galaxy history. See [guide to loading data](https://galaxyproject.org/support/loading-data/) for details.
 
+2. Select the fastq files that make up one biological sample. Typically this may be 2 files (R1 and R2), in this case, it is 2. 
+
+    a. Click the 'tick in a box' select files button at the top of the history (dataset) panel.
+    b. Checkboxes appear for all history items - check the specific files needed.
+    c. There will be a dropdown button at the top of the history panel - 'x of y Selected' - hit this, and select 'Build list of dataset pairs' 
+
+![Selecting fastqs for collection](./images/pair_collection_fastq_select.png)
+
+3. This brings up a new window to indicate the forward and reverse reads. In this case, we need to update the 'Forward' box to '_R1' and the reverse to '_R2'. These identifiers are then found in the filenames.
+
+![Pairing the collection](pair_collection_pairing.png)
+
+4. Hit 'pair all samples' and now they are highlighed green as below.
+
+![Paired collection](pair_collection_paired.png)
+
+5. Hit 'create collection', and now a paired collection will be visible in your history as below;
+![collection in history](fastqcollection.png)
 
 
 ## Running a single sample workflow
 
-When there is only a single biological sample in a study, there is a streamlined workflow. 
+When there is only a single biological sample in a study, there is a streamlined workflow, one for CellRanger and one for StarSolo. 
 
-* [Single sample workflow](https://usegalaxy.org.au/u/s.williams/w/copy-of-scrnaseqcountsmatrixtoqc)
+### Using CellRanger / Counts matrix
 
-1. Input *will be* fastq files.
-2. Search for the *scRNAseq Single sample workflow* under 'workflow' and run it. You'll be prompted to customise any filtering parameters, and choose a sensible name for the biological sample. 
+If you have a counts matrix. 
+
 
 ![Single Sample Launch prompt](./images/screen_single_sample_launch.png)
 
-3. This pipeline should take a [few minutes/few hours] to run. 
+
+
+### Using StarSOLO
+
+The input for the star solo workflow is:
+
+* Your fastq files, prepared as above
+* Whitelist files: The list of expected barcodes in the kit - which varies by technology and chemistry. For 10X chromium data see here; https://kb.10xgenomics.com/hc/en-us/articles/115004506263-What-is-a-barcode-whitelist-
+* Genome and matching annotation reference (see below).
+
+StarSOLO will require a genome sequence file (fasta format), and a .gtf or .gff file of the gene positions. Take care to ensure these are from the same genome version. A good source of suitable refernece/annotation pairs for a wide range of species is the [ensembl download index](https://asia.ensembl.org/info/data/ftp/index.html). For example, human reference data at ensembl v109:
+
+* GRCH38 primary assembly: [Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa.gz](https://ftp.ensembl.org/pub/release-109/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa.gz)
+* Gene Annotation : [Homo_sapiens.GRCh38.109.gtf.gz](https://ftp.ensembl.org/pub/release-109/gtf/homo_sapiens/Homo_sapiens.GRCh38.109.gtf.gz)
+
+You can supply links to that data directly to a galaxy history via `upload data > Paste/Fetch data`, so there's no need to download/upload large files from your computer. And since you'll likely want to reuse the same reference in new analyses, [its possible to copy to new histories as needed](https://training.galaxyproject.org/training-material/faqs/galaxy/histories_copy_dataset.html). Note that the current configuration of StarSOLO will build a reference every time it is run, which can take some time. 
+
+1. Load your input files into galaxy.
+
+2. Import the **Single sample workflow (StarSOLO):** (listed above) This workflow will include a couple of sub workflows.
+
+3. Hit run to bring up the following launch form. You'll be prompted to customise any filtering parameters, and choose a sensible name for the biological sample. 
+
+![Single Sample Launch prompt](./images/screen_single_sample_starsolo_launch.png)
+
+Once ready hit the 'run workflow' button. This pipeline should take an hour or several to run. 
 
 4. Return to galaxy, and look up the run, or invocation, of this workflow: 
 
@@ -199,20 +240,13 @@ Note that there are toolkits other than scanpy (e.g. Seurat, SingleCellExperimen
 
 ## STAR Solo vs Cell Ranger
 
-If you are unable to use cellranger, an alternate version of the workflow use STAR solo (which uses a MIT license and can be configured to support different sequencing technologies)
+Within these workflows, there are two options for generating a counts matrix from fastq sequence data (counting copies per gene per cell); 
 
-* Your fastq files
-* Whitelist files: The list of expected barcodes in the kit - which varies by technology and chemistry. For 10X chromium data see here; https://kb.10xgenomics.com/hc/en-us/articles/115004506263-What-is-a-barcode-whitelist-
-* Genome and matching annotation reference (see below).
+* CellRanger: Developed by 10X genomics, this is a widely used package that works for 10X genomics data. Usage is subject to licence conditons (see Licenses section) and available only to registered users. Currenlty only the inbuilt human and mouse references are avaliable.  CellRanger will also output a '.cloupe' file, which may be used with the 'cell loupe' desktop program.
 
-StarSOLO will require a genome sequence file (fasta format), and a .gtf or .gff file of the gene positions. Take care to ensure these are from the same genome version. A good source of suitable refernece/annotation pairs for a wide range of species is the [ensembl download index](https://asia.ensembl.org/info/data/ftp/index.html). For example, human reference data at ensembl v109:
+* StarSOLO: An open source alternative, which can be configured to support different sequencing technologies. The current implementation works multiple species (subject to reference annotations).
 
-* GRCH38 primary assembly: [Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa.gz](https://ftp.ensembl.org/pub/release-109/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa.gz)
-* Gene Annotation : [Homo_sapiens.GRCh38.109.gtf.gz](https://ftp.ensembl.org/pub/release-109/gtf/homo_sapiens/Homo_sapiens.GRCh38.109.gtf.gz)
-
-You can supply links to that data directly to a galaxy history via `upload data > Paste/Fetch data`, so there's no need to download/upload large files from your computer. And since you'll likely want to reuse the same reference in new analyses, [its possible to copy to new histories as needed](https://training.galaxyproject.org/training-material/faqs/galaxy/histories_copy_dataset.html). Note that the current configuration of StarSOLO will build a reference every time it is run, which can take some time. 
-
-Note that STARsolo will not produce a .cloupe object for the cell loupe browser.
+NB: These workflows will not currently work with 'Gene expression Flex' kits, only sequence based. 
 
 
 
