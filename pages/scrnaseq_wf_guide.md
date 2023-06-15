@@ -34,9 +34,7 @@ For single sample experiments, there are streamlined workflows that runs all 3 s
 * **Single sample workflow (StarSOLO):** [import](https://usegalaxy.org.au/workflows/trs_import?trs_server=workflowhub.eu&trs_id=465&trs_version=2)  This workflow loads counts matrix, does some basic processing, suitable for a single sample.
 
 
-
 These workflows are all available on galaxy australia.
-
 
 # Background
 
@@ -45,6 +43,9 @@ There are many general resources online about the principals of single cell anal
 General information on **using galaxy** can be found on the [galaxy training website](https://training.galaxyproject.org/training-material/)
  
 For more general information about **single cell RNAseq processing on galaxy**; there are some excellent tutorials to be found here on the [galaxy training website scRNA section](https://training.galaxyproject.org/training-material/topics/single-cell/). The workflow implemented here is heavily influenced by the [Clustering 3kPBMCs with Scanpy tutorial](https://training.galaxyproject.org/training-material/topics/single-cell/tutorials/scrna-scanpy-pbmc3k/tutorial.html )
+
+
+{% include callout.html type="note" content="These workflows will not currently work with the fastq data from 10X's probe based 'Gene expression Flex' kits, only sequence based kits." %}
 
 # Analysis overview
 
@@ -70,7 +71,8 @@ When run in full, these workflows produce the following main outputs
 
 This diagram shows how the different workflows work together - the choice depends on whether you have a single or multiple samples, or are using CellRanger or StarSOLO. 
 
-![workflow options](./images/workflow_options.png)
+{% include image.html file="/workflow_options.png" max-width="6" %}
+
 
 ## Prepare your fastq inputs
 
@@ -87,23 +89,23 @@ You may also have I1 and I2 fastq datasets, but these are indicies not used in t
 
 1. Load the _R1 and _R2 fastq files into your galaxy history. See [guide to loading data](https://galaxyproject.org/support/loading-data/) for details.
 
-2. Select the fastq files that make up one biological sample. Typically this may be 2 files (R1 and R2), in this case, it is 2. 
+2. Select the fastq files that make up one biological sample. Typically this may be 2 files (R1 and R2), in this case, there are 4. 
 
     a. Click the 'tick in a box' select files button at the top of the history (dataset) panel.
     b. Checkboxes appear for all history items - check the specific files needed.
-    c. There will be a dropdown button at the top of the history panel - 'x of y Selected' - hit this, and select 'Build list of dataset pairs' 
+    c. There will be a dropdown button at the top of the history panel - 'selected' - hit this, and select 'Build list of dataset pairs' 
 
 ![Selecting fastqs for collection](./images/pair_collection_fastq_select.png)
 
-3. This brings up a new window to indicate the forward and reverse reads. In this case, we need to update the 'Forward' box to '_R1' and the reverse to '_R2'. These identifiers are then found in the filenames.
+3. This brings up a new window to indicate the forward and reverse reads. It may initially say that it cannot create any pairs. In this case, we need to update the 'Forward' box to '_R1' and the reverse to '_R2'. These identifiers are then found in the filenames.
 
 ![Pairing the collection](pair_collection_pairing.png)
 
-4. Hit 'pair all samples' and now they are highlighed green as below.
+4. Hit 'auto-pair' and now they are highlighed green as below.
 
 ![Paired collection](pair_collection_paired.png)
 
-5. Hit 'create collection', and now a paired collection will be visible in your history as below;
+5. Give it a sensible name, then hit 'create collection', and now that paired collection will be visible in your history as below;
 ![collection in history](fastqcollection.png)
 
 
@@ -139,7 +141,7 @@ You can supply links to that data directly to a galaxy history via `upload data 
 
 2. Import the **Single sample workflow (StarSOLO):** (listed above) This workflow will include a couple of sub workflows.
 
-3. Hit run to bring up the following launch form. You'll be prompted to customise any filtering parameters, and choose a sensible name for the biological sample. 
+3. Hit run to bring up the following launch form. The first option _'paired fastqs for one sample'_ should be the paired collection you created and named above. You'll also be prompted to customise any filtering parameters, and choose a sensible name for the biological sample.
 
 ![Single Sample Launch prompt](./images/screen_single_sample_starsolo_launch.png)
 
@@ -151,8 +153,8 @@ _User Menu > Workflow Invocations_
 
 This brings up the history of workflow invocations. This particular workflow runs a number of sub-workflows. The **Cell QC** and **QC to Basic Processing** subworkflows produce reports, which can be viewed shared and saved.
 
-* Cell QC : Generates the cell level QC plots  
-* QC to Basic Processing: Shows the subsequent UMAP, clustering and marker information. Includes links to download the processed AnnData object for downstream work 
+* Cell QC : Generates the cell level QC plots. [(example)](https://usegalaxy.org.au/u/s.williams/p/invocation-report-ede7b160ea86b66e) 
+* QC to Basic Processing:  Shows the subsequent UMAP, clustering and marker information. Includes links to download the processed AnnData object for downstream work . [(example)](https://usegalaxy.org.au/u/s.williams/p/invocation-report-21aa7559fbcd167e)
 
 ![workflow invocations screen](./images/screen_invocations.png)
 
@@ -163,20 +165,40 @@ With multi-sample experiments, each sample is loaded independently and then comb
 
 ![subworkflows](./images/workflow_diagram_large.jpg)
 
-1. Upload the raw data for one sample. Then run The ‘scRNAseq: Load counts matrix’ workflow – this will prompt you for a sample name that will be used throughout. 
+
+
+1. Upload the raw data for one sample. There are 3 options for the first step, but after that the process is the same.
+
+-------
+
+**Option 1: Cell Ranger** 
+
+TBA.
+
+**Option 2: StarSOLO** If you have fastq files and want to use starSOLO. 
+
+Run the 'scrnaseq: Count and Load with starSOLO workflow.' The options are a subset of those listed for the single-sample workflow, with the same inputs. 
+
+![Load counts matrix launch](./images/screen_counts_and_load_starsolo_launch.png)
+
+
+
+
+
+**Option 3: Counts matrix** If you already have a counts matrix then run The ‘scRNAseq: Load counts matrix’ workflow – this will prompt you for a sample name that will be used throughout. 
 
 ![Load counts matrix launch](./images/screen_load_counts_matrix_launch.png)
 
 {% include callout.html type="note" content="Older datasets will have genes.tsv(.gz), where as newer dataset will have features.tsv(.gz). Either works" %}
 
-
-
 {% include callout.html type="note" content="Sometimes, if you have an uncompressed barcodes.tsv file, galaxy will determine that it is a text file, rather than the desired '.tabular', which will prevent it from being selected as input (will be missing from the dropdown). This is fixed by manually telling galaxy to change the datatype to .tabular. [Instructions](https://training.galaxyproject.org/training-material/faqs/galaxy/datasets_change_datatype.html)" %}
-
 
 This part of the workflow will load the counts matrix into an AnnData object, and then adds an extra column in the metadata called ‘sample’. This means the sample information can be tracked when multiple samples are combined. 
 
-The AnnData object that it produces in your history will probably be named something like ‘Manipulate AnnData (add_annotation) on data 20 and data 17’. You may choose to rename this object via the ‘edit attributes’ option in the history panel, so its easier to find later. 
+------
+Any option outputs an AnnData object in you history - containing your counts and annotated with the sample name internally.
+
+That object in your history will probably be named something like ‘Manipulate AnnData (add_annotation) on data 20 and data 17’. You may like to rename this object via the ‘edit attributes’ option in the history panel, so its easier to find later. 
 
 ![rename](./images/screen_rename.png)
 
@@ -200,7 +222,7 @@ A combined AnnData object will created in your history.
 
 4. Next, run the **scRNAseq Cell QC** workflow on your combined AnnData object.  
 
-This workflow plots some basic cell-level QC thresholds, and applies the QC thresholds to produce a filtered AnnData object.  
+This workflow plots some basic cell-level QC thresholds, and applies the QC thresholds to produce a filtered AnnData object. Configure thresholds as appropriate.
 
 ![](./images/screen_cellQC_launch.png)
 
@@ -211,7 +233,7 @@ You’ll notice you can see each sample plotted separately in the QC plots. You 
 ![](./images/cell_qc_plot.png)
 
 
-6. If you are happy with the filtering thresholds, you can  launch the next workflow, **scRNAseq QC to Basic Processing** to do some routine single cell calculations.  It only asks for the filtered AnnData Object (typically the last AnnData in your history, with a name ending in ‘Filtered Cells AnnData’.) 
+6. If you are happy with the filtering thresholds, you can launch the next workflow, **scRNAseq QC to Basic Processing** to do some routine single cell calculations. It only asks for the filtered AnnData Object (typically the last AnnData in you history, which may be named something like 'scanpy scrublet on data x') 
 
 ![launch basic processing](./images/screen_qc_to_basic_processing_launch.png)
 
@@ -234,20 +256,17 @@ The AnnData object generated is ready for analysis! Options include
   + Many scanpy functions are available within galaxy (and are used within this workflow). Explore the [galaxy scRNAseq tutorials](https://training.galaxyproject.org/training-material/topics/single-cell/) for more information
   + Or, you download your AnnData object and work with the scanpy toolkit directly, using python on your computer or other server. This can provide more fine-grained control of your analysis. There are [many tutorials](https://scanpy.readthedocs.io/en/stable/tutorials.html) to work from.
 
-Note that there are toolkits other than scanpy (e.g. Seurat, SingleCellExperiment objects) which may not be directly compatible without conversions.
+Note that there are toolkits other than scanpy (e.g. Seurat, SingleCellExperiment objects) which are not directly compatible without conversions.
 
 
 
-## STAR Solo vs Cell Ranger
+## Input options: STAR Solo vs Cell Ranger vs counts matrix
 
 Within these workflows, there are two options for generating a counts matrix from fastq sequence data (counting copies per gene per cell); 
 
 * CellRanger: Developed by 10X genomics, this is a widely used package that works for 10X genomics data. Usage is subject to licence conditons (see Licenses section) and available only to registered users. Currenlty only the inbuilt human and mouse references are avaliable.  CellRanger will also output a '.cloupe' file, which may be used with the 'cell loupe' desktop program.
-
 * StarSOLO: An open source alternative, which can be configured to support different sequencing technologies. The current implementation works multiple species (subject to reference annotations).
-
-NB: These workflows will not currently work with 'Gene expression Flex' kits, only sequence based. 
-
+* Counts matrix: Sometimes you already have a counts matrix - these are available for many public datasets already. Or, if you are using data from probe-based kits (e.g. 10X fixed rna kit), you'll need to get your counts matrix as described by the manufactuer.
 
 
 # Licenses
