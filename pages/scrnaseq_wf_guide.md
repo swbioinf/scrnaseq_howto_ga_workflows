@@ -73,6 +73,9 @@ This diagram shows how the different workflows work together - the choice depend
 
 {% include image.html file="/workflow_options.png" max-width="6" %}
 
+{% include image.html file="/workflow_options.png" max-width="500px" %}
+
+{% include image.html file="/workflow_options.png" max-width="2" %}
 
 ## Prepare your fastq inputs
 
