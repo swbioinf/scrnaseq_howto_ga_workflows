@@ -1,7 +1,16 @@
 cff-version: 0.0.0
 message: "Please cite as below."
 authors:
-  - name: QCIF Bioinformatics 
+  - given-names: Sarah
+    family-names: Williams
+    affiliation: QCIF Bioinformatics
+  - given-names: Mike
+    family-names: Thang
+    affiliation: QCIF Bioinformatics
+  - given-names: Valentine 
+    family-names: Murigneaux
+    affiliation: QCIF Bioinformatics
+
 title: "scRNAseq on galaxy workflows"
-version: 0.0.0
-date-released: YYYY-MM-DD
+version: 0.9
+date-released: 2023-06-16

@@ -14,6 +14,7 @@ toc: false
        - [Using CellRanger](#using-cellranger)
        - [Using StarSOLO](#using-starsolo)
        - [With a Counts matrix](#with-a-counts-matrix)
+    + [Check results](#check-the-results)
     + [Running a multi sample experiment](#running-a-multi-sample-experiment)
 - [Next steps](#next-steps)
 - [Licenses](#licenses)
@@ -28,18 +29,29 @@ The aim of these workflows is to handle the routine ‘boring’ part of single 
 These workflows represent just one way of processing data for a ‘typical’ scRNAseq experiment – there are many other options!  
 
 
-This document describes 3 sub-workflows for processing single cell RNAseq data with scanpy 
 
-* **Load counts matrix (CellRanger):**    This workflow adds a sample name, which enables multi-sample analyses. NB: Does not yet run cellranger. 
+
+This document describes a set of workflows for processing single cell RNAseq data with scanpy 
+
+
+With 3 ways to load the data:
+
+* **Load counts matrix (CellRanger):**  This workflow takes fastq files, uses starSOLO to generate a counts matrix, loads the data into a standard AnnData format and adds a sample name.
 * **Count and load (starSOLO):** [import](https://usegalaxy.org.au/workflows/trs_import?trs_server=workflowhub.eu&trs_id=466&trs_version=2)   This workflow takes fastq files, uses starSOLO to generate a counts matrix, loads the data into a standard AnnData format and adds a sample name. 
+* **Load counts matrix (CellRanger):** [TO LINK] This workflow takes fastq files, uses starSOLO to generate a counts matrix, loads the data into a standard AnnData format and adds a sample name.
+
+
+Then two subsequent steps to perform some routine processing: 
+
 * **Single cell QC:** [import](https://usegalaxy.org.au/workflows/trs_import?trs_server=workflowhub.eu&trs_id=467&trs_version=2)  This workflow generates some basic QC plots and applies filtering 
 * **Single cell QC to basic processing:** [import](https://usegalaxy.org.au/workflows/trs_import?trs_server=workflowhub.eu&trs_id=468&trs_version=2)  This generates a UMAP, does clustering and calculates cluster marker genes. 
 
  
-For single sample experiments, there are streamlined workflows that runs all 3 sub-workflows all at once 
+For single sample experiments, there are streamlined workflows that the steps all at once
+
 * **Single sample workflow (CellRanger):** [import](https://usegalaxy.org.au/workflows/trs_import?trs_server=workflowhub.eu&trs_id=464&trs_version=2)  This workflow loads counts matrix, does some basic processing, suitable for a single sample.
 * **Single sample workflow (StarSOLO):** [import](https://usegalaxy.org.au/workflows/trs_import?trs_server=workflowhub.eu&trs_id=465&trs_version=2)  This workflow loads counts matrix, does some basic processing, suitable for a single sample.
-
+* **Single sample workflow (Counts matrix):** A workflow that starts with a counts matrix, suitable for a single sample.
 
 These workflows are all available on galaxy australia.
 
@@ -89,11 +101,15 @@ What's the difference between cell ranger and starSOLO?
 {% include image.html file="/workflow_options.png" max-width="800px" %}
 
 
+## Configuration options
 
+There are some QC thresholds that may need to be adjusted. Note that there is no ideal threshold for minimum counts and genes per cell - thresholds vary wildly between technologies and experiment. 
 
-
-
-
+* **Mitochondrial Prefix: Prefix on mitochondrial gene names. Default MT- typical for human, mt- for mouse. Using the wrong form will results in plotting errors - check your gene names if this occurs.
+If mitochondrial genes are not prefixed, Mito flagging, plotting and filtering steps will need to be removed - else they'll generated errors.
+* **Min Count Per Cell: Cells with fewer than this number of total counts will be removed. Check your QC plots to make sure your thresholds are resonable!
+* **Min Genes Per Cell: Cells with fewer than this many distinct genes observed will be removed. Again, check your QC plots to make sure your thresholds are resonable!
+* **MaxMTpc : Cells with more than this percentage of counts coming from mitochondrial genes will be removed. Generally high MT-content cells are uninteresting, but again, the threshold can differ between experiments.
 
 ## Prepare your fastq inputs
 
@@ -126,7 +142,6 @@ You may also have I1 and I2 fastq datasets, but these are indicies not used in t
 {% include image.html file="/pair_collection_paired.png" alt="Paired collection" max-width="800px" %}
 
 
-
 5. Give it a sensible name, then hit 'create collection', and now that paired collection will be visible in your history as below;
 
 {% include image.html file="/fastqcollection.png" alt="collection in history" max-width="500px" %}
@@ -134,20 +149,11 @@ You may also have I1 and I2 fastq datasets, but these are indicies not used in t
 
 ## Running a single sample workflow
 
-When there is only a single biological sample in a study, there is a streamlined workflow, one for CellRanger and one for StarSolo. 
+When there is only a single biological sample in a study, there is a streamlined workflow.
 
 ### Using CellRanger
 
-
-
-### With a Counts matrix
-
-If you have a counts matrix. 
-
-
-{% include image.html file="/screen_single_sample_launch.png" alt="Single Sample Launch prompt.png" max-width="800px" %}
-
-
+TBA.
 
 ### Using StarSOLO
 
@@ -172,12 +178,33 @@ You can supply links to that data directly to a galaxy history via `upload data 
 
 {% include image.html file="/screen_single_sample_starsolo_launch.png" alt="Single Sample Launch prompt" max-width="800px" %}
 
-
-
-
 Once ready hit the 'run workflow' button. This pipeline should take an hour or several to run. 
 
-4. Return to galaxy, and look up the run, or invocation, of this workflow: 
+
+### With a Counts matrix
+
+If you have a counts matrix you can instead run the **scRNAseq Single Sample Processing Counts Matrix** workflow.
+
+1. Load your input files into galaxy. The counts matrix is expected in a [matrix market](https://networkrepository.com/mtx-matrix-market-format.html) format, which consists of 3 files. It is a common format for single cell data, generated by tools like cellRanger or StarSOLO, and is often available for public datasets. Files may be gzipped (suffixed .gz), there is no need to uncompress them. 
+
+    * **matrix.mtx (.gz)** : A file with the number of counts per cell
+    * **genes.tsv (.gz)** or **features.tsv (.gz)** : A file listing all the genes or features in the experiment
+    * **barcodes.tsv (.gz)** : A file listing the cellular barcodes in the experiment. 
+
+You may have a 'filtered' and a 'raw' set of counts matricies - generally, the 'filtered' set should be used. The raw set may include large numbers of barcodes with very low counts - real cells are expected to be in the 'filtered' set.
+
+2. Import the **scRNAseq Single Sample Processing (Counts Matrix)** workflow (listed above)
+
+3. Hit run to bring up the following launch form.  There is no need for the reference genome, since genes have already been counted.
+
+Once ready hit the 'run workflow' button. This pipeline should usually run in less than an hour. 
+
+{% include image.html file="/screen_single_sample_launch.png" alt="Single Sample Launch prompt.png" max-width="800px" %}
+
+
+## Check the results
+
+Once your workflow has had time to run, return to galaxy and look up its 'invocation'.
 
 _User Menu > Workflow Invocations_
 
@@ -190,15 +217,15 @@ This brings up the history of workflow invocations. This particular workflow run
 
 
 
-
 ## Running a multi sample experiment
 
-With multi-sample experiments, each sample is loaded independently and then combined. The overall method is the same, but the QC and processing steps are run separately. 
+With multi-sample experiments, each sample is loaded independently and then combined before running the downstream processing. 
+This means that the overall process is the same, but the steps are launched manually. This is also useful when something goes wrong.
 
 
-1. Upload the raw data for one sample. There are 3 options for the first step, but after that the process is the same.
+1. Upload the raw data for one sample. 
 
--------
+2. There are 3 options for this first step, but after that the process is the same.
 
 **Option 1: Cell Ranger** 
 
@@ -221,17 +248,17 @@ Run the 'scrnaseq: Count and Load with starSOLO workflow.' The options are a sub
 
 This part of the workflow will load the counts matrix into an AnnData object, and then adds an extra column in the metadata called ‘sample’. This means the sample information can be tracked when multiple samples are combined. 
 
-------
-Any option outputs an AnnData object in you history - containing your counts and annotated with the sample name internally.
+
+3. Any of these 3 options outputs an AnnData object in you history - containing your counts and annotated with the sample name internally.
 
 That object in your history will probably be named something like ‘Manipulate AnnData (add_annotation) on data 20 and data 17’. You may like to rename this object via the ‘edit attributes’ option in the history panel, so its easier to find later. 
 
 {% include image.html file="/screen_rename.png" alt="Rename" max-width="500px" %}
 
 
-2. In the same history, repeat for all other samples. 
+4. In the same history, repeat for all other samples. 
 
-3. Next, join all samples with the ‘Manipulate AnnData object’ Tool (search on the tools pane on the left). 
+5. Next, join all samples with the ‘Manipulate AnnData object’ Tool (search on the tools pane on the left). 
 
 This tool can do several different operations – listed under ‘Function to manipulate the object’, but we want the default; “Concatenate along the observation axis”. This combines cells (observations) from multiple sample runs. 
  
@@ -244,24 +271,23 @@ Choose the AnnData object of one of your samples in the  ‘Annotated data matri
 
 A combined AnnData object will created in your history. 
 
-4. Next, run the **scRNAseq Cell QC** workflow on your combined AnnData object.  
+6. Next, run the **scRNAseq Cell QC** workflow on your combined AnnData object.  
 
 This workflow plots some basic cell-level QC thresholds, and applies the QC thresholds to produce a filtered AnnData object. Configure thresholds as appropriate.
 
 {% include image.html file="/screen_cellQC_launch.png" alt="cell QC_launch" max-width="800px" %}
 
-
-5. Once it finishes running, view the report (Go to User menu > Invocations to find it).  
+7. Once it finishes running, view the report (Go to User menu > Invocations to find it).  
 
 You’ll notice you can see each sample plotted separately in the QC plots. You may elect to rerun with tweaked thresholds (e.g. higher minimum counts threshold) once you've seen this output.
 
 {% include image.html file="/cell_qc_plot.png" alt="Cell qc quality plot" max-width="500px" %}
 
-6. If you are happy with the filtering thresholds, you can launch the next workflow, **scRNAseq QC to Basic Processing** to do some routine single cell calculations. It only asks for the filtered AnnData Object (typically the last AnnData in you history, which may be named something like 'scanpy scrublet on data x') 
+8. If you are happy with the filtering thresholds, you can launch the next workflow, **scRNAseq QC to Basic Processing** to do some routine single cell calculations. It only asks for the filtered AnnData Object (typically the last AnnData in you history, which may be named something like 'scanpy scrublet on data x') 
 
 {% include image.html file="/screen_qc_to_basic_processing_launch.png" alt="launch basic processing" max-width="800px" %}
 
-7. This takes a few minutes to run. Once finished, return to the invocations page to see the QC to Basic Processing report, as per the single sample workflow. 
+9. This takes a few minutes to run. Once finished, return to the invocations page to see the QC to Basic Processing report, as per the single sample workflow. 
 
 The first umap now shows the different samples that make up the data. 
 
@@ -279,8 +305,6 @@ The AnnData object generated by these workflows is intended for furthre analysis
   + Or, you download your AnnData object and work with the scanpy toolkit directly, using python on your computer or other server. This can provide more fine-grained control of your analysis. There are [many tutorials](https://scanpy.readthedocs.io/en/stable/tutorials.html) to work from.
 
 Note that there are toolkits other than scanpy (e.g. Seurat, SingleCellExperiment objects) which are not directly compatible without conversions.
-
-
 
 
 # Licenses

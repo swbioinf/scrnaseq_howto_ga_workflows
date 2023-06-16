@@ -20,9 +20,14 @@
 #    affiliation: Australian BioCommons / University of Melbourne
 
 
-#Sarah Williams:
-#    role: author
-#    affiliation: QCIF bioinformatics / Griffith University
-
 Sarah Williams:
-    affiliation: QCIF
+    affiliation: QCIF / Griffith University
+    role: author
+
+Mike Thang:
+    affiliation: QCIF / University of Queensland
+    role: author
+
+Valentine Murigneaux:
+    affiliation: QCIF / University of Queensland
+    role: author
