@@ -6,12 +6,13 @@ affiliations: QCIF
 toc: false
 ---
 
+- [Workflows](#workflows)
 - [Background](#backgrounds)
 - [Analysis Overview](#analysis-overview)
 - [User guide](#user-guide)
     + [Prepare your fastq inputs](#prepare-your-fastq-inputs)
     + [Running a single sample workflow](#running-a-single-sample-workflow)
-       - [Using CellRanger](#using-cellranger)
+       - [Using Cell Ranger](#using-cell-ranger)
        - [Using StarSOLO](#using-starsolo)
        - [With a Counts matrix](#with-a-counts-matrix)
     + [Check results](#check-the-results)
@@ -29,53 +30,56 @@ The aim of these workflows is to handle the routine ‘boring’ part of single 
 These workflows represent just one way of processing data for a ‘typical’ scRNAseq experiment – there are many other options!  
 
 
-
+# Workflows
 
 This document describes a set of workflows for processing single cell RNAseq data with scanpy 
-
-
-With 3 ways to load the data:
-
-* **Load counts matrix**: [import](https://usegalaxy.org.au/workflows/trs_import?trs_server=workflowhub.eu&trs_id=512&trs_version=2)   This workflow takes a counts matrix (of form counts.mtx + genes.csv + features.csv), loads the data into a standard AnnData format and adds a sample name.
-* **Count and load (starSOLO)**: [import](https://usegalaxy.org.au/workflows/trs_import?trs_server=workflowhub.eu&trs_id=513&trs_version=2)   This workflow takes fastq files, uses starSOLO to generate a counts matrix, loads the data into a standard AnnData format and adds a sample name. 
-* **Count and Load (CellRanger)**: [TBA] This workflow takes fastq files, uses cellRanger to generate a counts matrix, loads the data into a standard AnnData format and adds a sample name.
-
-
-Then two subsequent steps to perform some routine processing: 
-
-* **Single cell QC:** [import](https://usegalaxy.org.au/workflows/trs_import?trs_server=workflowhub.eu&trs_id=467&trs_version=2)  This workflow generates some basic QC plots and applies filtering 
-* **Single cell QC to basic processing:** [import](https://usegalaxy.org.au/workflows/trs_import?trs_server=workflowhub.eu&trs_id=468&trs_version=2)  This generates a UMAP, does clustering and calculates cluster marker genes. 
-
- 
-For single sample experiments, there are streamlined workflows that the steps all at once
-
-* **Single sample workflow (CellRanger):** [TBA]  This workflow starts from fastq files, generates counts with cellRanger, QCs and does some basic processing. It suitable for a single sample.
-* **Single sample workflow (StarSOLO):** [import](https://usegalaxy.org.au/workflows/trs_import?trs_server=workflowhub.eu&trs_id=465&trs_version=2)  This workflow starts from fastq files, generates counts with starSOLO, QCs and does some basic processing. It suitable for a single sample.
-* **Single sample workflow (Counts matrix):** [import](https://usegalaxy.org.au/workflows/trs_import?trs_server=workflowhub.eu&trs_id=514&trs_version=2) This workflow starts from a counts matrix, QCs and does some basic processing. It suitable for a single sample.
-
 
 These workflows are all available on galaxy australia.
 
 {% include callout.html type="note" content="To import these workflows, you must be logged in to galaxy australia with an account, before clicking the import links." %}
 
 
+
+## Standard workflows
+
+With 3 ways to load the data:
+
+* **Load counts matrix**: [import](https://usegalaxy.org.au/workflows/trs_import?trs_server=workflowhub.eu&trs_id=512&trs_version=2)   This workflow takes a counts matrix (of form counts.mtx + genes.csv + features.csv), loads the data into a standard AnnData format and adds a sample name.
+* **Count and load (starSOLO)**: [import](https://usegalaxy.org.au/workflows/trs_import?trs_server=workflowhub.eu&trs_id=513&trs_version=2)   This workflow takes fastq files, uses starSOLO to generate a counts matrix, loads the data into a standard AnnData format and adds a sample name. 
+* **Count and Load (Cell Ranger)**: [TBA] This workflow takes fastq files, uses Cell Ranger to generate a counts matrix, loads the data into a standard AnnData format and adds a sample name.
+
+Followed by two steps of routine processing: 
+
+* **Single cell QC:** [import](https://usegalaxy.org.au/workflows/trs_import?trs_server=workflowhub.eu&trs_id=467&trs_version=2)  This workflow generates some basic QC plots and applies filtering 
+* **Single cell QC to basic processing:** [import](https://usegalaxy.org.au/workflows/trs_import?trs_server=workflowhub.eu&trs_id=468&trs_version=2)  This generates a UMAP, does clustering and calculates cluster marker genes. 
+
+
+## Single sample streamlined workflows
+ 
+For single sample experiments, there are streamlined workflows that the steps all at once.
+
+* **Single sample workflow (Cell Ranger):** [TBA]  This workflow starts from fastq files, generates counts with Cell Ranger, QCs and does some basic processing. It suitable for a single sample.
+* **Single sample workflow (StarSOLO):** [import](https://usegalaxy.org.au/workflows/trs_import?trs_server=workflowhub.eu&trs_id=465&trs_version=2)  This workflow starts from fastq files, generates counts with starSOLO, QCs and does some basic processing. It suitable for a single sample.
+* **Single sample workflow (Counts matrix):** [import](https://usegalaxy.org.au/workflows/trs_import?trs_server=workflowhub.eu&trs_id=514&trs_version=2) This workflow starts from a counts matrix, QCs and does some basic processing. It suitable for a single sample.
+
+
 # Background
 
-There are many general resources online about the principals of single cell analysis. The [Scanpy preprocessing and clustering tutorial](https://scanpy-tutorials.readthedocs.io/en/latest/pbmc3k.html) may be of particular use because it describes the scanpy methods used in this workflow. Even if you don't use the python code, it works through and explains many of the plots these workflows generate.  
+There are many general resources online about the principals of single cell analysis. The [Scanpy preprocessing and clustering tutorial](https://scanpy-tutorials.readthedocs.io/en/latest/pbmc3k.html) may be of particular use because it describes the *scanpy methods* used in this workflow. Even if you don't use the python code, it works through and explains many of the plots these workflows generate.  
 
-General information on **using galaxy** can be found on the [galaxy training website](https://training.galaxyproject.org/training-material/)
+General information on *using galaxy* can be found on the [galaxy training website](https://training.galaxyproject.org/training-material/)
  
-For more general information about **single cell RNAseq processing on galaxy**; there are some excellent tutorials to be found here on the [galaxy training website scRNA section](https://training.galaxyproject.org/training-material/topics/single-cell/). The workflow implemented here is heavily influenced by the [Clustering 3kPBMCs with Scanpy tutorial](https://training.galaxyproject.org/training-material/topics/single-cell/tutorials/scrna-scanpy-pbmc3k/tutorial.html )
+For more general information about *single cell RNAseq processing on galaxy*; there are some excellent tutorials to be found here on the [galaxy training website scRNA section](https://training.galaxyproject.org/training-material/topics/single-cell/). The workflow implemented here is heavily influenced by the [Clustering 3kPBMCs with Scanpy tutorial](https://training.galaxyproject.org/training-material/topics/single-cell/tutorials/scrna-scanpy-pbmc3k/tutorial.html )
 
 
-{% include callout.html type="note" content="These workflows will not currently work with the fastq data from 10X's probe based 'Gene expression Flex' kits, only sequence based kits." %}
+{% include callout.html type="note" content="These workflows will not currently work with the fastq data from 10X's probe-based 'Gene expression Flex' kits, only sequence based kits." %}
 
 # Analysis overview
 
 ![Processing flowchart](./images/workflow_diagram_simple.png)
 
-1. Start with fastq files. (Or skip to step 3 with a counts matrix)
-2. CellRanger or starSOLO will align the reads to the genome, and make a table of the number of times each gene is counted per cell. 
+1. Start with fastq files.
+2. Cell Ranger or starSOLO will align the reads to the genome, and make a table of the number of times each gene is counted per cell. 
 3. Perform some basic QC on the counts matrix, and filter out ‘cells’ that have too little RNA counts or too much mitochondrial gene content 
 4. Run some basic single cell analyses: Normalisation, PCA, UMAP, clustering and identify cluster markers 
 5. The resulting AnnData object can be analysed further. See ‘Next steps’ 
@@ -92,14 +96,13 @@ When run in full, these workflows produce the following main outputs
 
 # User guide
 
-This diagram shows how the different workflows work together - the choice depends on whether you have a single or multiple samples, or are using CellRanger, StarSOLO or a counts matrix. 
-The overall process is the same.
+This diagram shows how the different workflows work together - initial part of the process depends on whether you have a single or multiple samples, or are using Cell Ranger, StarSOLO or a counts matrix. The subsequent process is the same.
 
-What's the difference between cell ranger and starSOLO?
+WHat are the 3 different options?
 
-* CellRanger: Developed by 10X genomics, this is a widely used package that works for 10X genomics data. Usage is subject to licence conditions (see Licenses section) and available only to registered users. Currently only the inbuilt human and mouse references are available.  CellRanger will also output a '.cloupe' file, which may be used with the 'cell loupe' desktop program.
-* StarSOLO: An open source alternative, which can be configured to support different sequencing technologies. The current implementation works multiple species (subject to reference annotations).
-* Counts matrix: Sometimes you already have a counts matrix - these are available for many public datasets already. Or, if you are using data from probe-based kits (e.g. 10X fixed rna kit), you'll need to get your counts matrix as described by the manufacturer.
+* **Cell Ranger**: Developed by 10X genomics, this is a widely used package that works for 10X genomics data. Usage is subject to licence conditions (see Licenses section) and available only to registered users. Currently only the inbuilt human and mouse references are available.  Cell Ranger will also output a '.cloupe' file, which may be used with the 'cell loupe' desktop program.
+* **StarSOLO**: An open source alternative, which can be configured to support different sequencing technologies or custom references. 
+* **Counts matrix**: Sometimes you already have a counts matrix - these are available for many public datasets already. Or, if you are using data from probe-based kits (e.g. 10X fixed rna kit), you'll need to get your counts matrix as described by the manufacturer.
 
 
 {% include image.html file="/workflow_options.png" max-width="800px" %}
@@ -109,11 +112,11 @@ What's the difference between cell ranger and starSOLO?
 
 There are some QC thresholds that may need to be adjusted. Note that there is no ideal threshold for minimum counts and genes per cell - thresholds vary wildly between technologies and experiment. 
 
-* **Mitochondrial Prefix: Prefix on mitochondrial gene names. Default MT- typical for human, mt- for mouse. Using the wrong form will results in plotting errors - check your gene names if this occurs.
+* **Mitochondrial Prefix**: Prefix on mitochondrial gene names. Default MT- typical for human, mt- for mouse. Using the wrong form will results in plotting errors - check your gene names if this occurs.
 If mitochondrial genes are not prefixed, mitochondrial flagging, plotting and filtering steps will need to be removed - else they'll generated errors.
-* **Min Count Per Cell: Cells with fewer than this number of total counts will be removed. Check your QC plots to make sure your thresholds are reasonable!
-* **Min Genes Per Cell: Cells with fewer than this many distinct genes observed will be removed. Again, check your QC plots to make sure your thresholds are resonable!
-* **MaxMTpc : Cells with more than this percentage of counts coming from mitochondrial genes will be removed. Generally high MT-content cells are uninteresting, but again, the threshold can differ between experiments.
+* **Min Count Per Cell**: Cells with fewer than this number of total counts will be removed. Check your QC plots to make sure your thresholds are reasonable!
+* **Min Genes Per Cell**: Cells with fewer than this many distinct genes observed will be removed. Again, check your QC plots to make sure your thresholds are resonable!
+* **MaxMTpc** : Cells with more than this percentage of counts coming from mitochondrial genes will be removed. Generally high MT-content cells are uninteresting, but again, the threshold can differ between experiments.
 
 ## Prepare your fastq inputs
 
@@ -155,7 +158,7 @@ You may also have I1 and I2 fastq datasets, but these are indices not used in th
 
 When there is only a single biological sample in a study, there is a streamlined workflow.
 
-### Using CellRanger
+### Using Cell Ranger
 
 TBA.
 
@@ -163,9 +166,9 @@ TBA.
 
 The input for the star solo workflow is:
 
-* Your fastq files, prepared as above
-* Whitelist files: The list of expected barcodes in the kit - which varies by technology and chemistry. For 10X chromium data see here; https://kb.10xgenomics.com/hc/en-us/articles/115004506263-What-is-a-barcode-whitelist-
-* Genome and matching annotation reference (see below).
+* **Fastq files**: prepared as above
+* **Whitelist files**: The list of expected barcodes in the kit - which varies by technology and chemistry. For 10X chromium data see here; https://kb.10xgenomics.com/hc/en-us/articles/115004506263-What-is-a-barcode-whitelist-  . The file you need for each kit is listed, and the files themselves can be obtained by downloading the Cell Ranger software package.
+* **Reference**: Genome and matching annotation reference (see below).
 
 StarSOLO will require a genome sequence file (fasta format), and a .gtf or .gff file of the gene positions. Take care to ensure these are from the same genome version. A good source of suitable refernece/annotation pairs for a wide range of species is the [ensembl download index](https://asia.ensembl.org/info/data/ftp/index.html). For example, human reference data at ensembl v109:
 
@@ -189,7 +192,7 @@ Once ready hit the 'run workflow' button. This pipeline should take an hour or s
 
 If you have a counts matrix you can instead run the **scRNAseq Single Sample Processing Counts Matrix** workflow.
 
-1. Load your input files into galaxy. The counts matrix is expected in a [matrix market](https://networkrepository.com/mtx-matrix-market-format.html) format, which consists of 3 files. It is a common format for single cell data, generated by tools like cellRanger or StarSOLO, and is often available for public datasets. Files may be gzipped (suffixed .gz), there is no need to uncompress them. 
+**Step 1** Load your input files into galaxy. The counts matrix is expected in a [matrix market](https://networkrepository.com/mtx-matrix-market-format.html) format, which consists of 3 files. It is a common format for single cell data, generated by tools like Cell Ranger or StarSOLO, and is often available for public datasets. Files may be gzipped (suffixed .gz), there is no need to uncompress them. 
 
     * **matrix.mtx (.gz)** : A file with the number of counts per cell
     * **genes.tsv (.gz)** or **features.tsv (.gz)** : A file listing all the genes or features in the experiment
@@ -197,9 +200,9 @@ If you have a counts matrix you can instead run the **scRNAseq Single Sample Pro
 
 You may have a 'filtered' and a 'raw' set of counts matrices - generally, the 'filtered' set should be used. The raw set may include large numbers of barcodes with very low counts - real cells are expected to be in the 'filtered' set.
 
-2. Import the **scRNAseq Single Sample Processing (Counts Matrix)** workflow (listed above)
+**Step 2.** Import the **scRNAseq Single Sample Processing (Counts Matrix)** workflow (listed above)
 
-3. Hit run to bring up the following launch form.  There is no need for the reference genome, since genes have already been counted.
+**Step 3.** Hit run to bring up the following launch form.  There is no need for the reference genome, since genes have already been counted.
 
 Once ready hit the 'run workflow' button. This pipeline should usually run in less than an hour. 
 
@@ -227,22 +230,22 @@ With multi-sample experiments, each sample is loaded independently and then comb
 This means that the overall process is the same, but the steps are launched manually. This is also useful when something goes wrong.
 
 
-1. Upload the raw data for one sample. 
+**Step 1.** Upload the raw data for one sample. 
 
-2. There are 3 options for this first step, but after that the process is the same.
+**Step 2.** There are 3 options for this first step, but after that the process is the same.
 
-    **Option 1: Cell Ranger** 
+    *Option 1: Cell Ranger* 
 
     TBA.
 
-    **Option 2: StarSOLO** If you have fastq files and want to use starSOLO. 
+    *Option 2: StarSOLO* If you have fastq files and want to use starSOLO. 
 
     Run the 'scrnaseq: Count and Load with starSOLO workflow.' The options are a subset of those listed for the single-sample workflow, with the same inputs. 
 
     {% include image.html file="/screen_counts_and_load_starsolo_launch.png" alt="Load counts matrix launch" max-width="800px" %}
 
 
-    **Option 3: Counts matrix** If you already have a counts matrix then run The ‘scRNAseq: Load counts matrix’ workflow – this will prompt you for a sample name that will be used throughout. 
+    *Option 3: Counts matrix* If you already have a counts matrix then run The ‘scRNAseq: Load counts matrix’ workflow – this will prompt you for a sample name that will be used throughout. 
 
     ![Load counts matrix launch](./images/screen_load_counts_matrix_launch.png)
 
@@ -253,16 +256,16 @@ This means that the overall process is the same, but the steps are launched manu
     This part of the workflow will load the counts matrix into an AnnData object, and then adds an extra column in the metadata called ‘sample’. This means the sample information can be tracked when multiple samples are combined. 
 
 
-3. Any of these 3 options outputs an AnnData object in you history - containing your counts and annotated with the sample name internally.
+**Step 3.** Any of these 3 options outputs an AnnData object in you history - containing your counts and annotated with the sample name internally.
 
     That object in your history will probably be named something like ‘Manipulate AnnData (add_annotation) on data 20 and data 17’. You may like to rename this object via the ‘edit attributes’ option in the history panel, so its easier to find later. 
 
     {% include image.html file="/screen_rename.png" alt="Rename" max-width="500px" %}
 
 
-4. In the same history, repeat for all other samples. 
+**Step 4.** In the same history, repeat for all other samples. 
 
-5.  Next, join all samples with the ‘Manipulate AnnData object’ Tool (search on the tools pane on the left). 
+**Step 5.**  Next, join all samples with the ‘Manipulate AnnData object’ Tool (search on the tools pane on the left). 
 
     This tool can do several different operations – listed under ‘Function to manipulate the object’, but we want the default; “Concatenate along the observation axis”. This combines cells (observations) from multiple sample runs. 
     
@@ -275,23 +278,23 @@ This means that the overall process is the same, but the steps are launched manu
 
     A combined AnnData object will created in your history. 
 
-6. Next, run the **scRNAseq Cell QC** workflow on your combined AnnData object.  
+**Step 6.** Next, run the **scRNAseq Cell QC** workflow on your combined AnnData object.  
 
     This workflow plots some basic cell-level QC thresholds, and applies the QC thresholds to produce a filtered AnnData object. Configure thresholds as appropriate.
 
     {% include image.html file="/screen_cellQC_launch.png" alt="cell QC_launch" max-width="800px" %}
 
-7. Once it finishes running, view the report (Go to User menu > Invocations to find it).  
+**Step 7.** Once it finishes running, view the report (Go to User menu > Invocations to find it).  
 
     You’ll notice you can see each sample plotted separately in the QC plots. You may elect to rerun with tweaked thresholds (e.g. higher minimum counts threshold) once you've seen this output.
 
     {% include image.html file="/cell_qc_plot.png" alt="Cell qc quality plot" max-width="500px" %}
 
-8. If you are happy with the filtering thresholds, you can launch the next workflow, **scRNAseq QC to Basic Processing** to do some routine single cell calculations. It only asks for the filtered AnnData Object (typically the last AnnData in you history, which may be named something like 'scanpy scrublet on data x') 
+**Step 8.** If you are happy with the filtering thresholds, you can launch the next workflow, **scRNAseq QC to Basic Processing** to do some routine single cell calculations. It only asks for the filtered AnnData Object (typically the last AnnData in you history, which may be named something like 'scanpy scrublet on data x') 
 
     {% include image.html file="/screen_qc_to_basic_processing_launch.png" alt="launch basic processing" max-width="800px" %}
 
-9. This takes a few minutes to run. Once finished, return to the invocations page to see the QC to Basic Processing report, as per the single sample workflow. 
+**Step 9.** This takes a few minutes to run. Once finished, return to the invocations page to see the QC to Basic Processing report, as per the single sample workflow. 
 
     The first umap now shows the different samples that make up the data. 
 
@@ -314,7 +317,7 @@ Note that there are toolkits other than scanpy (e.g. Seurat, SingleCellExperimen
 # Licenses
 
 
-Note that CellRanger is subject to a [custom license](https://github.com/10XGenomics/cellranger/blob/master/LICENSE). Most notably, it can only be used with 10X technology. Any use of these workflows that use these cellRanger must adhere to that license. 
+Note that Cell Ranger is subject to a [custom license](https://github.com/10XGenomics/cellranger/blob/master/LICENSE). Most notably, it can only be used with 10X technology. Any use of these workflows that use these Cell Ranger must adhere to that license. 
 
 An alternative option is the STARsolo, distributed under an MIT license. 
 
