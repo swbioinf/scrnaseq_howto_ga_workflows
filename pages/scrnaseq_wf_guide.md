@@ -11,6 +11,8 @@ toc: false
 - [Analysis Overview](#analysis-overview)
 - [User guide](#user-guide)
     + [Prepare your fastq inputs](#prepare-your-fastq-inputs)
+       - [For Cell Ranger](#for-cell-ranger)
+       - [For StarSOLO](#for-starsolo)
     + [Running a single sample workflow](#running-a-single-sample-workflow)
        - [Using Cell Ranger](#using-cell-ranger)
        - [Using StarSOLO](#using-starsolo)
@@ -19,6 +21,7 @@ toc: false
     + [Running a multi sample experiment](#running-a-multi-sample-experiment)
 - [Next steps](#next-steps)
 - [Licenses](#licenses)
+    + [Getting access to cell ranger](#getting-access-to-cell-ranger)
 
 
 
@@ -100,7 +103,7 @@ This diagram shows how the different workflows work together - initial part of t
 
 WHat are the 3 different options?
 
-* **Cell Ranger**: Developed by 10X genomics, this is a widely used package that works for 10X genomics data. Usage is subject to licence conditions (see Licenses section) and available only to registered users. Currently only the inbuilt human and mouse references are available.  Cell Ranger will also output a '.cloupe' file, which may be used with the 'cell loupe' desktop program.
+* **Cell Ranger**: Developed by 10X genomics, this is a widely used package that works for 10X genomics data. Usage is subject to licence conditions (see Licenses section) and available only to registered users. Currently only the inbuilt human and mouse references are available (it is possible to build and use a custom reference on galaxy, but not within this workflow).  Cell Ranger will also output a '.cloupe' file, which may be used with the 'cell loupe' desktop program.
 * **StarSOLO**: An open source alternative, which can be configured to support different sequencing technologies or custom references. 
 * **Counts matrix**: Sometimes you already have a counts matrix - these are available for many public datasets already. Or, if you are using data from probe-based kits (e.g. 10X fixed rna kit), you'll need to get your counts matrix as described by the manufacturer.
 
@@ -120,9 +123,39 @@ If mitochondrial genes are not prefixed, mitochondrial flagging, plotting and fi
 
 ## Prepare your fastq inputs
 
-Single cell sequencing data is typically generated as paired-end sequencing data.
+Single cell sequencing data is typically generated as paired-end sequencing data. This is handled by 'collections' in galaxy. For more information what a galaxy _collection_ is see [guide to collections in galaxy](https://training.galaxyproject.org/training-material/topics/galaxy-interface/tutorials/collections/tutorial.html)  
 
-In galaxy, we can store paired sequencing data in a 'paired collection' - that way the R1 and matched R2 will always be together. For more information what a galaxy _collection_ is see [guide to collections in galaxy](https://training.galaxyproject.org/training-material/topics/galaxy-interface/tutorials/collections/tutorial.html)  
+Cell Ranger and starSOLO expect fastq files to be arranged in slightly differnet collections, as described below.
+
+
+### For Cell Ranger
+
+
+Cell Ranger expects fastq files in a simple collection.
+
+1. Load the _R1 and _R2 fastq files into your galaxy history. See [guide to loading data](https://galaxyproject.org/support/loading-data/) for details.
+
+2. Select the fastq files that make up one biological sample. Typically this may be 2 files (R1 and R2), but there can be more (e.g. often multiple lanes).
+
+    a. Click the 'tick in a box' select files button at the top of the history (dataset) panel.
+    b. Checkboxes appear for all history items - check the specific files needed.
+    c. There will be a dropdown button at the top of the history panel - 'selected' - hit this, and select 'Build dataset list' 
+
+{% include image.html file="/screen_flat_fastq_collection.png" alt="Screenshot of selecting fastqs for cell ranger collection" max-width="500px" %}
+
+However it expects the collection to be named in a particular way. Fastq files will typically have names like: *SomeSample_S2_L001_R1_001.fastq.gz*, and the collection should be named with everything before *_S2_L001_R1_001.fastq.gz*. Here that is *'10k_PBMC_3p_nextgem_Chromium_Controller'*.
+
+{% include callout.html type="important" content="The name of your collection matters!" %}
+
+{% include callout.html type="note" content="If your run fails with the error: `ERROR: Requested sample(s) not found in fastq directory. Available samples: ...`; this indicates a mismatch between the collection name and filenames. Consider renaming your collection to what is listed as an available sample." %}
+
+
+
+
+### For starSOLO 
+
+
+In galaxy, we can store paired sequencing data in a 'paired collection' - that way the R1 and matched R2 will always be together. 
 
 These workflows expect a paired collection of data for one sample. Its possible to have multiple fastq pairs for one biological sample - but this workflow will usually be run on a paired collection of one pair.
 
@@ -160,7 +193,22 @@ When there is only a single biological sample in a study, there is a streamlined
 
 ### Using Cell Ranger
 
-TBA.
+
+The input for the star solo workflow is:
+
+* **Fastq files**: prepared as above
+* **Reference**: Only if not working with human or mouse.  See [Cell Ranger custom reference](#Cell-Ranger-custom-reference)
+
+1. If you haven't already, apply for access to Cell Ranger - see [Getting access to cell ranger](#getting-access-to-cell-ranger). Otherwise Cell Ranger won't be visible in your tools list!
+
+2. Import the **Single sample workflow (Cell Ranger):** (listed above). This workflow will include a couple of sub workflows.
+
+3. Open the workflow menu, find the workflow and hit run to bring up the following launch form. The first option _'XXXXX'_ should be the paired collection you created and named above. You'll also be prompted to customise any filtering parameters, and choose a sensible name for the biological sample.
+
+{% include image.html file="/screen_cellranger_ss_launch.png" alt="Single Sample Launch prompt" max-width="800px" %}
+
+Once ready hit the 'run workflow' button. This pipeline should take an hour or several to run. 
+
 
 ### Using StarSOLO
 
@@ -181,7 +229,7 @@ You can supply links to that data directly to a galaxy history via `upload data 
 
 2. Import the **Single sample workflow (StarSOLO):** (listed above) This workflow will include a couple of sub workflows.
 
-3. Hit run to bring up the following launch form. The first option _'paired fastqs for one sample'_ should be the paired collection you created and named above. You'll also be prompted to customise any filtering parameters, and choose a sensible name for the biological sample.
+3. Open the workflow menu, find the workflow and hit run to bring up the following launch form. The first option _'paired fastqs for one sample'_ should be the paired collection you created and named above. You'll also be prompted to customise any filtering parameters, and choose a sensible name for the biological sample.
 
 {% include image.html file="/screen_single_sample_starsolo_launch.png" alt="Single Sample Launch prompt" max-width="800px" %}
 
@@ -236,18 +284,22 @@ This means that the overall process is the same, but the steps are launched manu
 
   *Option 1: Cell Ranger* 
 
-  TBA.
+  Run the 'scrnaseq: Count and Load with Cell Ranger workflow.' The options are a subset of those listed for the single-sample workflow, with the same inputs. 
+
+  {% include image.html file="/screen_count_and_load_cellranger.png" alt="Cellranger load and count launch prompt.png" max-width="800px" %}
 
   *Option 2: StarSOLO* If you have fastq files and want to use starSOLO. 
 
   Run the 'scrnaseq: Count and Load with starSOLO workflow.' The options are a subset of those listed for the single-sample workflow, with the same inputs. 
 
-  {% include image.html file="/screen_counts_and_load_starsolo_launch.png" alt="Load counts matrix launch" max-width="800px" %}
-
+  {% include image.html file="/screen_counts_and_load_starsolo_launch.png" alt="Load and count with starSOLO launch" max-width="800px" %}
 
   *Option 3: Counts matrix* If you already have a counts matrix then run The ‘scRNAseq: Load counts matrix’ workflow – this will prompt you for a sample name that will be used throughout. 
 
-  ![Load counts matrix launch](./images/screen_load_counts_matrix_launch.png)
+  <!--![Load counts matrix launch](./images/screen_load_counts_matrix_launch.png)-->
+  {% include image.html file="/screen_load_counts_matrix_launch.png" alt="Load counts matrix launch" max-width="800px" %}
+
+
 
   {% include callout.html type="note" content="Older datasets will have genes.tsv(.gz), where as newer dataset will have features.tsv(.gz). Either works" %}
 
@@ -316,8 +368,7 @@ Note that there are toolkits other than scanpy (e.g. Seurat, SingleCellExperimen
 
 # Licenses
 
-
-Note that Cell Ranger is subject to a [custom license](https://github.com/10XGenomics/cellranger/blob/master/LICENSE). Most notably, it can only be used with 10X technology. Any use of these workflows that use these Cell Ranger must adhere to that license. 
+Cell Ranger is proprietry software form 10X, and is only useable on galaxy australia once you have applied for access - see [Getting access to cell ranger](#getting-access-to-cell-ranger)
 
 An alternative option is the STARsolo, distributed under an MIT license. 
 
@@ -330,5 +381,15 @@ Otherwise, usage of these workflows is dependant on the (generally permissive) l
 * [Scanpy](https://github.com/scverse/scanpy/blob/master/LICENSE\)
 * [Scanpy Scripts](https://github.com/ebi-gene-expression-group/scanpy-scripts/blob/develop/LICENSE)
 
+
+## Getting access to Cell Ranger
+
+When you first log in to Galaxy, the Cell Ranger tool with _not_ be visible. 
+
+Cell Ranger is subject to a [custom license](https://github.com/10XGenomics/cellranger/blob/master/LICENSE). Most notably, it can only be used with 10X technology. 
+
+To get access on your account, apply here (simply requires agreeing to the licence): https://site.usegalaxy.org.au/request/access/cellranger
+
+Once successful, Cell Ranger will appear in your tool list under _MISCELLANEOUS TOOLS > Local Tools_ Once you receive a confirmation email, you may need to log out and log back in for it to take effect.
 
 
