@@ -135,6 +135,8 @@ Cell Ranger expects fastq files in a simple collection.
 
 1. Load the _R1 and _R2 fastq files into your galaxy history. See [guide to loading data](https://galaxyproject.org/support/loading-data/) for details.
 
+{% include callout.html type="important" content="The Cell Ranger tool expects fastq files to be named in a bcl2fastq naming convention *[Sample Name]_S1_L00[Lane Number]_[Read Type]_001.fastq.gz* .  This is typical for illumina sequencers. If your data is of a different naming convention (e.g. SRA downloads), you may need to rename your files. More detail [here](https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/using/fastq-input)." %}
+
 2. Select the fastq files that make up one biological sample. Typically this may be 2 files (R1 and R2), but there can be more (e.g. often multiple lanes).
 
     a. Click the 'tick in a box' select files button at the top of the history (dataset) panel.
@@ -143,7 +145,7 @@ Cell Ranger expects fastq files in a simple collection.
 
 {% include image.html file="/screen_flat_fastq_collection.png" alt="Screenshot of selecting fastqs for cell ranger collection" max-width="500px" %}
 
-However it expects the collection to be named in a particular way. Fastq files will typically have names like: *SomeSample_S2_L001_R1_001.fastq.gz*, and the collection should be named with everything before *_S2_L001_R1_001.fastq.gz*. Here that is *'10k_PBMC_3p_nextgem_Chromium_Controller'*.
+However it expects the collection to be named in a particular way. Fastq files will typically have names like: *SomeSample_S2_L001_R1_001.fastq.gz*, and the collection should be named with everything before *_S2_L001_R1_001.fastq.gz*. Here that is *'500_PBMC_3p_LT_Chromium_X'*.
 
 {% include callout.html type="important" content="The name of your collection matters!" %}
 
@@ -197,13 +199,17 @@ When there is only a single biological sample in a study, there is a streamlined
 The input for the star solo workflow is:
 
 * **Fastq files**: prepared as above
-* **Reference**: Only if not working with human or mouse.  See [Cell Ranger custom reference](#Cell-Ranger-custom-reference)
+* **Reference**: Only if not working with human or mouse. 
+
+
+{% include callout.html type="note" content=" If you're using a different species, you can make your reference with the mkgtf and mkref Cell Ranger subtools. Refer to [10X custom reference documentation](https://support.10xgenomics.com/single-cell-gene-expression/software/pipelines/latest/using/tutorial_mr). For use of these workflows consider editing the count and load workflow, or running the Cell Ranger tool separately to use a counts matrix intput." %}
+
 
 1. If you haven't already, apply for access to Cell Ranger - see [Getting access to cell ranger](#getting-access-to-cell-ranger). Otherwise Cell Ranger won't be visible in your tools list!
 
 2. Import the **Single sample workflow (Cell Ranger):** (listed above). This workflow will include a couple of sub workflows.
 
-3. Open the workflow menu, find the workflow and hit run to bring up the following launch form. The first option _'XXXXX'_ should be the paired collection you created and named above. You'll also be prompted to customise any filtering parameters, and choose a sensible name for the biological sample.
+3. Open the workflow menu, find the workflow and hit run to bring up the following launch form. The first option _'Fastqs for one sample'_ should be the paired collection you created and named above. You'll also be prompted to customise any filtering parameters, and choose a sensible name for the biological sample.
 
 {% include image.html file="/screen_cellranger_ss_launch.png" alt="Single Sample Launch prompt" max-width="800px" %}
 
