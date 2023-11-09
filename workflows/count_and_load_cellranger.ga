@@ -1,0 +1,422 @@
+{
+    "a_galaxy_workflow": "true",
+    "annotation": "Takes fastqs and reference data, to produce a single cell counts matrix into and save in annData format - adding a column called sample with the sample name.  ",
+    "format-version": "0.1",
+    "name": "scRNAseq: Count and Load with Cell Ranger",
+    "steps": {
+        "0": {
+            "annotation": "Typically the Forward reads are labelled _R1, barcodes. R2 is Reverse, mRNA sequences. List should contain seq for one biological sample only.",
+            "content_id": null,
+            "errors": null,
+            "id": 0,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "Typically the Forward reads are labelled _R1, barcodes. R2 is Reverse, mRNA sequences. List should contain seq for one biological sample only.",
+                    "name": "Fastqs for one sample"
+                }
+            ],
+            "label": "Fastqs for one sample",
+            "name": "Input dataset collection",
+            "outputs": [],
+            "position": {
+                "left": 0,
+                "top": 0
+            },
+            "tool_id": null,
+            "tool_state": "{\"optional\": false, \"tag\": null, \"collection_type\": \"list\"}",
+            "tool_version": null,
+            "type": "data_collection_input",
+            "uuid": "10add861-d1da-4b02-bb48-e48eab360359",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "1": {
+            "annotation": "Built in reference dataset to use (human or mouse only)",
+            "content_id": null,
+            "errors": null,
+            "id": 1,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "Built in reference dataset to use (human or mouse only)",
+                    "name": "Reference genome"
+                }
+            ],
+            "label": "Reference genome",
+            "name": "Input parameter",
+            "outputs": [],
+            "position": {
+                "left": 6.9605449804077555,
+                "top": 148.3195536638244
+            },
+            "tool_id": null,
+            "tool_state": "{\"restrictOnConnections\": true, \"parameter_type\": \"text\", \"optional\": false}",
+            "tool_version": null,
+            "type": "parameter_input",
+            "uuid": "9b9b1b41-53ae-4c98-b440-f3195c19c510",
+            "when": null,
+            "workflow_outputs": [
+                {
+                    "label": null,
+                    "output_name": "output",
+                    "uuid": "eb5ffff9-f95f-4d81-b03b-259088818ad8"
+                }
+            ]
+        },
+        "2": {
+            "annotation": "Short, unique sample name",
+            "content_id": null,
+            "errors": null,
+            "id": 2,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "Short, unique sample name",
+                    "name": "Sample"
+                }
+            ],
+            "label": "Sample",
+            "name": "Input parameter",
+            "outputs": [],
+            "position": {
+                "left": 0.7118541518991206,
+                "top": 350.22967213952876
+            },
+            "tool_id": null,
+            "tool_state": "{\"parameter_type\": \"text\", \"optional\": false}",
+            "tool_version": null,
+            "type": "parameter_input",
+            "uuid": "581982bf-e68c-4e89-9ee2-84e49a2be400",
+            "when": null,
+            "workflow_outputs": [
+                {
+                    "label": null,
+                    "output_name": "output",
+                    "uuid": "6d6a5b00-343e-4064-a4db-31f7a38c7798"
+                }
+            ]
+        },
+        "3": {
+            "annotation": "",
+            "content_id": "cellranger",
+            "errors": null,
+            "id": 3,
+            "input_connections": {
+                "tool_cond|input_collection": {
+                    "id": 0,
+                    "output_name": "output"
+                },
+                "tool_cond|reference_source|ref_file": {
+                    "id": 1,
+                    "output_name": "output"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "Cell Ranger",
+            "outputs": [
+                {
+                    "name": "output",
+                    "type": "input"
+                },
+                {
+                    "name": "output_summary",
+                    "type": "html"
+                },
+                {
+                    "name": "cloupe",
+                    "type": "binary"
+                },
+                {
+                    "name": "matrix",
+                    "type": "mtx"
+                },
+                {
+                    "name": "feature",
+                    "type": "tabular"
+                },
+                {
+                    "name": "barcode",
+                    "type": "tabular"
+                }
+            ],
+            "position": {
+                "left": 373.3107633103568,
+                "top": 22.414042293742988
+            },
+            "post_job_actions": {},
+            "tool_id": "cellranger",
+            "tool_state": "{\"tool_cond\": {\"tool\": \"count\", \"__current_case__\": 0, \"input_collection\": {\"__class__\": \"ConnectedValue\"}, \"reference_source\": {\"reference_source_selector\": \"cached\", \"__current_case__\": 0, \"ref_file\": {\"__class__\": \"ConnectedValue\"}}}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "7.1.0+galaxy0",
+            "type": "tool",
+            "uuid": "2f3be4ed-ab2b-41d7-a78f-9553a9b87cff",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "4": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/ebi-gxa/scanpy_read_10x/scanpy_read_10x/1.8.1+1+galaxy0",
+            "errors": null,
+            "id": 4,
+            "input_connections": {
+                "barcodes": {
+                    "id": 3,
+                    "output_name": "barcode"
+                },
+                "genes": {
+                    "id": 3,
+                    "output_name": "feature"
+                },
+                "matrix": {
+                    "id": 3,
+                    "output_name": "matrix"
+                }
+            },
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Scanpy Read10x",
+                    "name": "cell_meta"
+                },
+                {
+                    "description": "runtime parameter for tool Scanpy Read10x",
+                    "name": "gene_meta"
+                }
+            ],
+            "label": null,
+            "name": "Scanpy Read10x",
+            "outputs": [
+                {
+                    "name": "output_h5ad",
+                    "type": "h5ad"
+                }
+            ],
+            "position": {
+                "left": 918.0477072113587,
+                "top": 39.209086755635916
+            },
+            "post_job_actions": {
+                "HideDatasetActionoutput_h5ad": {
+                    "action_arguments": {},
+                    "action_type": "HideDatasetAction",
+                    "output_name": "output_h5ad"
+                }
+            },
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/ebi-gxa/scanpy_read_10x/scanpy_read_10x/1.8.1+1+galaxy0",
+            "tool_shed_repository": {
+                "changeset_revision": "287503c35cb4",
+                "name": "scanpy_read_10x",
+                "owner": "ebi-gxa",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"barcodes\": {\"__class__\": \"ConnectedValue\"}, \"cell_meta\": {\"__class__\": \"RuntimeValue\"}, \"gene_meta\": {\"__class__\": \"RuntimeValue\"}, \"genes\": {\"__class__\": \"ConnectedValue\"}, \"matrix\": {\"__class__\": \"ConnectedValue\"}, \"output_format\": \"anndata_h5ad\", \"var_names\": \"gene_symbols\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "1.8.1+1+galaxy0",
+            "type": "tool",
+            "uuid": "d4997cba-c224-4ea0-8332-15881b13aabc",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "5": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.7.5+galaxy1",
+            "errors": null,
+            "id": 5,
+            "input_connections": {
+                "input": {
+                    "id": 4,
+                    "output_name": "output_h5ad"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "Inspect AnnData",
+            "outputs": [
+                {
+                    "name": "obs",
+                    "type": "tabular"
+                }
+            ],
+            "position": {
+                "left": 1218.0413534651698,
+                "top": 464.8269519807998
+            },
+            "post_job_actions": {
+                "HideDatasetActionobs": {
+                    "action_arguments": {},
+                    "action_type": "HideDatasetAction",
+                    "output_name": "obs"
+                }
+            },
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.7.5+galaxy1",
+            "tool_shed_repository": {
+                "changeset_revision": "ee98d611afc6",
+                "name": "anndata_inspect",
+                "owner": "iuc",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"input\": {\"__class__\": \"ConnectedValue\"}, \"inspect\": {\"info\": \"obs\", \"__current_case__\": 3}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "0.7.5+galaxy1",
+            "type": "tool",
+            "uuid": "10109142-0a3a-48a4-9a0b-da0013d431aa",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "6": {
+            "annotation": "",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_text_file_with_recurring_lines/1.1.0",
+            "errors": null,
+            "id": 6,
+            "input_connections": {
+                "token_set_0|line": {
+                    "id": 2,
+                    "output_name": "output"
+                },
+                "token_set_0|repeat_select|infile": {
+                    "id": 5,
+                    "output_name": "obs"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "Create text file",
+            "outputs": [
+                {
+                    "name": "outfile",
+                    "type": "txt"
+                }
+            ],
+            "position": {
+                "left": 1496.982272983629,
+                "top": 348.08209409071355
+            },
+            "post_job_actions": {
+                "HideDatasetActionoutfile": {
+                    "action_arguments": {},
+                    "action_type": "HideDatasetAction",
+                    "output_name": "outfile"
+                }
+            },
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_text_file_with_recurring_lines/1.1.0",
+            "tool_shed_repository": {
+                "changeset_revision": "d698c222f354",
+                "name": "text_processing",
+                "owner": "bgruening",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"token_set\": [{\"__index__\": 0, \"line\": {\"__class__\": \"ConnectedValue\"}, \"repeat_select\": {\"repeat_select_opts\": \"file\", \"__current_case__\": 1, \"infile\": {\"__class__\": \"ConnectedValue\"}}}], \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "1.1.0",
+            "type": "tool",
+            "uuid": "3c8a63ad-07af-4d5f-8cfc-29478b7e2c92",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "7": {
+            "annotation": "This step replaces the first line with a header. Because the annotated data matrix also had a header, this works. ",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_sed_tool/1.1.1",
+            "errors": null,
+            "id": 7,
+            "input_connections": {
+                "infile": {
+                    "id": 6,
+                    "output_name": "outfile"
+                }
+            },
+            "inputs": [],
+            "label": null,
+            "name": "Text transformation",
+            "outputs": [
+                {
+                    "name": "output",
+                    "type": "input"
+                }
+            ],
+            "position": {
+                "left": 1780.4422899964009,
+                "top": 346.08225101796677
+            },
+            "post_job_actions": {
+                "HideDatasetActionoutput": {
+                    "action_arguments": {},
+                    "action_type": "HideDatasetAction",
+                    "output_name": "output"
+                }
+            },
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_sed_tool/1.1.1",
+            "tool_shed_repository": {
+                "changeset_revision": "d698c222f354",
+                "name": "text_processing",
+                "owner": "bgruening",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"adv_opts\": {\"adv_opts_selector\": \"basic\", \"__current_case__\": 0}, \"code\": \"1s/.*/sample/\", \"infile\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "1.1.1",
+            "type": "tool",
+            "uuid": "eafc40a1-b974-4241-a381-d4ffdb0b6de5",
+            "when": null,
+            "workflow_outputs": []
+        },
+        "8": {
+            "annotation": "AnnData object with supplied sample id.",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/anndata_manipulate/anndata_manipulate/0.7.5+galaxy1",
+            "errors": null,
+            "id": 8,
+            "input_connections": {
+                "input": {
+                    "id": 4,
+                    "output_name": "output_h5ad"
+                },
+                "manipulate|new_annot": {
+                    "id": 7,
+                    "output_name": "output"
+                }
+            },
+            "inputs": [],
+            "label": "Loaded Anndata with Sample name",
+            "name": "Manipulate AnnData",
+            "outputs": [
+                {
+                    "name": "anndata",
+                    "type": "h5ad"
+                }
+            ],
+            "position": {
+                "left": 2174.2195822113586,
+                "top": 227.95908675563592
+            },
+            "post_job_actions": {
+                "RenameDatasetActionanndata": {
+                    "action_arguments": {
+                        "newname": "AnnDataLoaded"
+                    },
+                    "action_type": "RenameDatasetAction",
+                    "output_name": "anndata"
+                }
+            },
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/anndata_manipulate/anndata_manipulate/0.7.5+galaxy1",
+            "tool_shed_repository": {
+                "changeset_revision": "3d748954434b",
+                "name": "anndata_manipulate",
+                "owner": "iuc",
+                "tool_shed": "toolshed.g2.bx.psu.edu"
+            },
+            "tool_state": "{\"input\": {\"__class__\": \"ConnectedValue\"}, \"manipulate\": {\"function\": \"add_annotation\", \"__current_case__\": 6, \"var_obs\": \"obs\", \"new_annot\": {\"__class__\": \"ConnectedValue\"}}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "0.7.5+galaxy1",
+            "type": "tool",
+            "uuid": "acd9c021-e289-4e7a-954c-21f5f1240d47",
+            "when": null,
+            "workflow_outputs": [
+                {
+                    "label": "AnnData Loaded",
+                    "output_name": "anndata",
+                    "uuid": "c13ffa85-6950-4f5d-a6ce-54f9ac24de7f"
+                }
+            ]
+        }
+    },
+    "tags": [
+        "scRNAseq",
+        "GUCFG2Galaxy"
+    ],
+    "uuid": "3dea6d8f-7f5d-4e6c-b478-d05d3167665c",
+    "version": 5
+}
