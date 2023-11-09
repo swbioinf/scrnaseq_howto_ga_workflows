@@ -6,6 +6,12 @@
     "report": {
         "markdown": "\n# Single-cell RNAseq Processing Workflow report\n\nPlease refer to the two sub-workflow reports - QC and basic processing.\n\n## Workflow\n```galaxy\nworkflow_display()\n```\n\n\n"
     },
+    "source_metadata": {
+        "trs_server": "workflowhub",
+        "trs_tool_id": "465",
+        "trs_url": "",
+        "trs_version_id": "2"
+    },
     "steps": {
         "0": {
             "annotation": "Typically the Forward reads are labelled _R1, barcodes. R2 is Reverse, mRNA sequences. List should contain seq for one biological sample only.",
@@ -31,6 +37,7 @@
             "tool_version": null,
             "type": "data_collection_input",
             "uuid": "ef76d6f2-fb39-4a6c-a7bf-e344c7346c62",
+            "when": null,
             "workflow_outputs": []
         },
         "1": {
@@ -57,6 +64,7 @@
             "tool_version": null,
             "type": "data_input",
             "uuid": "4f20308e-02dc-45f0-9f0a-35b5a62dc9e2",
+            "when": null,
             "workflow_outputs": []
         },
         "2": {
@@ -83,6 +91,7 @@
             "tool_version": null,
             "type": "data_input",
             "uuid": "79345038-2d73-4cd8-957b-8bf968dfd18b",
+            "when": null,
             "workflow_outputs": []
         },
         "3": {
@@ -109,6 +118,7 @@
             "tool_version": null,
             "type": "parameter_input",
             "uuid": "27d0ddc6-16ba-40a4-9dab-b66bd48332da",
+            "when": null,
             "workflow_outputs": [
                 {
                     "label": null,
@@ -141,6 +151,7 @@
             "tool_version": null,
             "type": "data_input",
             "uuid": "6d2b114e-3a91-4a0e-816f-ec1e6b05e954",
+            "when": null,
             "workflow_outputs": []
         },
         "5": {
@@ -167,6 +178,7 @@
             "tool_version": null,
             "type": "parameter_input",
             "uuid": "19e5067a-550d-483b-a19a-0d8dfa8cd6c3",
+            "when": null,
             "workflow_outputs": [
                 {
                     "label": null,
@@ -199,6 +211,7 @@
             "tool_version": null,
             "type": "parameter_input",
             "uuid": "5e15c021-a0a9-49f1-8f15-1b85f2c258a2",
+            "when": null,
             "workflow_outputs": [
                 {
                     "label": null,
@@ -231,6 +244,7 @@
             "tool_version": null,
             "type": "parameter_input",
             "uuid": "1a5c1176-b449-49e6-b6e0-fbdb06d73b47",
+            "when": null,
             "workflow_outputs": [
                 {
                     "label": null,
@@ -263,6 +277,7 @@
             "tool_version": null,
             "type": "parameter_input",
             "uuid": "43dd6429-bc23-491d-bf65-6c3ba0ba067c",
+            "when": null,
             "workflow_outputs": [
                 {
                     "label": null,
@@ -295,6 +310,7 @@
             "tool_version": null,
             "type": "parameter_input",
             "uuid": "4484fca3-1a56-46cc-8f1d-fd2df8fb6f51",
+            "when": null,
             "workflow_outputs": [
                 {
                     "label": null,
@@ -376,6 +392,7 @@
                         "tool_version": null,
                         "type": "data_collection_input",
                         "uuid": "50babafc-fc0e-4f5f-96ac-27c02c716baf",
+                        "when": null,
                         "workflow_outputs": []
                     },
                     "1": {
@@ -402,6 +419,7 @@
                         "tool_version": null,
                         "type": "data_input",
                         "uuid": "ecc1fc77-867d-44ca-a0ce-98bbc5e179dc",
+                        "when": null,
                         "workflow_outputs": []
                     },
                     "2": {
@@ -428,6 +446,7 @@
                         "tool_version": null,
                         "type": "data_input",
                         "uuid": "4f65c9ff-c54f-465d-83b5-c9ad02912a05",
+                        "when": null,
                         "workflow_outputs": []
                     },
                     "3": {
@@ -454,6 +473,7 @@
                         "tool_version": null,
                         "type": "data_input",
                         "uuid": "91ea6eaa-ff40-4d96-96c8-fa715ea8bc85",
+                        "when": null,
                         "workflow_outputs": []
                     },
                     "4": {
@@ -480,6 +500,7 @@
                         "tool_version": null,
                         "type": "parameter_input",
                         "uuid": "6d9fdfd4-8366-4b9e-bce0-e35bd09955b4",
+                        "when": null,
                         "workflow_outputs": [
                             {
                                 "label": null,
@@ -512,6 +533,7 @@
                         "tool_version": null,
                         "type": "parameter_input",
                         "uuid": "48690f64-7b4c-4e4f-ad39-558ce2f37215",
+                        "when": null,
                         "workflow_outputs": [
                             {
                                 "label": null,
@@ -567,9 +589,10 @@
                         },
                         "tool_id": "__UNZIP_COLLECTION__",
                         "tool_state": "{\"input\": {\"__class__\": \"RuntimeValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
-                        "tool_version": null,
+                        "tool_version": "1.0.0",
                         "type": "tool",
                         "uuid": "2c752c88-b947-48e1-9880-6f79d2fb604e",
+                        "when": null,
                         "workflow_outputs": []
                     },
                     "7": {
@@ -615,10 +638,11 @@
                             "owner": "nml",
                             "tool_shed": "toolshed.g2.bx.psu.edu"
                         },
-                        "tool_state": "{\"filename\": {\"add_name\": \"false\", \"__current_case__\": 1}, \"input_list\": {\"__class__\": \"RuntimeValue\"}, \"one_header\": \"false\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
-                        "tool_version": null,
+                        "tool_state": "{\"filename\": {\"add_name\": false, \"__current_case__\": 1}, \"input_list\": {\"__class__\": \"RuntimeValue\"}, \"one_header\": false, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+                        "tool_version": "5.1.0",
                         "type": "tool",
                         "uuid": "b78ccf66-c6b1-47ca-9574-2aa1dafd6277",
+                        "when": null,
                         "workflow_outputs": []
                     },
                     "8": {
@@ -664,10 +688,11 @@
                             "owner": "nml",
                             "tool_shed": "toolshed.g2.bx.psu.edu"
                         },
-                        "tool_state": "{\"filename\": {\"add_name\": \"false\", \"__current_case__\": 1}, \"input_list\": {\"__class__\": \"RuntimeValue\"}, \"one_header\": \"false\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
-                        "tool_version": null,
+                        "tool_state": "{\"filename\": {\"add_name\": false, \"__current_case__\": 1}, \"input_list\": {\"__class__\": \"RuntimeValue\"}, \"one_header\": false, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+                        "tool_version": "5.1.0",
                         "type": "tool",
                         "uuid": "ae7983f4-42af-4fac-bc8d-22fe92d28705",
+                        "when": null,
                         "workflow_outputs": []
                     },
                     "9": {
@@ -742,10 +767,11 @@
                             "owner": "iuc",
                             "tool_shed": "toolshed.g2.bx.psu.edu"
                         },
-                        "tool_state": "{\"outWig\": {\"outWigType\": \"None\", \"__current_case__\": 0, \"outWigStrand\": \"false\"}, \"refGenomeSource\": {\"geneSource\": \"history\", \"__current_case__\": 1, \"genomeFastaFiles\": {\"__class__\": \"ConnectedValue\"}, \"genomeSAindexNbases\": \"14\", \"sjdbGTFfile\": {\"__class__\": \"ConnectedValue\"}, \"sjdbOverhang\": \"100\"}, \"sc\": {\"solo_type\": \"CB_UMI_Simple\", \"__current_case__\": 0, \"input_types\": {\"use\": \"repeat\", \"__current_case__\": 0, \"input1\": {\"__class__\": \"ConnectedValue\"}, \"input2\": {\"__class__\": \"ConnectedValue\"}}, \"soloCBwhitelist\": {\"__class__\": \"ConnectedValue\"}, \"params\": {\"chemistry\": \"Cv3\", \"__current_case__\": 1}, \"soloBarcodeReadLength\": \"true\", \"umidedup\": {\"soloUMIdedup\": \"1MM_All\", \"__current_case__\": 0}, \"soloCBmatchWLtype\": \"1MM_multi\"}, \"solo\": {\"soloStrand\": \"Forward\", \"soloFeatures\": \"Gene\", \"filter\": {\"filter_type\": \"cellranger2\", \"__current_case__\": 0, \"n_expected\": {\"__class__\": \"ConnectedValue\"}, \"max_perc\": \"0.99\", \"max_min_ratio\": \"10.0\", \"output_raw\": \"false\"}, \"soloOutFormatFeaturesGeneField3\": \"Gene Expression\", \"outSAMattributes\": [\"NH\", \"HI\", \"AS\", \"nM\"], \"quantModeGene\": \"false\", \"outSAMunmapped\": \"false\", \"outSAMmapqUnique\": \"60\", \"junction_limits\": {\"limitOutSJoneRead\": \"1000\", \"limitOutSJcollapsed\": \"1000000\", \"limitSjdbInsertNsj\": \"1000000\"}}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
-                        "tool_version": null,
+                        "tool_state": "{\"outWig\": {\"outWigType\": \"None\", \"__current_case__\": 0, \"outWigStrand\": \"false\"}, \"refGenomeSource\": {\"geneSource\": \"history\", \"__current_case__\": 1, \"genomeFastaFiles\": {\"__class__\": \"ConnectedValue\"}, \"genomeSAindexNbases\": \"14\", \"sjdbGTFfile\": {\"__class__\": \"ConnectedValue\"}, \"sjdbOverhang\": \"100\"}, \"sc\": {\"solo_type\": \"CB_UMI_Simple\", \"__current_case__\": 0, \"input_types\": {\"use\": \"repeat\", \"__current_case__\": 0, \"input1\": {\"__class__\": \"ConnectedValue\"}, \"input2\": {\"__class__\": \"ConnectedValue\"}}, \"soloCBwhitelist\": {\"__class__\": \"ConnectedValue\"}, \"params\": {\"chemistry\": \"Cv3\", \"__current_case__\": 1}, \"soloBarcodeReadLength\": true, \"umidedup\": {\"soloUMIdedup\": \"1MM_All\", \"__current_case__\": 0}, \"soloCBmatchWLtype\": \"1MM_multi\"}, \"solo\": {\"soloStrand\": \"Forward\", \"soloFeatures\": \"Gene\", \"filter\": {\"filter_type\": \"cellranger2\", \"__current_case__\": 0, \"n_expected\": {\"__class__\": \"ConnectedValue\"}, \"max_perc\": \"0.99\", \"max_min_ratio\": \"10.0\", \"output_raw\": false}, \"soloOutFormatFeaturesGeneField3\": \"Gene Expression\", \"outSAMattributes\": [\"NH\", \"HI\", \"AS\", \"nM\"], \"quantModeGene\": false, \"outSAMunmapped\": false, \"outSAMmapqUnique\": \"60\", \"junction_limits\": {\"limitOutSJoneRead\": \"1000\", \"limitOutSJcollapsed\": \"1000000\", \"limitSjdbInsertNsj\": \"1000000\"}}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+                        "tool_version": "2.7.10b+galaxy2",
                         "type": "tool",
                         "uuid": "591cceee-5faf-4ac4-b727-f053c8a86777",
+                        "when": null,
                         "workflow_outputs": [
                             {
                                 "label": "RNA STARSolo on input dataset(s): Genes filtered",
@@ -835,9 +861,10 @@
                             "tool_shed": "toolshed.g2.bx.psu.edu"
                         },
                         "tool_state": "{\"barcodes\": {\"__class__\": \"ConnectedValue\"}, \"cell_meta\": {\"__class__\": \"RuntimeValue\"}, \"gene_meta\": {\"__class__\": \"RuntimeValue\"}, \"genes\": {\"__class__\": \"ConnectedValue\"}, \"matrix\": {\"__class__\": \"ConnectedValue\"}, \"output_format\": \"anndata_h5ad\", \"var_names\": \"gene_symbols\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
-                        "tool_version": null,
+                        "tool_version": "1.8.1+1+galaxy0",
                         "type": "tool",
                         "uuid": "163cc7b7-e551-4b1f-91b7-c260e74c8907",
+                        "when": null,
                         "workflow_outputs": []
                     },
                     "11": {
@@ -879,9 +906,10 @@
                             "tool_shed": "toolshed.g2.bx.psu.edu"
                         },
                         "tool_state": "{\"input\": {\"__class__\": \"ConnectedValue\"}, \"inspect\": {\"info\": \"obs\", \"__current_case__\": 3}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
-                        "tool_version": null,
+                        "tool_version": "0.7.5+galaxy1",
                         "type": "tool",
                         "uuid": "7855cac5-1aa7-416e-ab77-5cf307278f97",
+                        "when": null,
                         "workflow_outputs": []
                     },
                     "12": {
@@ -921,15 +949,16 @@
                         },
                         "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_text_file_with_recurring_lines/1.1.0",
                         "tool_shed_repository": {
-                            "changeset_revision": "74a8bef53a00",
+                            "changeset_revision": "d698c222f354",
                             "name": "text_processing",
                             "owner": "bgruening",
                             "tool_shed": "toolshed.g2.bx.psu.edu"
                         },
                         "tool_state": "{\"token_set\": [{\"__index__\": 0, \"line\": {\"__class__\": \"ConnectedValue\"}, \"repeat_select\": {\"repeat_select_opts\": \"file\", \"__current_case__\": 1, \"infile\": {\"__class__\": \"ConnectedValue\"}}}], \"__page__\": null, \"__rerun_remap_job_id__\": null}",
-                        "tool_version": null,
+                        "tool_version": "1.1.0",
                         "type": "tool",
                         "uuid": "38398b31-9acb-44aa-af3d-22781d652c43",
+                        "when": null,
                         "workflow_outputs": []
                     },
                     "13": {
@@ -965,15 +994,16 @@
                         },
                         "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_sed_tool/1.1.1",
                         "tool_shed_repository": {
-                            "changeset_revision": "74a8bef53a00",
+                            "changeset_revision": "d698c222f354",
                             "name": "text_processing",
                             "owner": "bgruening",
                             "tool_shed": "toolshed.g2.bx.psu.edu"
                         },
                         "tool_state": "{\"adv_opts\": {\"adv_opts_selector\": \"basic\", \"__current_case__\": 0}, \"code\": \"1s/.*/sample/\", \"infile\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
-                        "tool_version": null,
+                        "tool_version": "1.1.1",
                         "type": "tool",
                         "uuid": "276d7e1e-3dca-4a1a-8910-96ef77d75c42",
+                        "when": null,
                         "workflow_outputs": []
                     },
                     "14": {
@@ -1021,9 +1051,10 @@
                             "tool_shed": "toolshed.g2.bx.psu.edu"
                         },
                         "tool_state": "{\"input\": {\"__class__\": \"ConnectedValue\"}, \"manipulate\": {\"function\": \"add_annotation\", \"__current_case__\": 6, \"var_obs\": \"obs\", \"new_annot\": {\"__class__\": \"ConnectedValue\"}}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
-                        "tool_version": null,
+                        "tool_version": "0.7.5+galaxy1",
                         "type": "tool",
                         "uuid": "e5baf2f0-6962-461f-a63b-9773241c38da",
+                        "when": null,
                         "workflow_outputs": [
                             {
                                 "label": "AnnData Loaded",
@@ -1039,7 +1070,13 @@
             "tool_id": null,
             "type": "subworkflow",
             "uuid": "8d0e1779-f9dd-4991-a519-dcf6c009a4f8",
+            "when": null,
             "workflow_outputs": [
+                {
+                    "label": "Manipulate AnnData (add_annotation) on input dataset(s)",
+                    "output_name": "AnnData Loaded",
+                    "uuid": "26981e9b-9468-40f7-8ad9-c9b2cf2f7de6"
+                },
                 {
                     "label": "RNA STARSolo on input dataset(s): Matrix Gene Counts filtered",
                     "output_name": "RNA STARSolo on input dataset(s): Matrix Gene Counts filtered",
@@ -1079,11 +1116,6 @@
                     "label": "RNA STARSolo on input dataset(s): Barcode/Feature Statistic Summaries",
                     "output_name": "RNA STARSolo on input dataset(s): Barcode/Feature Statistic Summaries",
                     "uuid": "79dcf7fa-eb17-4a1c-b3ba-b79f31622acb"
-                },
-                {
-                    "label": "Manipulate AnnData (add_annotation) on input dataset(s)",
-                    "output_name": "AnnData Loaded",
-                    "uuid": "26981e9b-9468-40f7-8ad9-c9b2cf2f7de6"
                 }
             ]
         },
@@ -1158,6 +1190,7 @@
                         "tool_version": null,
                         "type": "data_input",
                         "uuid": "cd437a14-6881-425b-9379-a4532abe9d8b",
+                        "when": null,
                         "workflow_outputs": []
                     },
                     "1": {
@@ -1184,6 +1217,7 @@
                         "tool_version": null,
                         "type": "parameter_input",
                         "uuid": "1f49413f-16a6-45b9-a07d-58697202d81d",
+                        "when": null,
                         "workflow_outputs": [
                             {
                                 "label": null,
@@ -1216,6 +1250,7 @@
                         "tool_version": null,
                         "type": "parameter_input",
                         "uuid": "e498b4af-317c-4a7d-af9e-221c104b1659",
+                        "when": null,
                         "workflow_outputs": [
                             {
                                 "label": null,
@@ -1248,6 +1283,7 @@
                         "tool_version": null,
                         "type": "parameter_input",
                         "uuid": "d56433d7-c7be-44d1-ac6c-73ca2bd3af40",
+                        "when": null,
                         "workflow_outputs": [
                             {
                                 "label": null,
@@ -1280,6 +1316,7 @@
                         "tool_version": null,
                         "type": "parameter_input",
                         "uuid": "72bce655-d04f-4d33-89a8-a2e31a3c1f0f",
+                        "when": null,
                         "workflow_outputs": [
                             {
                                 "label": null,
@@ -1335,10 +1372,11 @@
                             "owner": "ebi-gxa",
                             "tool_shed": "toolshed.g2.bx.psu.edu"
                         },
-                        "tool_state": "{\"copy_adata_to_raw\": \"false\", \"copy_e\": {\"default\": \"false\", \"__current_case__\": 1}, \"copy_l\": {\"default\": \"false\", \"__current_case__\": 1}, \"copy_o\": {\"default\": \"false\", \"__current_case__\": 1}, \"copy_r\": {\"default\": \"false\", \"__current_case__\": 1}, \"copy_u\": {\"default\": \"false\", \"__current_case__\": 1}, \"copy_x\": {\"default\": \"false\", \"__current_case__\": 1}, \"gene_flags\": [{\"__index__\": 0, \"startswith\": {\"__class__\": \"ConnectedValue\"}, \"flag\": \"mito\"}], \"gene_symbols_field\": \"index\", \"input_obj_file\": {\"__class__\": \"RuntimeValue\"}, \"modifications\": [], \"output_format\": \"anndata_h5ad\", \"sanitize_varm\": \"false\", \"top_genes\": \"50\", \"var_modifications\": [], \"__page__\": null, \"__rerun_remap_job_id__\": null}",
-                        "tool_version": null,
+                        "tool_state": "{\"copy_adata_to_raw\": false, \"copy_e\": {\"default\": false, \"__current_case__\": 1}, \"copy_l\": {\"default\": false, \"__current_case__\": 1}, \"copy_o\": {\"default\": false, \"__current_case__\": 1}, \"copy_r\": {\"default\": false, \"__current_case__\": 1}, \"copy_u\": {\"default\": false, \"__current_case__\": 1}, \"copy_x\": {\"default\": false, \"__current_case__\": 1}, \"gene_flags\": [{\"__index__\": 0, \"startswith\": {\"__class__\": \"ConnectedValue\"}, \"flag\": \"mito\"}], \"gene_symbols_field\": \"index\", \"input_obj_file\": {\"__class__\": \"RuntimeValue\"}, \"modifications\": [], \"output_format\": \"anndata_h5ad\", \"sanitize_varm\": false, \"top_genes\": \"50\", \"var_modifications\": [], \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+                        "tool_version": "1.8.1+1+galaxy1",
                         "type": "tool",
                         "uuid": "afcc550e-b023-4792-913c-6bc570f7f8f2",
+                        "when": null,
                         "workflow_outputs": []
                     },
                     "6": {
@@ -1378,10 +1416,11 @@
                             "owner": "iuc",
                             "tool_shed": "toolshed.g2.bx.psu.edu"
                         },
-                        "tool_state": "{\"adata\": {\"__class__\": \"RuntimeValue\"}, \"advanced_common\": {\"show_log\": \"false\"}, \"format\": \"png\", \"method\": {\"method\": \"pl.violin\", \"__current_case__\": 3, \"key_variables\": {\"type\": \"custom\", \"__current_case__\": 2, \"keys\": \"n_counts, n_genes\"}, \"groupby\": \"sample\", \"log\": \"true\", \"use_raw\": \"false\", \"violin_plot\": {\"stripplot\": {\"stripplot\": \"True\", \"__current_case__\": 0, \"jitter\": {\"jitter\": \"True\", \"__current_case__\": 0, \"size\": \"1.0\"}}, \"multi_panel\": {\"multi_panel\": \"True\", \"__current_case__\": 0, \"width\": null, \"height\": null}, \"scale\": \"width\"}, \"xlabel\": \"\", \"rotation\": null, \"seaborn_violinplot\": {\"bw\": \"scott\", \"orient\": null, \"linewidth\": \"0.0\", \"color\": \"CornflowerBlue\", \"saturation\": \"0.75\"}}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
-                        "tool_version": null,
+                        "tool_state": "{\"adata\": {\"__class__\": \"RuntimeValue\"}, \"advanced_common\": {\"show_log\": false}, \"format\": \"png\", \"method\": {\"method\": \"pl.violin\", \"__current_case__\": 3, \"key_variables\": {\"type\": \"custom\", \"__current_case__\": 2, \"keys\": \"n_counts, n_genes\"}, \"groupby\": \"sample\", \"log\": true, \"use_raw\": false, \"violin_plot\": {\"stripplot\": {\"stripplot\": \"True\", \"__current_case__\": 0, \"jitter\": {\"jitter\": \"True\", \"__current_case__\": 0, \"size\": \"1.0\"}}, \"multi_panel\": {\"multi_panel\": \"True\", \"__current_case__\": 0, \"width\": null, \"height\": null}, \"scale\": \"width\"}, \"xlabel\": \"\", \"rotation\": null, \"seaborn_violinplot\": {\"bw\": \"scott\", \"orient\": null, \"linewidth\": \"0.0\", \"color\": \"CornflowerBlue\", \"saturation\": \"0.75\"}}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+                        "tool_version": "1.7.1+galaxy1",
                         "type": "tool",
                         "uuid": "546d2fef-9aaf-4d47-8d0c-dbb38e6d03cb",
+                        "when": null,
                         "workflow_outputs": [
                             {
                                 "label": "genecount_qc_plot",
@@ -1427,10 +1466,11 @@
                             "owner": "iuc",
                             "tool_shed": "toolshed.g2.bx.psu.edu"
                         },
-                        "tool_state": "{\"adata\": {\"__class__\": \"RuntimeValue\"}, \"advanced_common\": {\"show_log\": \"false\"}, \"format\": \"png\", \"method\": {\"method\": \"pl.violin\", \"__current_case__\": 3, \"key_variables\": {\"type\": \"custom\", \"__current_case__\": 2, \"keys\": \"pct_counts_mito\"}, \"groupby\": \"sample\", \"log\": \"false\", \"use_raw\": \"false\", \"violin_plot\": {\"stripplot\": {\"stripplot\": \"True\", \"__current_case__\": 0, \"jitter\": {\"jitter\": \"True\", \"__current_case__\": 0, \"size\": \"1.0\"}}, \"multi_panel\": {\"multi_panel\": \"True\", \"__current_case__\": 0, \"width\": null, \"height\": null}, \"scale\": \"width\"}, \"xlabel\": \"\", \"rotation\": null, \"seaborn_violinplot\": {\"bw\": \"scott\", \"orient\": null, \"linewidth\": \"0.0\", \"color\": \"CornflowerBlue\", \"saturation\": \"0.75\"}}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
-                        "tool_version": null,
+                        "tool_state": "{\"adata\": {\"__class__\": \"RuntimeValue\"}, \"advanced_common\": {\"show_log\": false}, \"format\": \"png\", \"method\": {\"method\": \"pl.violin\", \"__current_case__\": 3, \"key_variables\": {\"type\": \"custom\", \"__current_case__\": 2, \"keys\": \"pct_counts_mito\"}, \"groupby\": \"sample\", \"log\": false, \"use_raw\": false, \"violin_plot\": {\"stripplot\": {\"stripplot\": \"True\", \"__current_case__\": 0, \"jitter\": {\"jitter\": \"True\", \"__current_case__\": 0, \"size\": \"1.0\"}}, \"multi_panel\": {\"multi_panel\": \"True\", \"__current_case__\": 0, \"width\": null, \"height\": null}, \"scale\": \"width\"}, \"xlabel\": \"\", \"rotation\": null, \"seaborn_violinplot\": {\"bw\": \"scott\", \"orient\": null, \"linewidth\": \"0.0\", \"color\": \"CornflowerBlue\", \"saturation\": \"0.75\"}}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+                        "tool_version": "1.7.1+galaxy1",
                         "type": "tool",
                         "uuid": "984d20b2-24c0-4668-8e48-d9e20f2a72e0",
+                        "when": null,
                         "workflow_outputs": [
                             {
                                 "label": "mito_qc_plot",
@@ -1489,10 +1529,11 @@
                             "owner": "ebi-gxa",
                             "tool_shed": "toolshed.g2.bx.psu.edu"
                         },
-                        "tool_state": "{\"categories\": [], \"export_mtx\": \"false\", \"force_recalc\": \"false\", \"gene_name\": \"\", \"input_format\": \"anndata\", \"input_obj_file\": {\"__class__\": \"ConnectedValue\"}, \"output_format\": \"anndata_h5ad\", \"parameters\": [{\"__index__\": 0, \"name\": \"n_counts\", \"min\": {\"__class__\": \"ConnectedValue\"}, \"max\": \"1000000000.0\"}, {\"__index__\": 1, \"name\": \"n_genes\", \"min\": {\"__class__\": \"ConnectedValue\"}, \"max\": \"1000000000.0\"}, {\"__index__\": 2, \"name\": \"pct_counts_mito\", \"min\": \"0.0\", \"max\": {\"__class__\": \"ConnectedValue\"}}], \"save_layer\": \"\", \"save_raw\": \"false\", \"subsets\": [], \"__page__\": null, \"__rerun_remap_job_id__\": null}",
-                        "tool_version": null,
+                        "tool_state": "{\"categories\": [], \"export_mtx\": false, \"force_recalc\": false, \"gene_name\": \"\", \"input_format\": \"anndata\", \"input_obj_file\": {\"__class__\": \"ConnectedValue\"}, \"output_format\": \"anndata_h5ad\", \"parameters\": [{\"__index__\": 0, \"name\": \"n_counts\", \"min\": {\"__class__\": \"ConnectedValue\"}, \"max\": \"1000000000.0\"}, {\"__index__\": 1, \"name\": \"n_genes\", \"min\": {\"__class__\": \"ConnectedValue\"}, \"max\": \"1000000000.0\"}, {\"__index__\": 2, \"name\": \"pct_counts_mito\", \"min\": \"0.0\", \"max\": {\"__class__\": \"ConnectedValue\"}}], \"save_layer\": \"\", \"save_raw\": false, \"subsets\": [], \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+                        "tool_version": "1.8.1+1+galaxy0",
                         "type": "tool",
                         "uuid": "9ef847c6-3d4b-4d64-a95c-6b3ab9ea0ba4",
+                        "when": null,
                         "workflow_outputs": []
                     },
                     "9": {
@@ -1527,10 +1568,11 @@
                             "owner": "ebi-gxa",
                             "tool_shed": "toolshed.g2.bx.psu.edu"
                         },
-                        "tool_state": "{\"batch_key\": \"sample\", \"filter\": \"false\", \"input_format\": \"anndata\", \"input_obj_file\": {\"__class__\": \"ConnectedValue\"}, \"output_format\": \"anndata_h5ad\", \"settings\": {\"default\": \"true\", \"__current_case__\": 0}, \"threshold\": null, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
-                        "tool_version": null,
+                        "tool_state": "{\"batch_key\": \"sample\", \"filter\": false, \"input_format\": \"anndata\", \"input_obj_file\": {\"__class__\": \"ConnectedValue\"}, \"output_format\": \"anndata_h5ad\", \"settings\": {\"default\": true, \"__current_case__\": 0}, \"threshold\": null, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+                        "tool_version": "1.8.1+1+galaxy0",
                         "type": "tool",
                         "uuid": "9e53349b-816d-4c47-8a46-df06ebcfd722",
+                        "when": null,
                         "workflow_outputs": [
                             {
                                 "label": "qc_anndata_object",
@@ -1571,10 +1613,11 @@
                             "owner": "iuc",
                             "tool_shed": "toolshed.g2.bx.psu.edu"
                         },
-                        "tool_state": "{\"adata\": {\"__class__\": \"ConnectedValue\"}, \"advanced_common\": {\"show_log\": \"false\"}, \"format\": \"png\", \"method\": {\"method\": \"pl.highest_expr_genes\", \"__current_case__\": 8, \"n_top\": \"30\", \"gene_symbols\": \"\", \"setseaborn_boxplot\": {\"color\": \"\", \"palette\": null, \"saturation\": \"1.0\"}}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
-                        "tool_version": null,
+                        "tool_state": "{\"adata\": {\"__class__\": \"ConnectedValue\"}, \"advanced_common\": {\"show_log\": false}, \"format\": \"png\", \"method\": {\"method\": \"pl.highest_expr_genes\", \"__current_case__\": 8, \"n_top\": \"30\", \"gene_symbols\": \"\", \"setseaborn_boxplot\": {\"color\": \"\", \"palette\": null, \"saturation\": \"1.0\"}}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+                        "tool_version": "1.7.1+galaxy1",
                         "type": "tool",
                         "uuid": "cc8b62c0-07bc-4ac3-8ca4-84ebf43268be",
+                        "when": null,
                         "workflow_outputs": [
                             {
                                 "label": "top_genes_plot",
@@ -1590,21 +1633,12 @@
             "tool_id": null,
             "type": "subworkflow",
             "uuid": "695ae894-6840-427e-b5d3-4f927df8ca9a",
+            "when": null,
             "workflow_outputs": [
                 {
                     "label": "Plot (pl.highest_expr_genes) on input dataset(s)",
                     "output_name": "top_genes_plot",
                     "uuid": "441fb5c5-777f-4fea-ace4-f7cb38f7fb38"
-                },
-                {
-                    "label": null,
-                    "output_name": "mito_qc_plot",
-                    "uuid": "03c47a23-2e15-4597-82f2-1f91440fdbbe"
-                },
-                {
-                    "label": "Plot (pl.violin) on input dataset(s)",
-                    "output_name": "genecount_qc_plot",
-                    "uuid": "ddeade1a-371f-4b19-aae8-430bf9ffe687"
                 },
                 {
                     "label": "Scanpy FilterCells on input dataset(s): Filtered cells AnnData",
@@ -1630,6 +1664,16 @@
                     "label": null,
                     "output_name": "4:output",
                     "uuid": "495c744c-11b7-4ad5-8428-55ab6bcf8868"
+                },
+                {
+                    "label": null,
+                    "output_name": "mito_qc_plot",
+                    "uuid": "03c47a23-2e15-4597-82f2-1f91440fdbbe"
+                },
+                {
+                    "label": "Plot (pl.violin) on input dataset(s)",
+                    "output_name": "genecount_qc_plot",
+                    "uuid": "ddeade1a-371f-4b19-aae8-430bf9ffe687"
                 }
             ]
         },
@@ -1684,6 +1728,7 @@
                         "tool_version": null,
                         "type": "data_input",
                         "uuid": "0f682bef-cd44-4429-b5ad-793b98b3cb4b",
+                        "when": null,
                         "workflow_outputs": []
                     },
                     "1": {
@@ -1718,10 +1763,11 @@
                             "owner": "ebi-gxa",
                             "tool_shed": "toolshed.g2.bx.psu.edu"
                         },
-                        "tool_state": "{\"export_mtx\": \"false\", \"input_format\": \"anndata\", \"input_obj_file\": {\"__class__\": \"ConnectedValue\"}, \"output_format\": \"anndata_h5ad\", \"save_layer\": \"\", \"save_raw\": \"true\", \"settings\": {\"default\": \"true\", \"__current_case__\": 0}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
-                        "tool_version": null,
+                        "tool_state": "{\"export_mtx\": false, \"input_format\": \"anndata\", \"input_obj_file\": {\"__class__\": \"ConnectedValue\"}, \"output_format\": \"anndata_h5ad\", \"save_layer\": \"\", \"save_raw\": true, \"settings\": {\"default\": true, \"__current_case__\": 0}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+                        "tool_version": "1.8.1+1+galaxy0",
                         "type": "tool",
                         "uuid": "15e10965-1e30-4727-a372-434e23db3e5a",
+                        "when": null,
                         "workflow_outputs": [
                             {
                                 "label": null,
@@ -1762,10 +1808,11 @@
                             "owner": "ebi-gxa",
                             "tool_shed": "toolshed.g2.bx.psu.edu"
                         },
-                        "tool_state": "{\"batch_key\": \"\", \"filter\": \"false\", \"flavor\": \"seurat\", \"input_format\": \"anndata\", \"input_obj_file\": {\"__class__\": \"ConnectedValue\"}, \"max_disp\": \"50.0\", \"max_mean\": \"3.0\", \"min_disp\": \"0.5\", \"min_mean\": \"0.0125\", \"n_bin\": \"20\", \"n_top_gene\": \"2000\", \"output_format\": \"anndata_h5ad\", \"span\": \"0.3\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
-                        "tool_version": null,
+                        "tool_state": "{\"batch_key\": \"\", \"filter\": false, \"flavor\": \"seurat\", \"input_format\": \"anndata\", \"input_obj_file\": {\"__class__\": \"ConnectedValue\"}, \"max_disp\": \"50.0\", \"max_mean\": \"3.0\", \"min_disp\": \"0.5\", \"min_mean\": \"0.0125\", \"n_bin\": \"20\", \"n_top_gene\": \"2000\", \"output_format\": \"anndata_h5ad\", \"span\": \"0.3\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+                        "tool_version": "1.8.1+1+galaxy1",
                         "type": "tool",
                         "uuid": "8188ae82-3d17-4b4b-8e75-9cfc11555808",
+                        "when": null,
                         "workflow_outputs": [
                             {
                                 "label": null,
@@ -1806,10 +1853,11 @@
                             "owner": "ebi-gxa",
                             "tool_shed": "toolshed.g2.bx.psu.edu"
                         },
-                        "tool_state": "{\"input_format\": \"anndata\", \"input_obj_file\": {\"__class__\": \"ConnectedValue\"}, \"output_format\": \"anndata_h5ad\", \"save_layer\": \"\", \"save_raw\": \"false\", \"scale_max\": null, \"zero_center\": \"true\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
-                        "tool_version": null,
+                        "tool_state": "{\"input_format\": \"anndata\", \"input_obj_file\": {\"__class__\": \"ConnectedValue\"}, \"output_format\": \"anndata_h5ad\", \"save_layer\": \"\", \"save_raw\": false, \"scale_max\": null, \"zero_center\": true, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+                        "tool_version": "1.8.1+1+galaxy0",
                         "type": "tool",
                         "uuid": "d2f8d49f-c4a3-472e-8246-70d761805357",
+                        "when": null,
                         "workflow_outputs": [
                             {
                                 "label": null,
@@ -1850,10 +1898,11 @@
                             "owner": "ebi-gxa",
                             "tool_shed": "toolshed.g2.bx.psu.edu"
                         },
-                        "tool_state": "{\"extra_outputs\": null, \"input_format\": \"anndata\", \"input_obj_file\": {\"__class__\": \"ConnectedValue\"}, \"n_pcs\": \"50\", \"output_format\": \"anndata_h5ad\", \"run_mode\": {\"chunked\": \"false\", \"__current_case__\": 1, \"zero_center\": \"true\", \"svd_solver\": null, \"random_seed\": \"0\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
-                        "tool_version": null,
+                        "tool_state": "{\"extra_outputs\": null, \"input_format\": \"anndata\", \"input_obj_file\": {\"__class__\": \"ConnectedValue\"}, \"n_pcs\": \"50\", \"output_format\": \"anndata_h5ad\", \"run_mode\": {\"chunked\": false, \"__current_case__\": 1, \"zero_center\": true, \"svd_solver\": null, \"random_seed\": \"0\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+                        "tool_version": "1.8.1+1+galaxy0",
                         "type": "tool",
                         "uuid": "03ecfaa7-c2af-499f-86a4-24fdfe5d12da",
+                        "when": null,
                         "workflow_outputs": [
                             {
                                 "label": null,
@@ -1894,10 +1943,11 @@
                             "owner": "ebi-gxa",
                             "tool_shed": "toolshed.g2.bx.psu.edu"
                         },
-                        "tool_state": "{\"input_format\": \"anndata\", \"input_obj_file\": {\"__class__\": \"ConnectedValue\"}, \"output_format\": \"anndata_h5ad\", \"settings\": {\"default\": \"true\", \"__current_case__\": 0}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
-                        "tool_version": null,
+                        "tool_state": "{\"input_format\": \"anndata\", \"input_obj_file\": {\"__class__\": \"ConnectedValue\"}, \"output_format\": \"anndata_h5ad\", \"settings\": {\"default\": true, \"__current_case__\": 0}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+                        "tool_version": "1.8.1+1+galaxy1",
                         "type": "tool",
                         "uuid": "b44eaf8e-17d2-4050-9653-77cd0cf88fc6",
+                        "when": null,
                         "workflow_outputs": [
                             {
                                 "label": null,
@@ -1948,10 +1998,11 @@
                             "owner": "ebi-gxa",
                             "tool_shed": "toolshed.g2.bx.psu.edu"
                         },
-                        "tool_state": "{\"embeddings\": \"true\", \"input_format\": \"anndata\", \"input_obj_file\": {\"__class__\": \"ConnectedValue\"}, \"key_added\": \"\", \"output_format\": \"anndata_h5ad\", \"settings\": {\"default\": \"true\", \"__current_case__\": 0}, \"use_graph\": \"neighbors\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
-                        "tool_version": null,
+                        "tool_state": "{\"embeddings\": true, \"input_format\": \"anndata\", \"input_obj_file\": {\"__class__\": \"ConnectedValue\"}, \"key_added\": \"\", \"output_format\": \"anndata_h5ad\", \"settings\": {\"default\": true, \"__current_case__\": 0}, \"use_graph\": \"neighbors\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+                        "tool_version": "1.8.1+1+galaxy0",
                         "type": "tool",
                         "uuid": "4ddc3f60-e9db-4977-a1f7-a1584cff75a3",
+                        "when": null,
                         "workflow_outputs": [
                             {
                                 "label": "Scanpy RunUMAP on input dataset(s): UMAP object AnnData",
@@ -2002,10 +2053,11 @@
                             "owner": "ebi-gxa",
                             "tool_shed": "toolshed.g2.bx.psu.edu"
                         },
-                        "tool_state": "{\"input_format\": \"anndata\", \"input_obj_file\": {\"__class__\": \"ConnectedValue\"}, \"method\": \"louvain\", \"output_cluster\": \"true\", \"output_format\": \"anndata_h5ad\", \"settings\": {\"default\": \"true\", \"__current_case__\": 0}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
-                        "tool_version": null,
+                        "tool_state": "{\"input_format\": \"anndata\", \"input_obj_file\": {\"__class__\": \"ConnectedValue\"}, \"method\": \"louvain\", \"output_cluster\": true, \"output_format\": \"anndata_h5ad\", \"settings\": {\"default\": true, \"__current_case__\": 0}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+                        "tool_version": "1.8.1+1+galaxy0",
                         "type": "tool",
                         "uuid": "1cf1eabf-d30a-434b-b712-4a7120c89295",
+                        "when": null,
                         "workflow_outputs": [
                             {
                                 "label": "Scanpy FindCluster on input dataset(s): Clusters AnnData",
@@ -2055,10 +2107,11 @@
                             "owner": "ebi-gxa",
                             "tool_shed": "toolshed.g2.bx.psu.edu"
                         },
-                        "tool_state": "{\"groupby\": \"louvain\", \"groupby_file\": {\"__class__\": \"RuntimeValue\"}, \"input_format\": \"anndata\", \"input_obj_file\": {\"__class__\": \"ConnectedValue\"}, \"n_genes\": \"500\", \"output_format\": \"anndata_h5ad\", \"output_markers\": \"true\", \"settings\": {\"default\": \"false\", \"__current_case__\": 1, \"key_added\": \"\", \"method\": \"t-test_overestim_var\", \"use_raw\": \"true\", \"rankby_abs\": \"false\", \"groups\": \"\", \"reference\": \"rest\", \"min_in_group_fraction\": \"0.25\", \"max_out_group_fraction\": \"0.5\", \"min_fold_change\": \"2.0\", \"pts\": \"false\", \"tie_correct\": \"false\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
-                        "tool_version": null,
+                        "tool_state": "{\"groupby\": \"louvain\", \"groupby_file\": {\"__class__\": \"RuntimeValue\"}, \"input_format\": \"anndata\", \"input_obj_file\": {\"__class__\": \"ConnectedValue\"}, \"n_genes\": \"500\", \"output_format\": \"anndata_h5ad\", \"output_markers\": true, \"settings\": {\"default\": false, \"__current_case__\": 1, \"key_added\": \"\", \"method\": \"t-test_overestim_var\", \"use_raw\": true, \"rankby_abs\": false, \"groups\": \"\", \"reference\": \"rest\", \"min_in_group_fraction\": \"0.25\", \"max_out_group_fraction\": \"0.5\", \"min_fold_change\": \"2.0\", \"pts\": false, \"tie_correct\": false}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+                        "tool_version": "1.8.1+1+galaxy0",
                         "type": "tool",
                         "uuid": "26b741d9-f0cd-4c40-923d-5f295ba6b995",
+                        "when": null,
                         "workflow_outputs": [
                             {
                                 "label": "processed_anndata_object",
@@ -2109,10 +2162,11 @@
                             "owner": "ebi-gxa",
                             "tool_shed": "toolshed.g2.bx.psu.edu"
                         },
-                        "tool_state": "{\"basis\": \"umap\", \"color_by\": \"sample\", \"components\": \"\", \"edges\": \"false\", \"edges_color\": \"\", \"edges_width\": \"0.1\", \"fig_dpi\": \"80\", \"fig_fontsize\": \"10\", \"fig_frame\": \"false\", \"fig_size\": \"4,4\", \"fig_title\": \"\", \"gene_symbols_field\": \"\", \"groups\": \"\", \"input_format\": \"anndata\", \"input_obj_file\": {\"__class__\": \"RuntimeValue\"}, \"layer\": \"\", \"legend_fontsize\": \"15\", \"legend_loc\": \"right margin\", \"neighbors_key\": \"\", \"point_size\": null, \"projection\": \"2d\", \"sort_order\": \"false\", \"use_raw\": \"true\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
-                        "tool_version": null,
+                        "tool_state": "{\"basis\": \"umap\", \"color_by\": \"sample\", \"components\": \"\", \"edges\": false, \"edges_color\": \"\", \"edges_width\": \"0.1\", \"fig_dpi\": \"80\", \"fig_fontsize\": \"10\", \"fig_frame\": false, \"fig_size\": \"4,4\", \"fig_title\": \"\", \"gene_symbols_field\": \"\", \"groups\": \"\", \"input_format\": \"anndata\", \"input_obj_file\": {\"__class__\": \"RuntimeValue\"}, \"layer\": \"\", \"legend_fontsize\": \"15\", \"legend_loc\": \"right margin\", \"neighbors_key\": \"\", \"point_size\": null, \"projection\": \"2d\", \"sort_order\": false, \"use_raw\": true, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+                        "tool_version": "1.8.1+1+galaxy0",
                         "type": "tool",
                         "uuid": "9d1bc867-f433-4c3c-86c0-aa1e4d0590b1",
+                        "when": null,
                         "workflow_outputs": [
                             {
                                 "label": "umap_sample_plot",
@@ -2158,10 +2212,11 @@
                             "owner": "ebi-gxa",
                             "tool_shed": "toolshed.g2.bx.psu.edu"
                         },
-                        "tool_state": "{\"basis\": \"umap\", \"color_by\": \"louvain\", \"components\": \"\", \"edges\": \"false\", \"edges_color\": \"\", \"edges_width\": \"0.1\", \"fig_dpi\": \"80\", \"fig_fontsize\": \"10\", \"fig_frame\": \"false\", \"fig_size\": \"4,4\", \"fig_title\": \"\", \"gene_symbols_field\": \"\", \"groups\": \"\", \"input_format\": \"anndata\", \"input_obj_file\": {\"__class__\": \"RuntimeValue\"}, \"layer\": \"\", \"legend_fontsize\": \"15\", \"legend_loc\": \"right margin\", \"neighbors_key\": \"\", \"point_size\": null, \"projection\": \"2d\", \"sort_order\": \"false\", \"use_raw\": \"true\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
-                        "tool_version": null,
+                        "tool_state": "{\"basis\": \"umap\", \"color_by\": \"louvain\", \"components\": \"\", \"edges\": false, \"edges_color\": \"\", \"edges_width\": \"0.1\", \"fig_dpi\": \"80\", \"fig_fontsize\": \"10\", \"fig_frame\": false, \"fig_size\": \"4,4\", \"fig_title\": \"\", \"gene_symbols_field\": \"\", \"groups\": \"\", \"input_format\": \"anndata\", \"input_obj_file\": {\"__class__\": \"RuntimeValue\"}, \"layer\": \"\", \"legend_fontsize\": \"15\", \"legend_loc\": \"right margin\", \"neighbors_key\": \"\", \"point_size\": null, \"projection\": \"2d\", \"sort_order\": false, \"use_raw\": true, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+                        "tool_version": "1.8.1+1+galaxy0",
                         "type": "tool",
                         "uuid": "f07a78c9-4a22-41f1-bead-2bfcbb19bf46",
+                        "when": null,
                         "workflow_outputs": [
                             {
                                 "label": "umap_cluster_plot",
@@ -2207,10 +2262,11 @@
                             "owner": "iuc",
                             "tool_shed": "toolshed.g2.bx.psu.edu"
                         },
-                        "tool_state": "{\"adata\": {\"__class__\": \"RuntimeValue\"}, \"advanced_common\": {\"show_log\": \"false\"}, \"format\": \"png\", \"method\": {\"method\": \"pl.rank_genes_groups_dotplot\", \"__current_case__\": 24, \"groups\": \"\", \"n_genes\": \"3\", \"key\": \"\", \"log\": \"false\", \"use_raw\": \"false\", \"dendrogram\": \"false\", \"var_group_positions\": [], \"var_group_rotation\": null, \"figsize\": {\"test\": \"no\", \"__current_case__\": 1}, \"layer\": \"\", \"color_map\": \"viridis\", \"dot_max\": null, \"dot_min\": null, \"matplotlib_pyplot_scatter\": {\"alpha\": null, \"vmin\": null, \"vmax\": null, \"linewidths\": \"0.0\", \"edgecolors\": \"face\"}}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
-                        "tool_version": null,
+                        "tool_state": "{\"adata\": {\"__class__\": \"RuntimeValue\"}, \"advanced_common\": {\"show_log\": false}, \"format\": \"png\", \"method\": {\"method\": \"pl.rank_genes_groups_dotplot\", \"__current_case__\": 24, \"groups\": \"\", \"n_genes\": \"3\", \"key\": \"\", \"log\": false, \"use_raw\": false, \"dendrogram\": false, \"var_group_positions\": [], \"var_group_rotation\": null, \"figsize\": {\"test\": \"no\", \"__current_case__\": 1}, \"layer\": \"\", \"color_map\": \"viridis\", \"dot_max\": null, \"dot_min\": null, \"matplotlib_pyplot_scatter\": {\"alpha\": null, \"vmin\": null, \"vmax\": null, \"linewidths\": \"0.0\", \"edgecolors\": \"face\"}}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+                        "tool_version": "1.7.1+galaxy1",
                         "type": "tool",
                         "uuid": "ed1e8128-f567-4ec7-a973-33c74b55e0c1",
+                        "when": null,
                         "workflow_outputs": [
                             {
                                 "label": "marker_dot_plot",
@@ -2258,9 +2314,10 @@
                             "tool_shed": "toolshed.g2.bx.psu.edu"
                         },
                         "tool_state": "{\"input\": {\"__class__\": \"ConnectedValue\"}, \"inspect\": {\"info\": \"obs\", \"__current_case__\": 3}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
-                        "tool_version": null,
+                        "tool_version": "0.7.5+galaxy1",
                         "type": "tool",
                         "uuid": "638e1ca8-5eb3-4088-b41c-fd95bb2a0c2d",
+                        "when": null,
                         "workflow_outputs": []
                     },
                     "13": {
@@ -2302,9 +2359,10 @@
                             "tool_shed": "toolshed.g2.bx.psu.edu"
                         },
                         "tool_state": "{\"input\": {\"__class__\": \"ConnectedValue\"}, \"inspect\": {\"info\": \"var\", \"__current_case__\": 4}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
-                        "tool_version": null,
+                        "tool_version": "0.7.5+galaxy1",
                         "type": "tool",
                         "uuid": "a6bacb96-345f-4f4c-9e5e-87893828e707",
+                        "when": null,
                         "workflow_outputs": []
                     },
                     "14": {
@@ -2339,15 +2397,16 @@
                         "post_job_actions": {},
                         "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_head_tool/1.1.0",
                         "tool_shed_repository": {
-                            "changeset_revision": "74a8bef53a00",
+                            "changeset_revision": "d698c222f354",
                             "name": "text_processing",
                             "owner": "bgruening",
                             "tool_shed": "toolshed.g2.bx.psu.edu"
                         },
                         "tool_state": "{\"complement\": \"\", \"count\": \"1000\", \"infile\": {\"__class__\": \"RuntimeValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
-                        "tool_version": null,
+                        "tool_version": "1.1.0",
                         "type": "tool",
                         "uuid": "1e194322-5744-459a-a7d5-5fc28d51d219",
+                        "when": null,
                         "workflow_outputs": [
                             {
                                 "label": "1k_cell_table",
@@ -2388,15 +2447,16 @@
                         "post_job_actions": {},
                         "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_head_tool/1.1.0",
                         "tool_shed_repository": {
-                            "changeset_revision": "74a8bef53a00",
+                            "changeset_revision": "d698c222f354",
                             "name": "text_processing",
                             "owner": "bgruening",
                             "tool_shed": "toolshed.g2.bx.psu.edu"
                         },
                         "tool_state": "{\"complement\": \"\", \"count\": \"1000\", \"infile\": {\"__class__\": \"RuntimeValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
-                        "tool_version": null,
+                        "tool_version": "1.1.0",
                         "type": "tool",
                         "uuid": "2ba12b8b-2799-49db-87e3-2194ac2d315a",
+                        "when": null,
                         "workflow_outputs": [
                             {
                                 "label": "1k_gene_table",
@@ -2412,56 +2472,12 @@
             "tool_id": null,
             "type": "subworkflow",
             "uuid": "947fc747-19ec-46f6-971f-dd829302f963",
+            "when": null,
             "workflow_outputs": [
                 {
-                    "label": "Scanpy RunUMAP on input dataset(s): UMAP object AnnData",
-                    "output_name": "Scanpy RunUMAP on input dataset(s): UMAP object AnnData",
-                    "uuid": "288aebc1-f372-414d-b09c-65c240151c96"
-                },
-                {
-                    "label": null,
-                    "output_name": "1k_gene_table",
-                    "uuid": "c0c6e1ac-0a78-45ce-a1f1-9ed48e38d499"
-                },
-                {
-                    "label": "Scanpy ComputeGraph on input dataset(s): Graph object AnnData",
-                    "output_name": "5:output_h5ad",
-                    "uuid": "d29ee542-133b-4aba-9c01-6222d5381d66"
-                },
-                {
-                    "label": "Scanpy FindMarkers on input dataset(s): Marker genes AnnData",
-                    "output_name": "processed_anndata_object",
-                    "uuid": "3da45a02-0976-4ded-bfa2-b8fb0922f3a7"
-                },
-                {
-                    "label": "Scanpy FindMarkers on input dataset(s): Marker table",
-                    "output_name": "marker_table",
-                    "uuid": "179e803c-5a8b-4ee6-9071-122139700f80"
-                },
-                {
-                    "label": "Scanpy FindVariableGenes on input dataset(s): Variable genes AnnData",
-                    "output_name": "2:output_h5ad",
-                    "uuid": "711d73f0-6b92-4c1a-b95b-8f9144c4abdb"
-                },
-                {
-                    "label": "Scanpy ScaleData on input dataset(s): Scaled data AnnData",
-                    "output_name": "3:output_h5ad",
-                    "uuid": "6d05003b-fb85-43ff-89f4-8c85aed0897e"
-                },
-                {
-                    "label": "Scanpy NormaliseData on input dataset(s): Normalised data AnnData",
-                    "output_name": "1:output_h5ad",
-                    "uuid": "535307cf-72de-4e6e-8bc4-dc625427d48c"
-                },
-                {
-                    "label": null,
-                    "output_name": "1k_cell_table",
-                    "uuid": "eef1e8f6-7815-48fc-85e4-ebae21ed3380"
-                },
-                {
-                    "label": "Scanpy FindCluster on input dataset(s): Clusters AnnData",
-                    "output_name": "Scanpy FindCluster on input dataset(s): Clusters AnnData",
-                    "uuid": "13a9bf7c-e365-435e-8f34-f120d85dc662"
+                    "label": "Scanpy RunPCA on input dataset(s): PCA object AnnData",
+                    "output_name": "4:output_h5ad",
+                    "uuid": "835b8b0c-a77e-4e89-a4c3-cb147f6a59ed"
                 },
                 {
                     "label": "Scanpy PlotEmbed on input dataset(s): umap embedding plot",
@@ -2469,14 +2485,59 @@
                     "uuid": "340defec-9717-4f8e-80eb-51762fdde349"
                 },
                 {
+                    "label": "Scanpy FindCluster on input dataset(s): Clusters AnnData",
+                    "output_name": "Scanpy FindCluster on input dataset(s): Clusters AnnData",
+                    "uuid": "13a9bf7c-e365-435e-8f34-f120d85dc662"
+                },
+                {
+                    "label": null,
+                    "output_name": "1k_cell_table",
+                    "uuid": "eef1e8f6-7815-48fc-85e4-ebae21ed3380"
+                },
+                {
+                    "label": "Scanpy NormaliseData on input dataset(s): Normalised data AnnData",
+                    "output_name": "1:output_h5ad",
+                    "uuid": "535307cf-72de-4e6e-8bc4-dc625427d48c"
+                },
+                {
+                    "label": "Scanpy ScaleData on input dataset(s): Scaled data AnnData",
+                    "output_name": "3:output_h5ad",
+                    "uuid": "6d05003b-fb85-43ff-89f4-8c85aed0897e"
+                },
+                {
+                    "label": "Scanpy FindVariableGenes on input dataset(s): Variable genes AnnData",
+                    "output_name": "2:output_h5ad",
+                    "uuid": "711d73f0-6b92-4c1a-b95b-8f9144c4abdb"
+                },
+                {
+                    "label": "Scanpy FindMarkers on input dataset(s): Marker table",
+                    "output_name": "marker_table",
+                    "uuid": "179e803c-5a8b-4ee6-9071-122139700f80"
+                },
+                {
+                    "label": null,
+                    "output_name": "1k_gene_table",
+                    "uuid": "c0c6e1ac-0a78-45ce-a1f1-9ed48e38d499"
+                },
+                {
                     "label": "Plot (pl.rank_genes_groups_dotplot) on input dataset(s)",
                     "output_name": "marker_dot_plot",
                     "uuid": "6d2bc0c0-9f0b-4d15-8dce-c147bc1bef85"
                 },
                 {
-                    "label": "Scanpy RunPCA on input dataset(s): PCA object AnnData",
-                    "output_name": "4:output_h5ad",
-                    "uuid": "835b8b0c-a77e-4e89-a4c3-cb147f6a59ed"
+                    "label": "Scanpy FindMarkers on input dataset(s): Marker genes AnnData",
+                    "output_name": "processed_anndata_object",
+                    "uuid": "3da45a02-0976-4ded-bfa2-b8fb0922f3a7"
+                },
+                {
+                    "label": "Scanpy RunUMAP on input dataset(s): UMAP object AnnData",
+                    "output_name": "Scanpy RunUMAP on input dataset(s): UMAP object AnnData",
+                    "uuid": "288aebc1-f372-414d-b09c-65c240151c96"
+                },
+                {
+                    "label": "Scanpy ComputeGraph on input dataset(s): Graph object AnnData",
+                    "output_name": "5:output_h5ad",
+                    "uuid": "d29ee542-133b-4aba-9c01-6222d5381d66"
                 }
             ]
         }
@@ -2486,5 +2547,5 @@
         "GUCFG2galaxy"
     ],
     "uuid": "c3953d37-a293-4dca-9aaa-0f9eb68dccac",
-    "version": 18
+    "version": 0
 }
