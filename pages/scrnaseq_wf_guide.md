@@ -48,10 +48,11 @@ These workflows are all available on galaxy australia.
 With 3 ways to load the data:
 
 * **Load counts matrix**: [import](https://usegalaxy.org.au/workflows/trs_import?trs_server=workflowhub.eu&trs_id=512&trs_version=1)   This workflow takes a counts matrix (of form counts.mtx + genes.csv + features.csv), loads the data into a standard AnnData format and adds a sample name.
-* **Count and load (starSOLO)**: [import](https://usegalaxy.org.au/workflows/trs_import?trs_server=workflowhub.eu&trs_id=513&trs_version=1)  This workflow takes fastq files, uses starSOLO to generate a counts matrix, loads the data into a standard AnnData format and adds a sample name. 
+* **Count and load (starSOLO)**: [import](https://usegalaxy.org.au/workflows/trs_import?trs_server=workflowhub.eu&trs_id=513&trs_version=2)  This workflow takes fastq files, uses starSOLO to generate a counts matrix, loads the data into a standard AnnData format and adds a sample name. 
 * **Count and Load (Cell Ranger)**: [import](https://usegalaxy.org.au/workflows/trs_import?trs_server=workflowhub.eu&trs_id=646&trs_version=1)  This workflow takes fastq files, uses Cell Ranger to generate a counts matrix, loads the data into a standard AnnData format and adds a sample name.
 
 <!-- CHecking galaxy to repo Nov 23: ok, ok, current. -->
+<!-- updated starsolo 12/12 -->
 
 
 Followed by two steps of routine processing: 
@@ -66,11 +67,11 @@ Followed by two steps of routine processing:
 For single sample experiments, there are streamlined workflows that the steps all at once.
 
 * **Single sample workflow (Cell Ranger):** [import](https://usegalaxy.org.au/workflows/trs_import?trs_server=workflowhub.eu&trs_id=647&trs_version=1)  This workflow starts from fastq files, generates counts with Cell Ranger, QCs and does some basic processing. It suitable for a single sample.
-* **Single sample workflow (StarSOLO):** [import](https://usegalaxy.org.au/workflows/trs_import?trs_server=workflowhub.eu&trs_id=465&trs_version=3)  This workflow starts from fastq files, generates counts with starSOLO, QCs and does some basic processing. It suitable for a single sample.
+* **Single sample workflow (StarSOLO):** [import](https://usegalaxy.org.au/workflows/trs_import?trs_server=workflowhub.eu&trs_id=465&trs_version=4)  This workflow starts from fastq files, generates counts with starSOLO, QCs and does some basic processing. It suitable for a single sample.
 * **Single sample workflow (Counts matrix):** [import](https://usegalaxy.org.au/workflows/trs_import?trs_server=workflowhub.eu&trs_id=514&trs_version=2) This workflow starts from a counts matrix, QCs and does some basic processing. It suitable for a single sample.
 
 <!-- CHecking galaxy to repo Nov 23: new. DIFFERENT,  DIFFERENT-->
-
+<!-- updated starsolo 12/12 -->
 
 # Background
 
