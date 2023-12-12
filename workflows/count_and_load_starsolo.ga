@@ -20,7 +20,7 @@
             "name": "Input dataset collection",
             "outputs": [],
             "position": {
-                "left": 0.0,
+                "left": 0,
                 "top": 239
             },
             "tool_id": null,
@@ -28,6 +28,7 @@
             "tool_version": null,
             "type": "data_collection_input",
             "uuid": "fe50073f-80f7-4daa-803c-f291bdd54159",
+            "when": null,
             "workflow_outputs": []
         },
         "1": {
@@ -46,7 +47,7 @@
             "name": "Input dataset",
             "outputs": [],
             "position": {
-                "left": 359.0,
+                "left": 359,
                 "top": 0
             },
             "tool_id": null,
@@ -54,6 +55,7 @@
             "tool_version": null,
             "type": "data_input",
             "uuid": "1b405418-8a0a-46fa-b55a-789676a1a8f6",
+            "when": null,
             "workflow_outputs": []
         },
         "2": {
@@ -80,6 +82,7 @@
             "tool_version": null,
             "type": "data_input",
             "uuid": "d39e446d-7f8c-429e-b5be-c47ffdd1d5f4",
+            "when": null,
             "workflow_outputs": []
         },
         "3": {
@@ -106,6 +109,7 @@
             "tool_version": null,
             "type": "data_input",
             "uuid": "b27feddc-84ea-4a7d-a86f-ec07d02e7150",
+            "when": null,
             "workflow_outputs": []
         },
         "4": {
@@ -132,11 +136,12 @@
             "tool_version": null,
             "type": "parameter_input",
             "uuid": "e9823880-213e-4900-bda2-131a002ba2ca",
+            "when": null,
             "workflow_outputs": [
                 {
                     "label": null,
                     "output_name": "output",
-                    "uuid": "8920a551-b0f0-4346-a725-cb21fa492eae"
+                    "uuid": "d764c8b4-35a3-482a-bfeb-01f4b6a64e56"
                 }
             ]
         },
@@ -156,19 +161,20 @@
             "name": "Input parameter",
             "outputs": [],
             "position": {
-                "left": 862.421875,
-                "top": 914.0625
+                "left": 995.4166870117188,
+                "top": 971.066650390625
             },
             "tool_id": null,
             "tool_state": "{\"parameter_type\": \"text\", \"optional\": false}",
             "tool_version": null,
             "type": "parameter_input",
             "uuid": "0bf92aa0-f93e-429e-970b-5b6e64caa499",
+            "when": null,
             "workflow_outputs": [
                 {
                     "label": null,
                     "output_name": "output",
-                    "uuid": "48581a7e-ccee-4086-a214-a92e16cd81fa"
+                    "uuid": "f9a6a225-c601-4ae2-baf3-8dc3f7da8d50"
                 }
             ]
         },
@@ -183,12 +189,7 @@
                     "output_name": "output"
                 }
             },
-            "inputs": [
-                {
-                    "description": "runtime parameter for tool Unzip collection",
-                    "name": "input"
-                }
-            ],
+            "inputs": [],
             "label": null,
             "name": "Unzip collection",
             "outputs": [
@@ -218,10 +219,11 @@
                 }
             },
             "tool_id": "__UNZIP_COLLECTION__",
-            "tool_state": "{\"input\": {\"__class__\": \"RuntimeValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"input\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "1.0.0",
             "type": "tool",
             "uuid": "7b9a6b64-59b1-4270-b0c4-80dcffd9de11",
+            "when": null,
             "workflow_outputs": []
         },
         "7": {
@@ -235,12 +237,7 @@
                     "output_name": "forward"
                 }
             },
-            "inputs": [
-                {
-                    "description": "runtime parameter for tool Collapse Collection",
-                    "name": "input_list"
-                }
-            ],
+            "inputs": [],
             "label": "Forward/R1/barcode Fastq Concat",
             "name": "Collapse Collection",
             "outputs": [
@@ -267,10 +264,11 @@
                 "owner": "nml",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             },
-            "tool_state": "{\"filename\": {\"add_name\": \"false\", \"__current_case__\": 1}, \"input_list\": {\"__class__\": \"RuntimeValue\"}, \"one_header\": \"false\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"filename\": {\"add_name\": false, \"__current_case__\": 1}, \"input_list\": {\"__class__\": \"ConnectedValue\"}, \"one_header\": false, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "5.1.0",
             "type": "tool",
             "uuid": "9c5d5a0e-8e9a-450c-9faa-c64cb84ce803",
+            "when": null,
             "workflow_outputs": []
         },
         "8": {
@@ -284,12 +282,7 @@
                     "output_name": "reverse"
                 }
             },
-            "inputs": [
-                {
-                    "description": "runtime parameter for tool Collapse Collection",
-                    "name": "input_list"
-                }
-            ],
+            "inputs": [],
             "label": "Reverse/R2/mRNA Fastq concat",
             "name": "Collapse Collection",
             "outputs": [
@@ -316,10 +309,11 @@
                 "owner": "nml",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             },
-            "tool_state": "{\"filename\": {\"add_name\": \"false\", \"__current_case__\": 1}, \"input_list\": {\"__class__\": \"RuntimeValue\"}, \"one_header\": \"false\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"filename\": {\"add_name\": false, \"__current_case__\": 1}, \"input_list\": {\"__class__\": \"ConnectedValue\"}, \"one_header\": false, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "5.1.0",
             "type": "tool",
             "uuid": "03660885-065d-4710-b0f6-a56af943da75",
+            "when": null,
             "workflow_outputs": []
         },
         "9": {
@@ -353,7 +347,20 @@
                     "output_name": "output"
                 }
             },
-            "inputs": [],
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool RNA STARSolo",
+                    "name": "refGenomeSource"
+                },
+                {
+                    "description": "runtime parameter for tool RNA STARSolo",
+                    "name": "refGenomeSource"
+                },
+                {
+                    "description": "runtime parameter for tool RNA STARSolo",
+                    "name": "sc"
+                }
+            ],
             "label": null,
             "name": "RNA STARSolo",
             "outputs": [
@@ -394,10 +401,11 @@
                 "owner": "iuc",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             },
-            "tool_state": "{\"outWig\": {\"outWigType\": \"None\", \"__current_case__\": 0, \"outWigStrand\": \"false\"}, \"refGenomeSource\": {\"geneSource\": \"history\", \"__current_case__\": 1, \"genomeFastaFiles\": {\"__class__\": \"ConnectedValue\"}, \"genomeSAindexNbases\": \"14\", \"sjdbGTFfile\": {\"__class__\": \"ConnectedValue\"}, \"sjdbOverhang\": \"100\"}, \"sc\": {\"solo_type\": \"CB_UMI_Simple\", \"__current_case__\": 0, \"input_types\": {\"use\": \"repeat\", \"__current_case__\": 0, \"input1\": {\"__class__\": \"ConnectedValue\"}, \"input2\": {\"__class__\": \"ConnectedValue\"}}, \"soloCBwhitelist\": {\"__class__\": \"ConnectedValue\"}, \"params\": {\"chemistry\": \"Cv3\", \"__current_case__\": 1}, \"soloBarcodeReadLength\": \"true\", \"umidedup\": {\"soloUMIdedup\": \"1MM_All\", \"__current_case__\": 0}, \"soloCBmatchWLtype\": \"1MM_multi\"}, \"solo\": {\"soloStrand\": \"Forward\", \"soloFeatures\": \"Gene\", \"filter\": {\"filter_type\": \"cellranger2\", \"__current_case__\": 0, \"n_expected\": {\"__class__\": \"ConnectedValue\"}, \"max_perc\": \"0.99\", \"max_min_ratio\": \"10.0\", \"output_raw\": \"false\"}, \"soloOutFormatFeaturesGeneField3\": \"Gene Expression\", \"outSAMattributes\": [\"NH\", \"HI\", \"AS\", \"nM\"], \"quantModeGene\": \"false\", \"outSAMunmapped\": \"false\", \"outSAMmapqUnique\": \"60\", \"junction_limits\": {\"limitOutSJoneRead\": \"1000\", \"limitOutSJcollapsed\": \"1000000\", \"limitSjdbInsertNsj\": \"1000000\"}}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_state": "{\"outWig\": {\"outWigType\": \"None\", \"__current_case__\": 0, \"outWigStrand\": \"false\"}, \"refGenomeSource\": {\"geneSource\": \"history\", \"__current_case__\": 1, \"genomeFastaFiles\": {\"__class__\": \"RuntimeValue\"}, \"genomeSAindexNbases\": \"10\", \"sjdbGTFfile\": {\"__class__\": \"RuntimeValue\"}, \"sjdbOverhang\": \"100\"}, \"sc\": {\"solo_type\": \"CB_UMI_Simple\", \"__current_case__\": 0, \"input_types\": {\"use\": \"repeat\", \"__current_case__\": 0, \"input1\": {\"__class__\": \"RuntimeValue\"}, \"input2\": {\"__class__\": \"RuntimeValue\"}}, \"soloCBwhitelist\": {\"__class__\": \"RuntimeValue\"}, \"params\": {\"chemistry\": \"Cv3\", \"__current_case__\": 1}, \"soloBarcodeReadLength\": true, \"umidedup\": {\"soloUMIdedup\": \"1MM_All\", \"__current_case__\": 0}, \"soloCBmatchWLtype\": \"1MM_multi\"}, \"solo\": {\"soloStrand\": \"Forward\", \"soloFeatures\": \"Gene\", \"filter\": {\"filter_type\": \"cellranger2\", \"__current_case__\": 0, \"n_expected\": {\"__class__\": \"ConnectedValue\"}, \"max_perc\": \"0.99\", \"max_min_ratio\": \"10.0\", \"output_raw\": false}, \"soloOutFormatFeaturesGeneField3\": \"Gene Expression\", \"outSAMattributes\": [\"NH\", \"HI\", \"AS\", \"nM\"], \"quantModeGene\": false, \"outSAMunmapped\": false, \"outSAMmapqUnique\": \"60\", \"junction_limits\": {\"limitOutSJoneRead\": \"1000\", \"limitOutSJcollapsed\": \"1000000\", \"limitSjdbInsertNsj\": \"1000000\"}}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
             "tool_version": "2.7.10b+galaxy2",
             "type": "tool",
             "uuid": "30d0e46a-7224-4511-b302-f6fe1cdce4b0",
+            "when": null,
             "workflow_outputs": [
                 {
                     "label": "RNA STARSolo on input dataset(s): Alignments",
@@ -490,6 +498,7 @@
             "tool_version": "1.8.1+1+galaxy0",
             "type": "tool",
             "uuid": "ed90753e-ec36-406f-ad29-c5eba1cbeb1e",
+            "when": null,
             "workflow_outputs": []
         },
         "11": {
@@ -534,6 +543,7 @@
             "tool_version": "0.7.5+galaxy1",
             "type": "tool",
             "uuid": "dd8757f2-6d93-4490-ad80-459ce58ed1c8",
+            "when": null,
             "workflow_outputs": []
         },
         "12": {
@@ -582,6 +592,7 @@
             "tool_version": "1.1.0",
             "type": "tool",
             "uuid": "81c761a8-4b71-4db4-9bad-864fdfa636f4",
+            "when": null,
             "workflow_outputs": []
         },
         "13": {
@@ -626,6 +637,7 @@
             "tool_version": "1.1.1",
             "type": "tool",
             "uuid": "a3f8b0c3-356a-46e1-89bf-3a15f88cd580",
+            "when": null,
             "workflow_outputs": []
         },
         "14": {
@@ -653,7 +665,7 @@
                 }
             ],
             "position": {
-                "left": 2620.0,
+                "left": 2620,
                 "top": 392.984375
             },
             "post_job_actions": {
@@ -676,6 +688,7 @@
             "tool_version": "0.7.5+galaxy1",
             "type": "tool",
             "uuid": "bd9c53d0-41eb-4b43-b12e-2375276185eb",
+            "when": null,
             "workflow_outputs": [
                 {
                     "label": "AnnData Loaded",
@@ -687,8 +700,8 @@
     },
     "tags": [
         "scRNAseq",
-        "GUCFG2Galaxy"
+        "GUCFG2galaxy"
     ],
-    "uuid": "384e7621-d5ad-4b57-b43d-c7276d96c78f",
-    "version": 18
+    "uuid": "8c16fe3a-0d7f-4f72-a06c-8c2797d5b46b",
+    "version": 1
 }

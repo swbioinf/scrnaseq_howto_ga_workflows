@@ -3,15 +3,6 @@
     "annotation": "From the R1 and R2 fastq files of a single samples, make a scRNAseq counts matrix, and perform basic QC with scanpy. Then, do further processing by making a UMAP and clustering. Produces a processed AnnData \n",
     "format-version": "0.1",
     "name": "scRNAseq Single Sample Processing STARSolo",
-    "report": {
-        "markdown": "\n# Single-cell RNAseq Processing Workflow report\n\nPlease refer to the two sub-workflow reports - QC and basic processing.\n\n## Workflow\n```galaxy\nworkflow_display()\n```\n\n\n"
-    },
-    "source_metadata": {
-        "trs_server": "workflowhub",
-        "trs_tool_id": "465",
-        "trs_url": "",
-        "trs_version_id": "2"
-    },
     "steps": {
         "0": {
             "annotation": "Typically the Forward reads are labelled _R1, barcodes. R2 is Reverse, mRNA sequences. List should contain seq for one biological sample only.",
@@ -29,8 +20,8 @@
             "name": "Input dataset collection",
             "outputs": [],
             "position": {
-                "left": 24.4921875,
-                "top": 0
+                "left": 42.4666748046875,
+                "top": 50.8423203593675
             },
             "tool_id": null,
             "tool_state": "{\"optional\": false, \"tag\": \"\", \"collection_type\": \"list:paired\"}",
@@ -56,8 +47,8 @@
             "name": "Input dataset",
             "outputs": [],
             "position": {
-                "left": 0.0,
-                "top": 139.9765625
+                "left": 41.9666748046875,
+                "top": 163.82565776171126
             },
             "tool_id": null,
             "tool_state": "{\"optional\": false, \"tag\": \"\"}",
@@ -83,8 +74,8 @@
             "name": "Input dataset",
             "outputs": [],
             "position": {
-                "left": 4.9765625,
-                "top": 246.9921875
+                "left": 51.949622063462385,
+                "top": 300.83362386532065
             },
             "tool_id": null,
             "tool_state": "{\"optional\": false, \"tag\": \"\"}",
@@ -95,43 +86,10 @@
             "workflow_outputs": []
         },
         "3": {
-            "annotation": "Short, unique and meaningful name of this sample. ",
-            "content_id": null,
-            "errors": null,
-            "id": 3,
-            "input_connections": {},
-            "inputs": [
-                {
-                    "description": "Short, unique and meaningful name of this sample. ",
-                    "name": "Sample ID"
-                }
-            ],
-            "label": "Sample ID",
-            "name": "Input parameter",
-            "outputs": [],
-            "position": {
-                "left": 34.96875,
-                "top": 455.9921875
-            },
-            "tool_id": null,
-            "tool_state": "{\"parameter_type\": \"text\", \"optional\": false}",
-            "tool_version": null,
-            "type": "parameter_input",
-            "uuid": "27d0ddc6-16ba-40a4-9dab-b66bd48332da",
-            "when": null,
-            "workflow_outputs": [
-                {
-                    "label": null,
-                    "output_name": "output",
-                    "uuid": "72ded31f-cd26-43cc-bc94-719213b58ddd"
-                }
-            ]
-        },
-        "4": {
             "annotation": "List of possible cell barcodes. Depends on the kit used.",
             "content_id": null,
             "errors": null,
-            "id": 4,
+            "id": 3,
             "input_connections": {},
             "inputs": [
                 {
@@ -143,8 +101,8 @@
             "name": "Input dataset",
             "outputs": [],
             "position": {
-                "left": 33.03125,
-                "top": 555.921875
+                "left": 0.0,
+                "top": 572.7590073710862
             },
             "tool_id": null,
             "tool_state": "{\"optional\": false, \"tag\": \"\"}",
@@ -154,11 +112,11 @@
             "when": null,
             "workflow_outputs": []
         },
-        "5": {
+        "4": {
             "annotation": "How many cells are expected to be sequenced in this sample?",
             "content_id": null,
             "errors": null,
-            "id": 5,
+            "id": 4,
             "input_connections": {},
             "inputs": [
                 {
@@ -170,8 +128,8 @@
             "name": "Input parameter",
             "outputs": [],
             "position": {
-                "left": 31.9609375,
-                "top": 660.953125
+                "left": 17.933349609375,
+                "top": 668.7923325663987
             },
             "tool_id": null,
             "tool_state": "{\"default\": 2000, \"parameter_type\": \"integer\", \"optional\": true}",
@@ -183,7 +141,40 @@
                 {
                     "label": null,
                     "output_name": "output",
-                    "uuid": "0dbb08b3-8379-4186-9bf3-6bc6f4798292"
+                    "uuid": "e4a2d87e-5be0-498f-88b5-22aa1a5b7312"
+                }
+            ]
+        },
+        "5": {
+            "annotation": "Short, unique and meaningful name of this sample. ",
+            "content_id": null,
+            "errors": null,
+            "id": 5,
+            "input_connections": {},
+            "inputs": [
+                {
+                    "description": "Short, unique and meaningful name of this sample. ",
+                    "name": "Sample ID"
+                }
+            ],
+            "label": "Sample ID",
+            "name": "Input parameter",
+            "outputs": [],
+            "position": {
+                "left": 26.933349609375,
+                "top": 781.8423203593675
+            },
+            "tool_id": null,
+            "tool_state": "{\"parameter_type\": \"text\", \"optional\": false}",
+            "tool_version": null,
+            "type": "parameter_input",
+            "uuid": "27d0ddc6-16ba-40a4-9dab-b66bd48332da",
+            "when": null,
+            "workflow_outputs": [
+                {
+                    "label": null,
+                    "output_name": "output",
+                    "uuid": "229a2d73-d625-4514-a60c-2e2fee2cac18"
                 }
             ]
         },
@@ -203,8 +194,8 @@
             "name": "Input parameter",
             "outputs": [],
             "position": {
-                "left": 783.96875,
-                "top": 795.4296875
+                "left": 760.933349609375,
+                "top": 826.2756699687425
             },
             "tool_id": null,
             "tool_state": "{\"default\": \"MT-\", \"suggestions\": [\"MT-\", \"mt-\", \"Mt-\"], \"parameter_type\": \"text\", \"optional\": true}",
@@ -216,7 +207,7 @@
                 {
                     "label": null,
                     "output_name": "output",
-                    "uuid": "d65ad8ab-b977-4df8-94e2-37343742366a"
+                    "uuid": "1df487b8-6eec-41d6-aa0d-49212f2ec9cd"
                 }
             ]
         },
@@ -236,8 +227,8 @@
             "name": "Input parameter",
             "outputs": [],
             "position": {
-                "left": 810.9609375,
-                "top": 907.2265625
+                "left": 780.933349609375,
+                "top": 949.0756577617112
             },
             "tool_id": null,
             "tool_state": "{\"default\": 1000.0, \"parameter_type\": \"float\", \"optional\": true}",
@@ -249,7 +240,7 @@
                 {
                     "label": null,
                     "output_name": "output",
-                    "uuid": "3292f4c5-42b5-4def-bd1c-9e2961bf413f"
+                    "uuid": "96072e6a-d4e3-4fbe-aed7-e5844626eafe"
                 }
             ]
         },
@@ -269,8 +260,8 @@
             "name": "Input parameter",
             "outputs": [],
             "position": {
-                "left": 826.578125,
-                "top": 1013.625
+                "left": 775.5499877929688,
+                "top": 1058.4756821757737
             },
             "tool_id": null,
             "tool_state": "{\"default\": 500.0, \"parameter_type\": \"float\", \"optional\": true}",
@@ -282,7 +273,7 @@
                 {
                     "label": null,
                     "output_name": "output",
-                    "uuid": "adf01f52-4ac3-47e5-9d4a-b237ad6127f6"
+                    "uuid": "18fb27f1-63dd-4350-a8fa-3053eb2e4707"
                 }
             ]
         },
@@ -302,8 +293,8 @@
             "name": "Input parameter",
             "outputs": [],
             "position": {
-                "left": 885.578125,
-                "top": 1077.640625
+                "left": 846.8474328782095,
+                "top": 1167.3264380312146
             },
             "tool_id": null,
             "tool_state": "{\"default\": 30.0, \"parameter_type\": \"float\", \"optional\": true}",
@@ -315,7 +306,7 @@
                 {
                     "label": null,
                     "output_name": "output",
-                    "uuid": "74430648-58a6-4643-809e-b0d569b2c6fd"
+                    "uuid": "3ac4c734-aa62-40cf-9695-5347b0ae9e6f"
                 }
             ]
         },
@@ -324,12 +315,12 @@
             "id": 10,
             "input_connections": {
                 "Barcode Whitelist file": {
-                    "id": 4,
+                    "id": 3,
                     "input_subworkflow_step_id": 3,
                     "output_name": "output"
                 },
                 "Expected Cells": {
-                    "id": 5,
+                    "id": 4,
                     "input_subworkflow_step_id": 4,
                     "output_name": "output"
                 },
@@ -349,7 +340,7 @@
                     "output_name": "output"
                 },
                 "Sample": {
-                    "id": 3,
+                    "id": 5,
                     "input_subworkflow_step_id": 5,
                     "output_name": "output"
                 }
@@ -359,8 +350,8 @@
             "name": "scRNAseq: Count and Load with starSOLO",
             "outputs": [],
             "position": {
-                "left": 496.03125,
-                "top": 112
+                "left": 449.6676141452897,
+                "top": 0.0
             },
             "subworkflow": {
                 "a_galaxy_workflow": "true",
@@ -369,14 +360,14 @@
                 "name": "scRNAseq: Count and Load with starSOLO",
                 "steps": {
                     "0": {
-                        "annotation": "",
+                        "annotation": "Typically the Forward reads are labelled _R1, barcodes. R2 is Reverse, mRNA sequences. List should contain seq for one biological sample only.",
                         "content_id": null,
                         "errors": null,
                         "id": 0,
                         "input_connections": {},
                         "inputs": [
                             {
-                                "description": "",
+                                "description": "Typically the Forward reads are labelled _R1, barcodes. R2 is Reverse, mRNA sequences. List should contain seq for one biological sample only.",
                                 "name": "Paired Fastqs for one sample"
                             }
                         ],
@@ -384,14 +375,14 @@
                         "name": "Input dataset collection",
                         "outputs": [],
                         "position": {
-                            "left": 0.0,
+                            "left": 0,
                             "top": 239
                         },
                         "tool_id": null,
                         "tool_state": "{\"optional\": false, \"tag\": \"\", \"collection_type\": \"list:paired\"}",
                         "tool_version": null,
                         "type": "data_collection_input",
-                        "uuid": "50babafc-fc0e-4f5f-96ac-27c02c716baf",
+                        "uuid": "fe50073f-80f7-4daa-803c-f291bdd54159",
                         "when": null,
                         "workflow_outputs": []
                     },
@@ -411,14 +402,14 @@
                         "name": "Input dataset",
                         "outputs": [],
                         "position": {
-                            "left": 359.0,
+                            "left": 359,
                             "top": 0
                         },
                         "tool_id": null,
                         "tool_state": "{\"optional\": false, \"tag\": \"\"}",
                         "tool_version": null,
                         "type": "data_input",
-                        "uuid": "ecc1fc77-867d-44ca-a0ce-98bbc5e179dc",
+                        "uuid": "1b405418-8a0a-46fa-b55a-789676a1a8f6",
                         "when": null,
                         "workflow_outputs": []
                     },
@@ -445,19 +436,19 @@
                         "tool_state": "{\"optional\": false, \"tag\": \"\"}",
                         "tool_version": null,
                         "type": "data_input",
-                        "uuid": "4f65c9ff-c54f-465d-83b5-c9ad02912a05",
+                        "uuid": "d39e446d-7f8c-429e-b5be-c47ffdd1d5f4",
                         "when": null,
                         "workflow_outputs": []
                     },
                     "3": {
-                        "annotation": "",
+                        "annotation": "Obtain from kit supplier e.g. 10X",
                         "content_id": null,
                         "errors": null,
                         "id": 3,
                         "input_connections": {},
                         "inputs": [
                             {
-                                "description": "",
+                                "description": "Obtain from kit supplier e.g. 10X",
                                 "name": "Barcode Whitelist file"
                             }
                         ],
@@ -472,19 +463,19 @@
                         "tool_state": "{\"optional\": false, \"tag\": \"\"}",
                         "tool_version": null,
                         "type": "data_input",
-                        "uuid": "91ea6eaa-ff40-4d96-96c8-fa715ea8bc85",
+                        "uuid": "b27feddc-84ea-4a7d-a86f-ec07d02e7150",
                         "when": null,
                         "workflow_outputs": []
                     },
                     "4": {
-                        "annotation": "",
+                        "annotation": "Approximately how many cells are expected in this sample?",
                         "content_id": null,
                         "errors": null,
                         "id": 4,
                         "input_connections": {},
                         "inputs": [
                             {
-                                "description": "",
+                                "description": "Approximately how many cells are expected in this sample?",
                                 "name": "Expected Cells"
                             }
                         ],
@@ -499,25 +490,25 @@
                         "tool_state": "{\"default\": 5000, \"parameter_type\": \"integer\", \"optional\": true}",
                         "tool_version": null,
                         "type": "parameter_input",
-                        "uuid": "6d9fdfd4-8366-4b9e-bce0-e35bd09955b4",
+                        "uuid": "e9823880-213e-4900-bda2-131a002ba2ca",
                         "when": null,
                         "workflow_outputs": [
                             {
                                 "label": null,
                                 "output_name": "output",
-                                "uuid": "f51122a2-2707-413b-ac60-f4c44dd77eab"
+                                "uuid": "d764c8b4-35a3-482a-bfeb-01f4b6a64e56"
                             }
                         ]
                     },
                     "5": {
-                        "annotation": "",
+                        "annotation": "Short, unique sample name",
                         "content_id": null,
                         "errors": null,
                         "id": 5,
                         "input_connections": {},
                         "inputs": [
                             {
-                                "description": "",
+                                "description": "Short, unique sample name",
                                 "name": "Sample"
                             }
                         ],
@@ -525,20 +516,20 @@
                         "name": "Input parameter",
                         "outputs": [],
                         "position": {
-                            "left": 862.421875,
-                            "top": 914.0625
+                            "left": 995.4166870117188,
+                            "top": 971.066650390625
                         },
                         "tool_id": null,
                         "tool_state": "{\"parameter_type\": \"text\", \"optional\": false}",
                         "tool_version": null,
                         "type": "parameter_input",
-                        "uuid": "48690f64-7b4c-4e4f-ad39-558ce2f37215",
+                        "uuid": "0bf92aa0-f93e-429e-970b-5b6e64caa499",
                         "when": null,
                         "workflow_outputs": [
                             {
                                 "label": null,
                                 "output_name": "output",
-                                "uuid": "4c911098-84d1-448c-8465-2dfb4dc91b06"
+                                "uuid": "f9a6a225-c601-4ae2-baf3-8dc3f7da8d50"
                             }
                         ]
                     },
@@ -553,12 +544,7 @@
                                 "output_name": "output"
                             }
                         },
-                        "inputs": [
-                            {
-                                "description": "runtime parameter for tool Unzip collection",
-                                "name": "input"
-                            }
-                        ],
+                        "inputs": [],
                         "label": null,
                         "name": "Unzip collection",
                         "outputs": [
@@ -588,10 +574,10 @@
                             }
                         },
                         "tool_id": "__UNZIP_COLLECTION__",
-                        "tool_state": "{\"input\": {\"__class__\": \"RuntimeValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+                        "tool_state": "{\"input\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
                         "tool_version": "1.0.0",
                         "type": "tool",
-                        "uuid": "2c752c88-b947-48e1-9880-6f79d2fb604e",
+                        "uuid": "7b9a6b64-59b1-4270-b0c4-80dcffd9de11",
                         "when": null,
                         "workflow_outputs": []
                     },
@@ -606,12 +592,7 @@
                                 "output_name": "forward"
                             }
                         },
-                        "inputs": [
-                            {
-                                "description": "runtime parameter for tool Collapse Collection",
-                                "name": "input_list"
-                            }
-                        ],
+                        "inputs": [],
                         "label": "Forward/R1/barcode Fastq Concat",
                         "name": "Collapse Collection",
                         "outputs": [
@@ -638,10 +619,10 @@
                             "owner": "nml",
                             "tool_shed": "toolshed.g2.bx.psu.edu"
                         },
-                        "tool_state": "{\"filename\": {\"add_name\": false, \"__current_case__\": 1}, \"input_list\": {\"__class__\": \"RuntimeValue\"}, \"one_header\": false, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+                        "tool_state": "{\"filename\": {\"add_name\": false, \"__current_case__\": 1}, \"input_list\": {\"__class__\": \"ConnectedValue\"}, \"one_header\": false, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
                         "tool_version": "5.1.0",
                         "type": "tool",
-                        "uuid": "b78ccf66-c6b1-47ca-9574-2aa1dafd6277",
+                        "uuid": "9c5d5a0e-8e9a-450c-9faa-c64cb84ce803",
                         "when": null,
                         "workflow_outputs": []
                     },
@@ -656,12 +637,7 @@
                                 "output_name": "reverse"
                             }
                         },
-                        "inputs": [
-                            {
-                                "description": "runtime parameter for tool Collapse Collection",
-                                "name": "input_list"
-                            }
-                        ],
+                        "inputs": [],
                         "label": "Reverse/R2/mRNA Fastq concat",
                         "name": "Collapse Collection",
                         "outputs": [
@@ -688,10 +664,10 @@
                             "owner": "nml",
                             "tool_shed": "toolshed.g2.bx.psu.edu"
                         },
-                        "tool_state": "{\"filename\": {\"add_name\": false, \"__current_case__\": 1}, \"input_list\": {\"__class__\": \"RuntimeValue\"}, \"one_header\": false, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+                        "tool_state": "{\"filename\": {\"add_name\": false, \"__current_case__\": 1}, \"input_list\": {\"__class__\": \"ConnectedValue\"}, \"one_header\": false, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
                         "tool_version": "5.1.0",
                         "type": "tool",
-                        "uuid": "ae7983f4-42af-4fac-bc8d-22fe92d28705",
+                        "uuid": "03660885-065d-4710-b0f6-a56af943da75",
                         "when": null,
                         "workflow_outputs": []
                     },
@@ -726,7 +702,20 @@
                                 "output_name": "output"
                             }
                         },
-                        "inputs": [],
+                        "inputs": [
+                            {
+                                "description": "runtime parameter for tool RNA STARSolo",
+                                "name": "refGenomeSource"
+                            },
+                            {
+                                "description": "runtime parameter for tool RNA STARSolo",
+                                "name": "refGenomeSource"
+                            },
+                            {
+                                "description": "runtime parameter for tool RNA STARSolo",
+                                "name": "sc"
+                            }
+                        ],
                         "label": null,
                         "name": "RNA STARSolo",
                         "outputs": [
@@ -767,41 +756,41 @@
                             "owner": "iuc",
                             "tool_shed": "toolshed.g2.bx.psu.edu"
                         },
-                        "tool_state": "{\"outWig\": {\"outWigType\": \"None\", \"__current_case__\": 0, \"outWigStrand\": \"false\"}, \"refGenomeSource\": {\"geneSource\": \"history\", \"__current_case__\": 1, \"genomeFastaFiles\": {\"__class__\": \"ConnectedValue\"}, \"genomeSAindexNbases\": \"14\", \"sjdbGTFfile\": {\"__class__\": \"ConnectedValue\"}, \"sjdbOverhang\": \"100\"}, \"sc\": {\"solo_type\": \"CB_UMI_Simple\", \"__current_case__\": 0, \"input_types\": {\"use\": \"repeat\", \"__current_case__\": 0, \"input1\": {\"__class__\": \"ConnectedValue\"}, \"input2\": {\"__class__\": \"ConnectedValue\"}}, \"soloCBwhitelist\": {\"__class__\": \"ConnectedValue\"}, \"params\": {\"chemistry\": \"Cv3\", \"__current_case__\": 1}, \"soloBarcodeReadLength\": true, \"umidedup\": {\"soloUMIdedup\": \"1MM_All\", \"__current_case__\": 0}, \"soloCBmatchWLtype\": \"1MM_multi\"}, \"solo\": {\"soloStrand\": \"Forward\", \"soloFeatures\": \"Gene\", \"filter\": {\"filter_type\": \"cellranger2\", \"__current_case__\": 0, \"n_expected\": {\"__class__\": \"ConnectedValue\"}, \"max_perc\": \"0.99\", \"max_min_ratio\": \"10.0\", \"output_raw\": false}, \"soloOutFormatFeaturesGeneField3\": \"Gene Expression\", \"outSAMattributes\": [\"NH\", \"HI\", \"AS\", \"nM\"], \"quantModeGene\": false, \"outSAMunmapped\": false, \"outSAMmapqUnique\": \"60\", \"junction_limits\": {\"limitOutSJoneRead\": \"1000\", \"limitOutSJcollapsed\": \"1000000\", \"limitSjdbInsertNsj\": \"1000000\"}}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+                        "tool_state": "{\"outWig\": {\"outWigType\": \"None\", \"__current_case__\": 0, \"outWigStrand\": \"false\"}, \"refGenomeSource\": {\"geneSource\": \"history\", \"__current_case__\": 1, \"genomeFastaFiles\": {\"__class__\": \"RuntimeValue\"}, \"genomeSAindexNbases\": \"10\", \"sjdbGTFfile\": {\"__class__\": \"RuntimeValue\"}, \"sjdbOverhang\": \"100\"}, \"sc\": {\"solo_type\": \"CB_UMI_Simple\", \"__current_case__\": 0, \"input_types\": {\"use\": \"repeat\", \"__current_case__\": 0, \"input1\": {\"__class__\": \"RuntimeValue\"}, \"input2\": {\"__class__\": \"RuntimeValue\"}}, \"soloCBwhitelist\": {\"__class__\": \"RuntimeValue\"}, \"params\": {\"chemistry\": \"Cv3\", \"__current_case__\": 1}, \"soloBarcodeReadLength\": true, \"umidedup\": {\"soloUMIdedup\": \"1MM_All\", \"__current_case__\": 0}, \"soloCBmatchWLtype\": \"1MM_multi\"}, \"solo\": {\"soloStrand\": \"Forward\", \"soloFeatures\": \"Gene\", \"filter\": {\"filter_type\": \"cellranger2\", \"__current_case__\": 0, \"n_expected\": {\"__class__\": \"ConnectedValue\"}, \"max_perc\": \"0.99\", \"max_min_ratio\": \"10.0\", \"output_raw\": false}, \"soloOutFormatFeaturesGeneField3\": \"Gene Expression\", \"outSAMattributes\": [\"NH\", \"HI\", \"AS\", \"nM\"], \"quantModeGene\": false, \"outSAMunmapped\": false, \"outSAMmapqUnique\": \"60\", \"junction_limits\": {\"limitOutSJoneRead\": \"1000\", \"limitOutSJcollapsed\": \"1000000\", \"limitSjdbInsertNsj\": \"1000000\"}}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
                         "tool_version": "2.7.10b+galaxy2",
                         "type": "tool",
-                        "uuid": "591cceee-5faf-4ac4-b727-f053c8a86777",
+                        "uuid": "30d0e46a-7224-4511-b302-f6fe1cdce4b0",
                         "when": null,
                         "workflow_outputs": [
                             {
                                 "label": "RNA STARSolo on input dataset(s): Genes filtered",
                                 "output_name": "output_genes_filtered",
-                                "uuid": "6ea775b1-51d1-4b2f-896b-638c1da61926"
+                                "uuid": "11c008ca-f9a4-4685-9110-f0f3b8465847"
                             },
                             {
                                 "label": "RNA STARSolo on input dataset(s): Barcodes filtered",
                                 "output_name": "output_barcodes_filtered",
-                                "uuid": "f8c775a5-8340-43c2-8110-04a87979d90d"
+                                "uuid": "53d82ffb-db81-4b8c-b472-0215ddc160c6"
                             },
                             {
                                 "label": "RNA STARSolo on input dataset(s): Matrix Gene Counts filtered",
                                 "output_name": "output_matrix_filtered",
-                                "uuid": "42c1b1c2-13c5-491c-89ad-29e29ab5fb1b"
+                                "uuid": "4b35bfcd-7eae-4647-b148-62843e40c005"
                             },
                             {
                                 "label": "RNA STARSolo on input dataset(s): Alignments",
                                 "output_name": "output_BAM",
-                                "uuid": "a4505eb0-8378-4d73-9f77-508c1ae8835d"
+                                "uuid": "8f96e549-f78d-4a04-b2a5-0fcd1df99950"
                             },
                             {
                                 "label": "RNA STARSolo on input dataset(s): Barcode/Feature Statistic Summaries",
                                 "output_name": "output_stats",
-                                "uuid": "bfeb2324-b462-4979-aeff-c66c92d4dc45"
+                                "uuid": "c11fa5cc-bb76-4eb8-97b7-ff8c8ee80f74"
                             },
                             {
                                 "label": "RNA STARSolo on input dataset(s): log",
                                 "output_name": "output_log",
-                                "uuid": "105ad708-2d87-48b5-9272-1a66d3f079b3"
+                                "uuid": "3f6b78d6-df5d-4754-a3fd-f661b01a8f2d"
                             }
                         ]
                     },
@@ -863,7 +852,7 @@
                         "tool_state": "{\"barcodes\": {\"__class__\": \"ConnectedValue\"}, \"cell_meta\": {\"__class__\": \"RuntimeValue\"}, \"gene_meta\": {\"__class__\": \"RuntimeValue\"}, \"genes\": {\"__class__\": \"ConnectedValue\"}, \"matrix\": {\"__class__\": \"ConnectedValue\"}, \"output_format\": \"anndata_h5ad\", \"var_names\": \"gene_symbols\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
                         "tool_version": "1.8.1+1+galaxy0",
                         "type": "tool",
-                        "uuid": "163cc7b7-e551-4b1f-91b7-c260e74c8907",
+                        "uuid": "ed90753e-ec36-406f-ad29-c5eba1cbeb1e",
                         "when": null,
                         "workflow_outputs": []
                     },
@@ -908,7 +897,7 @@
                         "tool_state": "{\"input\": {\"__class__\": \"ConnectedValue\"}, \"inspect\": {\"info\": \"obs\", \"__current_case__\": 3}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
                         "tool_version": "0.7.5+galaxy1",
                         "type": "tool",
-                        "uuid": "7855cac5-1aa7-416e-ab77-5cf307278f97",
+                        "uuid": "dd8757f2-6d93-4490-ad80-459ce58ed1c8",
                         "when": null,
                         "workflow_outputs": []
                     },
@@ -957,12 +946,12 @@
                         "tool_state": "{\"token_set\": [{\"__index__\": 0, \"line\": {\"__class__\": \"ConnectedValue\"}, \"repeat_select\": {\"repeat_select_opts\": \"file\", \"__current_case__\": 1, \"infile\": {\"__class__\": \"ConnectedValue\"}}}], \"__page__\": null, \"__rerun_remap_job_id__\": null}",
                         "tool_version": "1.1.0",
                         "type": "tool",
-                        "uuid": "38398b31-9acb-44aa-af3d-22781d652c43",
+                        "uuid": "81c761a8-4b71-4db4-9bad-864fdfa636f4",
                         "when": null,
                         "workflow_outputs": []
                     },
                     "13": {
-                        "annotation": "",
+                        "annotation": "This step replaces the first line with a header. Because the annotated data matrix also had a header, this works. ",
                         "content_id": "toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_sed_tool/1.1.1",
                         "errors": null,
                         "id": 13,
@@ -1002,12 +991,12 @@
                         "tool_state": "{\"adv_opts\": {\"adv_opts_selector\": \"basic\", \"__current_case__\": 0}, \"code\": \"1s/.*/sample/\", \"infile\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
                         "tool_version": "1.1.1",
                         "type": "tool",
-                        "uuid": "276d7e1e-3dca-4a1a-8910-96ef77d75c42",
+                        "uuid": "a3f8b0c3-356a-46e1-89bf-3a15f88cd580",
                         "when": null,
                         "workflow_outputs": []
                     },
                     "14": {
-                        "annotation": "",
+                        "annotation": "AnnData object with supplied sample id.",
                         "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/anndata_manipulate/anndata_manipulate/0.7.5+galaxy1",
                         "errors": null,
                         "id": 14,
@@ -1031,7 +1020,7 @@
                             }
                         ],
                         "position": {
-                            "left": 2620.0,
+                            "left": 2620,
                             "top": 392.984375
                         },
                         "post_job_actions": {
@@ -1053,69 +1042,34 @@
                         "tool_state": "{\"input\": {\"__class__\": \"ConnectedValue\"}, \"manipulate\": {\"function\": \"add_annotation\", \"__current_case__\": 6, \"var_obs\": \"obs\", \"new_annot\": {\"__class__\": \"ConnectedValue\"}}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
                         "tool_version": "0.7.5+galaxy1",
                         "type": "tool",
-                        "uuid": "e5baf2f0-6962-461f-a63b-9773241c38da",
+                        "uuid": "bd9c53d0-41eb-4b43-b12e-2375276185eb",
                         "when": null,
                         "workflow_outputs": [
                             {
                                 "label": "AnnData Loaded",
                                 "output_name": "anndata",
-                                "uuid": "0761e4d1-eedb-4faa-acaf-6be9fbf8e3c7"
+                                "uuid": "5bfc6582-edfa-4f16-8b28-b7eeb40e493c"
                             }
                         ]
                     }
                 },
                 "tags": "",
-                "uuid": "a58af1e9-31b5-43d1-9c4d-728071c982b2"
+                "uuid": "8c16fe3a-0d7f-4f72-a06c-8c2797d5b46b"
             },
             "tool_id": null,
             "type": "subworkflow",
-            "uuid": "8d0e1779-f9dd-4991-a519-dcf6c009a4f8",
+            "uuid": "5534b7f3-ffe9-4512-939f-d47b7e007ed0",
             "when": null,
             "workflow_outputs": [
                 {
-                    "label": "Manipulate AnnData (add_annotation) on input dataset(s)",
-                    "output_name": "AnnData Loaded",
-                    "uuid": "26981e9b-9468-40f7-8ad9-c9b2cf2f7de6"
-                },
-                {
-                    "label": "RNA STARSolo on input dataset(s): Matrix Gene Counts filtered",
-                    "output_name": "RNA STARSolo on input dataset(s): Matrix Gene Counts filtered",
-                    "uuid": "d966665d-fd72-4802-adc3-c1952aef0a9d"
-                },
-                {
-                    "label": "RNA STARSolo on input dataset(s): Alignments",
-                    "output_name": "RNA STARSolo on input dataset(s): Alignments",
-                    "uuid": "86e0f063-0bcf-415c-a653-c4adade8d323"
-                },
-                {
-                    "label": "RNA STARSolo on input dataset(s): log",
-                    "output_name": "RNA STARSolo on input dataset(s): log",
-                    "uuid": "927d3ea1-e099-4468-98fc-a2f3ff7ce336"
-                },
-                {
-                    "label": "RNA STARSolo on input dataset(s): Genes filtered",
-                    "output_name": "RNA STARSolo on input dataset(s): Genes filtered",
-                    "uuid": "4442aee6-1c59-421b-915a-58b39318f7db"
-                },
-                {
                     "label": null,
                     "output_name": "4:output",
-                    "uuid": "b8a9bb96-77b6-4896-bc7a-0e8a21cc0128"
+                    "uuid": "01c38032-7126-416a-88c7-61dbbce0d527"
                 },
                 {
                     "label": null,
                     "output_name": "5:output",
-                    "uuid": "35c496c9-25a9-4197-82fa-d6333b1f9949"
-                },
-                {
-                    "label": "RNA STARSolo on input dataset(s): Barcodes filtered",
-                    "output_name": "RNA STARSolo on input dataset(s): Barcodes filtered",
-                    "uuid": "9b13889c-a139-4fd9-9cbb-86f0a1b77f9d"
-                },
-                {
-                    "label": "RNA STARSolo on input dataset(s): Barcode/Feature Statistic Summaries",
-                    "output_name": "RNA STARSolo on input dataset(s): Barcode/Feature Statistic Summaries",
-                    "uuid": "79dcf7fa-eb17-4a1c-b3ba-b79f31622acb"
+                    "uuid": "d4a07e22-dfdb-4250-9541-87c5ba27deb6"
                 }
             ]
         },
@@ -1154,8 +1108,8 @@
             "name": "scRNAseq_CellQC",
             "outputs": [],
             "position": {
-                "left": 1155.4140625,
-                "top": 334.46875
+                "left": 1233.2092011426264,
+                "top": 479.37609337102043
             },
             "subworkflow": {
                 "a_galaxy_workflow": "true",
@@ -1636,6 +1590,21 @@
             "when": null,
             "workflow_outputs": [
                 {
+                    "label": null,
+                    "output_name": "3:output",
+                    "uuid": "6a310a1e-1cdb-43c2-83f9-c5c1f7e3aac1"
+                },
+                {
+                    "label": null,
+                    "output_name": "4:output",
+                    "uuid": "80dcae3c-4531-4bc1-aa0f-c5cd91a73fd7"
+                },
+                {
+                    "label": null,
+                    "output_name": "mito_qc_plot",
+                    "uuid": "03c47a23-2e15-4597-82f2-1f91440fdbbe"
+                },
+                {
                     "label": "Plot (pl.highest_expr_genes) on input dataset(s)",
                     "output_name": "top_genes_plot",
                     "uuid": "441fb5c5-777f-4fea-ace4-f7cb38f7fb38"
@@ -1646,34 +1615,19 @@
                     "uuid": "e7609917-0c45-47d2-a52d-03e140a58502"
                 },
                 {
-                    "label": null,
-                    "output_name": "1:output",
-                    "uuid": "d496c20b-eedf-4286-b93a-c47406ab33cb"
+                    "label": "Plot (pl.violin) on input dataset(s)",
+                    "output_name": "genecount_qc_plot",
+                    "uuid": "ddeade1a-371f-4b19-aae8-430bf9ffe687"
                 },
                 {
                     "label": null,
                     "output_name": "2:output",
-                    "uuid": "9308f6d0-45a1-4882-891c-a0fa64ed0dae"
+                    "uuid": "e06d2a04-fe33-4cec-a61a-a4cf5bd98fb3"
                 },
                 {
                     "label": null,
-                    "output_name": "3:output",
-                    "uuid": "01d3f8e7-49b9-4d94-96db-1d766016aa8d"
-                },
-                {
-                    "label": null,
-                    "output_name": "4:output",
-                    "uuid": "495c744c-11b7-4ad5-8428-55ab6bcf8868"
-                },
-                {
-                    "label": null,
-                    "output_name": "mito_qc_plot",
-                    "uuid": "03c47a23-2e15-4597-82f2-1f91440fdbbe"
-                },
-                {
-                    "label": "Plot (pl.violin) on input dataset(s)",
-                    "output_name": "genecount_qc_plot",
-                    "uuid": "ddeade1a-371f-4b19-aae8-430bf9ffe687"
+                    "output_name": "1:output",
+                    "uuid": "2c9a1c20-3c46-483d-b72e-384225aecf88"
                 }
             ]
         },
@@ -1692,8 +1646,8 @@
             "name": "scRNAseq_QCtoBasicProcessing",
             "outputs": [],
             "position": {
-                "left": 1717.25,
-                "top": 539.8515625
+                "left": 1772.0274737896598,
+                "top": 432.87745676132823
             },
             "subworkflow": {
                 "a_galaxy_workflow": "true",
@@ -2525,9 +2479,9 @@
                     "uuid": "6d2bc0c0-9f0b-4d15-8dce-c147bc1bef85"
                 },
                 {
-                    "label": "Scanpy FindMarkers on input dataset(s): Marker genes AnnData",
-                    "output_name": "processed_anndata_object",
-                    "uuid": "3da45a02-0976-4ded-bfa2-b8fb0922f3a7"
+                    "label": "Scanpy ComputeGraph on input dataset(s): Graph object AnnData",
+                    "output_name": "5:output_h5ad",
+                    "uuid": "d29ee542-133b-4aba-9c01-6222d5381d66"
                 },
                 {
                     "label": "Scanpy RunUMAP on input dataset(s): UMAP object AnnData",
@@ -2535,9 +2489,9 @@
                     "uuid": "288aebc1-f372-414d-b09c-65c240151c96"
                 },
                 {
-                    "label": "Scanpy ComputeGraph on input dataset(s): Graph object AnnData",
-                    "output_name": "5:output_h5ad",
-                    "uuid": "d29ee542-133b-4aba-9c01-6222d5381d66"
+                    "label": "Scanpy FindMarkers on input dataset(s): Marker genes AnnData",
+                    "output_name": "processed_anndata_object",
+                    "uuid": "3da45a02-0976-4ded-bfa2-b8fb0922f3a7"
                 }
             ]
         }
@@ -2546,6 +2500,6 @@
         "scRNAseq",
         "GUCFG2galaxy"
     ],
-    "uuid": "c3953d37-a293-4dca-9aaa-0f9eb68dccac",
-    "version": 0
+    "uuid": "692f78e6-8ae0-4190-a1c7-2d93fe227292",
+    "version": 3
 }
