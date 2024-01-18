@@ -22,7 +22,7 @@ toc: false
 - [Next steps](#next-steps)
 - [Licenses](#licenses)
     + [Getting access to cell ranger](#getting-access-to-cell-ranger)
-
+- [Finding help](#finding-help)
 
 
 
@@ -48,11 +48,10 @@ These workflows are all available on galaxy australia.
 With 3 ways to load the data:
 
 * **Load counts matrix**: [import](https://usegalaxy.org.au/workflows/trs_import?trs_server=workflowhub.eu&trs_id=512&trs_version=1)   This workflow takes a counts matrix (of form counts.mtx + genes.csv + features.csv), loads the data into a standard AnnData format and adds a sample name.
-* **Count and load (starSOLO)**: [import](https://usegalaxy.org.au/workflows/trs_import?trs_server=workflowhub.eu&trs_id=513&trs_version=2)  This workflow takes fastq files, uses starSOLO to generate a counts matrix, loads the data into a standard AnnData format and adds a sample name. 
+* **Count and load (starSOLO)**: [import](https://usegalaxy.org.au/workflows/trs_import?trs_server=workflowhub.eu&trs_id=513&trs_version=1)  This workflow takes fastq files, uses starSOLO to generate a counts matrix, loads the data into a standard AnnData format and adds a sample name. 
 * **Count and Load (Cell Ranger)**: [import](https://usegalaxy.org.au/workflows/trs_import?trs_server=workflowhub.eu&trs_id=646&trs_version=1)  This workflow takes fastq files, uses Cell Ranger to generate a counts matrix, loads the data into a standard AnnData format and adds a sample name.
 
 <!-- CHecking galaxy to repo Nov 23: ok, ok, current. -->
-<!-- updated starsolo 12/12 -->
 
 
 Followed by two steps of routine processing: 
@@ -67,11 +66,11 @@ Followed by two steps of routine processing:
 For single sample experiments, there are streamlined workflows that the steps all at once.
 
 * **Single sample workflow (Cell Ranger):** [import](https://usegalaxy.org.au/workflows/trs_import?trs_server=workflowhub.eu&trs_id=647&trs_version=1)  This workflow starts from fastq files, generates counts with Cell Ranger, QCs and does some basic processing. It suitable for a single sample.
-* **Single sample workflow (StarSOLO):** [import](https://usegalaxy.org.au/workflows/trs_import?trs_server=workflowhub.eu&trs_id=465&trs_version=4)  This workflow starts from fastq files, generates counts with starSOLO, QCs and does some basic processing. It suitable for a single sample.
+* **Single sample workflow (StarSOLO):** [import](https://usegalaxy.org.au/workflows/trs_import?trs_server=workflowhub.eu&trs_id=465&trs_version=3)  This workflow starts from fastq files, generates counts with starSOLO, QCs and does some basic processing. It suitable for a single sample.
 * **Single sample workflow (Counts matrix):** [import](https://usegalaxy.org.au/workflows/trs_import?trs_server=workflowhub.eu&trs_id=514&trs_version=2) This workflow starts from a counts matrix, QCs and does some basic processing. It suitable for a single sample.
 
 <!-- CHecking galaxy to repo Nov 23: new. DIFFERENT,  DIFFERENT-->
-<!-- updated starsolo 12/12 -->
+
 
 # Background
 
@@ -332,6 +331,8 @@ This means that the overall process is the same, but the steps are launched manu
 
 **Step 5.**  Next, join all samples with the ‘Manipulate AnnData object’ Tool (search on the tools pane on the left). 
 
+  {% include callout.html type="important" content="There's currently a versioning conflict in the tools installed on galaxy. When using this concatenate tool, we currently need to use the older version '0.7.5+galaxy1' for compatability with downstream tools [How to select tool version](https://training.galaxyproject.org/training-material/faqs/galaxy/tools_change_version.html) [Issue details](https://github.com/bioconda/bioconda-recipes/issues/45164). You may find that AnnData objects saved with current versions of the AnnData library will fail." %}
+
   This tool can do several different operations – listed under ‘Function to manipulate the object’, but we want the default; “Concatenate along the observation axis”. This combines cells (observations) from multiple sample runs. 
     
   Choose the AnnData object of one of your samples in the  ‘Annotated data matrix’ dropdown. Then, choose the rest of your samples under ‘Annotated matrix to add’. Use ctrl-select / option-select to highlight multiple samples. 
@@ -382,6 +383,8 @@ Note that there are toolkits other than scanpy (e.g. Seurat, SingleCellExperimen
 Note that the Cell Ranger tool will also output a '.cloupe' file, which may be used with the 'cell loupe' desktop program. If you download the .cloupe file, you'll need to change its file ending from .binary to .cloupe.  It is hidden by default within these workflows. 
 
 
+
+
 # Licenses
 
 Cell Ranger is proprietry software form 10X, and is only useable on galaxy australia once you have applied for access - see [Getting access to cell ranger](#getting-access-to-cell-ranger)
@@ -409,3 +412,10 @@ To get access on your account, apply here (simply requires agreeing to the licen
 Once successful, Cell Ranger will appear in your tool list under _MISCELLANEOUS TOOLS > Local Tools_ Once you receive a confirmation email, you may need to log out and log back in for it to take effect.
 
 
+# Finding help
+
+For general galaxy training, see the [Galaxy Training Network](https://training.galaxyproject.org/)
+
+For error problems with galaxy tools on galaxy australia - please check out the [error debugging guide](https://galaxyproject.org/support/tool-error/) and use the built-in bug reporting functionality. Or, for more general or involved galaxy help try the [galaxy help forum](https://help.galaxyproject.org/).
+
+To get in contact with problems you find specifically with this workflow; please report a ticket on [this github repository](https://github.com/swbioinf/scrnaseq_howto_ga_workflows/issues)
