@@ -3,27 +3,9 @@ title: scRNAseq Processing Workflows
 type: guide
 description: How-to guide for scRNAseq workflows on Galaxy Australia
 affiliations: QCIF
-toc: false
+toc: true
+sidebar: false
 ---
-
-- [Workflows](#workflows)
-- [Background](#backgrounds)
-- [Analysis Overview](#analysis-overview)
-- [User guide](#user-guide)
-    + [Prepare your fastq inputs](#prepare-your-fastq-inputs)
-       - [For Cell Ranger](#for-cell-ranger)
-       - [For StarSOLO](#for-starsolo)
-    + [Running a single sample workflow](#running-a-single-sample-workflow)
-       - [Using Cell Ranger](#using-cell-ranger)
-       - [Using StarSOLO](#using-starsolo)
-       - [With a Counts matrix](#with-a-counts-matrix)
-    + [Check results](#check-the-results)
-    + [Running a multi sample experiment](#running-a-multi-sample-experiment)
-- [Next steps](#next-steps)
-- [Licenses](#licenses)
-    + [Getting access to cell ranger](#getting-access-to-cell-ranger)
-- [Finding help](#finding-help)
-
 
 
 This document describes how to use some scanpy-based scRNAseq workflows on galaxy Australia. 
