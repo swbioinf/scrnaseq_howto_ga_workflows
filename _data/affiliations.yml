@@ -16,7 +16,8 @@
   type: infrastructure
   url: https://www.biocommons.org.au/
 
-- name: QCIF
+- name: QCIF Bioinformatics
   image_url: /assets/img/qcif.jpg
   expose: true
+  type: infrastructure
   url: https://www.qcif.edu.au/
