@@ -3,10 +3,13 @@ message: "Please cite as below."
 authors:
   - given-names: Sarah
     family-names: Williams
+    affiliation: QCIF Bioinformatics
   - given-names: Mike
     family-names: Thang
+    affiliation: QCIF Bioinformatics
   - given-names: Valentine 
     family-names: Murigneaux
+    affiliation: QCIF Bioinformatics
 
 
 title: "scRNAseq on galaxy workflows"
