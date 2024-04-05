@@ -23,6 +23,10 @@ The how-to guide is available [here](scrnaseq_wf_guide.html)
 
 {% include contributor-tiles-all.html %}
 
+## Please cite this guide as follows
+
+Please ensure you cite all the tools within this workflow that you use in your work (see references section), and consider also citing the [Clustering 3kPBMCs with Scanpy tutorial](https://training.galaxyproject.org/training-material/topics/single-cell/tutorials/scrna-scanpy-pbmc3k/tutorial.html ) tutorial upon which these workflows are based.
+
 
 ## Acknowledgements
 
@@ -40,5 +44,5 @@ These workflows depend on the following tools and resources;
 * Galaxy : [Galaxy project](https://galaxyproject.org/) 
 * Galaxy Australia: [Galaxy Australia service](https://usegalaxy.org.au/)
 * Scanpy Scripts: [scanpy scripts](https://github.com/ebi-gene-expression-group/scanpy-scripts)
-
-
+* SCiAp galaxy tools: [SCiAp galaxy tools](https://github.com/ebi-gene-expression-group/container-galaxy-sc-tertiary/tree/develop)
+* IUC galaxy tools : [IUC galaxy tools](https://github.com/galaxyproject/tools-iuc/tree/main)
