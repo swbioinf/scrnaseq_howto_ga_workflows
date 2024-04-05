@@ -19,10 +19,6 @@ These workflows represent just one way of processing data for a ‘typical’ sc
 The how-to guide is available [here](scrnaseq_wf_guide.html)
 
 
-## Contributors
-
-{% include contributor-tiles-all.html %}
-
 
 ## Acknowledgements
 
