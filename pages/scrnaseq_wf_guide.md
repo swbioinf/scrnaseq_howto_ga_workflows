@@ -2,7 +2,6 @@
 title: scRNAseq Processing Workflows
 type: guide
 description: How-to guide for scRNAseq workflows on Galaxy Australia
-affiliations: QCIF
 toc: true
 sidebar: false
 ---
