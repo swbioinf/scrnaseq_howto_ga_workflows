@@ -14,6 +14,8 @@ The aim of these workflows is to handle the routine ‘boring’ part of single 
 These workflows represent just one way of processing data for a ‘typical’ scRNAseq experiment – there are many other options!  
 
 
+
+
 # Workflows
 
 This document describes a set of workflows for processing single cell RNAseq data with scanpy 
@@ -179,6 +181,10 @@ You may also have I1 and I2 fastq datasets, but these are indices not used in th
 ## Running a single sample workflow
 
 When there is only a single biological sample in a study, there is a streamlined workflow.
+
+{% include callout.html type="important" content="Please note: with a recent update we no longer see the two sub-reports when running the single sample workflows. This documentation is in the process of being updated." %}
+
+
 
 ### Using Cell Ranger
 
