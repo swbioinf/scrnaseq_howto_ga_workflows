@@ -30,17 +30,17 @@ These workflows are all available on galaxy australia.
 
 With 3 ways to load the data:
 
-* **Load counts matrix**: [import](https://usegalaxy.org.au/workflows/trs_import?trs_server=workflowhub.eu&trs_id=512&trs_version=1)   This workflow takes a counts matrix (of form counts.mtx + genes.csv + features.csv), loads the data into a standard AnnData format and adds a sample name.
-* **Count and load (starSOLO)**: [import](https://usegalaxy.org.au/workflows/trs_import?trs_server=workflowhub.eu&trs_id=513&trs_version=1)  This workflow takes fastq files, uses starSOLO to generate a counts matrix, loads the data into a standard AnnData format and adds a sample name. 
-* **Count and Load (Cell Ranger)**: [import](https://usegalaxy.org.au/workflows/trs_import?trs_server=workflowhub.eu&trs_id=646&trs_version=1)  This workflow takes fastq files, uses Cell Ranger to generate a counts matrix, loads the data into a standard AnnData format and adds a sample name.
+* **Load counts matrix**: [import](https://usegalaxy.org.au/workflows/trs_import?trs_server=workflowhub.eu&trs_id=512&trs_version=2)   This workflow takes a counts matrix (of form counts.mtx + genes.csv + features.csv), loads the data into a standard AnnData format and adds a sample name.
+* **Count and load (starSOLO)**: [import](https://usegalaxy.org.au/workflows/trs_import?trs_server=workflowhub.eu&trs_id=513&trs_version=3)  This workflow takes fastq files, uses starSOLO to generate a counts matrix, loads the data into a standard AnnData format and adds a sample name. 
+* **Count and Load (Cell Ranger)**: [import](https://usegalaxy.org.au/workflows/trs_import?trs_server=workflowhub.eu&trs_id=646&trs_version=2)  This workflow takes fastq files, uses Cell Ranger to generate a counts matrix, loads the data into a standard AnnData format and adds a sample name.
 
 <!-- CHecking galaxy to repo Nov 23: ok, ok, current. -->
 
 
 Followed by two steps of routine processing: 
 
-* **Single cell QC:** [import](https://usegalaxy.org.au/workflows/trs_import?trs_server=workflowhub.eu&trs_id=467&trs_version=3)  This workflow generates some basic QC plots and applies filtering 
-* **Single cell QC to basic processing:** [import](https://usegalaxy.org.au/workflows/trs_import?trs_server=workflowhub.eu&trs_id=468&trs_version=2)  This generates a UMAP, does clustering and calculates cluster marker genes. 
+* **Single cell QC:** [import](https://usegalaxy.org.au/workflows/trs_import?trs_server=workflowhub.eu&trs_id=467&trs_version=4)  This workflow generates some basic QC plots and applies filtering 
+* **Single cell QC to basic processing:** [import](https://usegalaxy.org.au/workflows/trs_import?trs_server=workflowhub.eu&trs_id=468&trs_version=3)  This generates a UMAP, does clustering and calculates cluster marker genes. 
 
 <!-- CHecking galaxy to repo Nov 23: ok ok-->
 
@@ -86,7 +86,7 @@ What are the 3 different options?
 * **Counts matrix**: Sometimes you already have a counts matrix - these are available for many public datasets already. Or, if you are using data from probe-based kits (e.g. 10X fixed rna kit), you'll need to get your counts matrix as described by the manufacturer.
 
 
-{% include image.html file="/workflow_options.png" max-width="800px" %}
+{% include image.html file="/workflow_options.png" max-width="600px" %}
 
 
 ## Prepare your fastq inputs
@@ -197,7 +197,7 @@ The input for the star solo workflow is:
 * **Whitelist files**: The list of expected barcodes in the kit - which varies by technology and chemistry. For 10X chromium data see here; https://kb.10xgenomics.com/hc/en-us/articles/115004506263-What-is-a-barcode-whitelist-  . The file you need for each kit is listed, and the files themselves can be obtained by downloading the Cell Ranger software package.
 * **Reference**: Genome and matching annotation reference (see below).
 
-StarSOLO will require a genome sequence file (fasta format), and a .gtf or .gff file of the gene positions. Take care to ensure these are from the same genome version. A good source of suitable refernece/annotation pairs for a wide range of species is the [ensembl download index](https://asia.ensembl.org/info/data/ftp/index.html). For example, human reference data at ensembl v109:
+StarSOLO will require a genome sequence file (fasta format), and a .gtf or .gff file of the gene positions. Take care to ensure these are from the same genome version. A good source of suitable reference/annotation pairs for a wide range of species is the [ensembl download index](https://asia.ensembl.org/info/data/ftp/index.html). For example, human reference data at ensembl v109:
 
 * GRCH38 primary assembly: [Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa.gz](https://ftp.ensembl.org/pub/release-109/fasta/homo_sapiens/dna/Homo_sapiens.GRCh38.dna_sm.primary_assembly.fa.gz)
 * Gene Annotation : [Homo_sapiens.GRCh38.109.gtf.gz](https://ftp.ensembl.org/pub/release-109/gtf/homo_sapiens/Homo_sapiens.GRCh38.109.gtf.gz)
@@ -206,7 +206,7 @@ You can supply links to that data directly to a galaxy history via `upload data 
 
 1. Load your input files into galaxy.
 
-2. Import the **Count and load (starSOLO):** workflow (listed above)
+2. Import the **Count and load (starSOLO)** workflow (listed above)
 
 3. Open the workflow menu, find the workflow and hit run to bring up the following launch form. The first option _'paired fastqs for one sample'_ should be the paired collection you created and named above. You'll also be prompted to customise any filtering parameters, and choose a sensible name for the biological sample.
 
@@ -223,17 +223,17 @@ Once ready hit the 'run workflow' button. This pipeline should take an hour or s
 
 If you have a counts matrix already you can instead run the **Load counts matrix** workflow. This will still convert it into an AnnData object for processing, and record the sample name.
 
-**Step 1** Load your input files into galaxy. The counts matrix is expected in a [matrix market](https://networkrepository.com/mtx-matrix-market-format.html) format, which consists of 3 files. It is a common format for single cell data, generated by tools like Cell Ranger or StarSOLO, and is often available for public datasets. Files may be gzipped (suffixed .gz), there is no need to uncompress them. 
+1. Load your input files into galaxy. The counts matrix is expected in a [matrix market](https://networkrepository.com/mtx-matrix-market-format.html) format, which consists of 3 files. It is a common format for single cell data, generated by tools like Cell Ranger or StarSOLO, and is often available for public datasets. Files may be gzipped (suffixed .gz), there is no need to uncompress them. 
 
  * **matrix.mtx (.gz)** : A file with the number of counts per cell
  * **genes.tsv (.gz)** or **features.tsv (.gz)** : A file listing all the genes or features in the experiment
  * **barcodes.tsv (.gz)** : A file listing the cellular barcodes in the experiment. 
 
-You may have a 'filtered' and a 'raw' set of counts matrices - generally, the 'filtered' set should be used. The raw set may include large numbers of barcodes with very low counts - real cells are expected to be in the 'filtered' set.
+ You may have a 'filtered' and a 'raw' set of counts matrices - generally, the 'filtered' set should be used. The raw set may include large numbers of barcodes with very low counts - real cells are expected to be in the 'filtered' set.
 
-**Step 2.** Import the **Load counts matrix** workflow (listed above)
+2. Import the **Load counts matrix** workflow (listed above)
 
-**Step 3.** Hit run to bring up the following launch form.  
+3. Hit run to bring up the following launch form.  
 
 Once ready hit the 'run workflow' button. This pipeline should usually run quickly (less than an hour). 
 
@@ -247,31 +247,26 @@ Once ready hit the 'run workflow' button. This pipeline should usually run quick
 
 ## Combine multiple samples
 
-Once you've loaded your data and built a counts matrix for each of your samples, you can combine them for downstream processing.
+Once you've loaded your data and built a counts matrix for each of your samples, you can combine them for downstream processing. Any of these 3 options outputs an AnnData object in you history - containing your counts and annotated with the sample name internally. 
+
+That object in your history will probably be named something like ‘Manipulate AnnData (add_annotation) on data 20 and data 17’. You may like to rename this object via the ‘edit attributes’ option in the history panel, so its easier to find later. (It may be easier to do this as you go)
+
+{% include image.html file="/screen_rename.png" alt="Rename" max-width="500px" %}
 
 
-**Step 1.** Any of these 3 options outputs an AnnData object in you history - containing your counts and annotated with the sample name internally. (It may be easier to do this one-by-one)
+Once there is a loaded anndata file for each sample, join all samples with the ‘Manipulate AnnData object’ Tool (search on the tools pane on the left). 
 
-  That object in your history will probably be named something like ‘Manipulate AnnData (add_annotation) on data 20 and data 17’. You may like to rename this object via the ‘edit attributes’ option in the history panel, so its easier to find later. 
+{% include callout.html type="important" content="There's currently a versioning conflict in the tools installed on galaxy. When using this concatenate tool, we currently need to use the older version '0.7.5+galaxy1' for compatability with downstream tools [How to select tool version](https://training.galaxyproject.org/training-material/faqs/galaxy/tools_change_version.html) [Issue details](https://github.com/bioconda/bioconda-recipes/issues/45164). You may find that AnnData objects saved with current versions of the AnnData library will fail." %}
 
-  {% include image.html file="/screen_rename.png" alt="Rename" max-width="500px" %}
-
-**Step 2.** Next, join all samples with the ‘Manipulate AnnData object’ Tool (search on the tools pane on the left). 
-
-  {% include callout.html type="important" content="There's currently a versioning conflict in the tools installed on galaxy. When using this concatenate tool, we currently need to use the older version '0.7.5+galaxy1' for compatability with downstream tools [How to select tool version](https://training.galaxyproject.org/training-material/faqs/galaxy/tools_change_version.html) [Issue details](https://github.com/bioconda/bioconda-recipes/issues/45164). You may find that AnnData objects saved with current versions of the AnnData library will fail." %}
-
-  This tool can do several different operations – listed under ‘Function to manipulate the object’, but we want the default; “Concatenate along the observation axis”. This combines cells (observations) from multiple sample runs. 
+This tool can do several different operations – listed under ‘Function to manipulate the object’, but we want the default; “Concatenate along the observation axis”. This combines cells (observations) from multiple sample runs. 
     
-  Choose the AnnData object of one of your samples in the  ‘Annotated data matrix’ dropdown. Then, choose the rest of your samples under ‘Annotated matrix to add’. Use ctrl-select / option-select to highlight multiple samples. 
+Choose the AnnData object of one of your samples in the  ‘Annotated data matrix’ dropdown. Then, choose the rest of your samples under ‘Annotated matrix to add’. Use ctrl-select / option-select to highlight multiple samples. 
 
+{% include callout.html type="important" content="Be careful not to select the sample in the ‘Annotated data matrix’ dropdown again – else it will be joined to itself! In this example there is only two samples, so only pbmc8k is selected to be added to pbmc1k." %}
 
-  {% include callout.html type="important" content="Be careful not to select the sample in the ‘Annotated data matrix’ dropdown again – else it will be joined to itself! In this example there is only two samples, so only pbmc8k is selected to be added to pbmc1k." %}
+{% include image.html file="/screen_multi_merge.png" alt="join anndatas" max-width="500px" %}
 
-  {% include image.html file="/screen_multi_merge.png" alt="join anndatas" max-width="500px" %}
-
-  A combined AnnData object will created in your history. 
-
-
+A combined AnnData object will created in your history. 
 
 
 ## Run Cell QC
@@ -305,13 +300,13 @@ This brings up the history of workflow invocations, and their reports. Click the
 {% include image.html file="/screen_invocations.png" alt="workflow invocations screen" max-width="500px" %}
 
 
-This **Cell QC** workflow report shows the cell level QC plots. An [(example)](https://usegalaxy.org.au/u/s.williams/p/invocation-report-ede7b160ea86b66e). 
+This **Cell QC** workflow report shows the cell level QC plots. You’ll notice you can see each sample plotted separately in the QC plots. You can now elect to rerun this workflow with tweaked thresholds (e.g. higher minimum counts threshold) once you've seen this output.
 
-You’ll notice you can see each sample plotted separately in the QC plots. You can now elect to rerun this workflow with tweaked thresholds (e.g. higher minimum counts threshold) once you've seen this output.
 
 {% include image.html file="/cell_qc_plot.png" alt="Cell qc quality plot" max-width="500px" %}
 
 
+<!--An [(example)](https://usegalaxy.org.au/u/s.williams/p/invocation-report-ede7b160ea86b66e). -->
 
 ## Run QC to Basic processing
 
@@ -330,7 +325,8 @@ Once again, after your workflow has finished, return to galaxy and look up its '
 
 _Data Menu > Workflow Invocations_
 
-The **QC to Basic Processing** workflow report shows the subsequent UMAP, clustering and marker information. Includes links to download the processed AnnData object for downstream work. [(example)](https://usegalaxy.org.au/u/s.williams/p/invocation-report-21aa7559fbcd167e). 
+The **QC to Basic Processing** workflow report shows the subsequent UMAP, clustering and marker information. Includes links to download the processed AnnData object for downstream work. 
+<!-- [(example)](https://usegalaxy.org.au/u/s.williams/p/invocation-report-21aa7559fbcd167e). -->
 
 The resultant AnnData object contains this UMAP and clustering analysis.
 
