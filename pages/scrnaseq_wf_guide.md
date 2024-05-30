@@ -256,8 +256,6 @@ That object in your history will probably be named something like ‘Manipulate 
 
 Once there is a loaded anndata file for each sample, join all samples with the ‘Manipulate AnnData object’ Tool (search on the tools pane on the left). 
 
-{% include callout.html type="important" content="There's currently a versioning conflict in the tools installed on galaxy. When using this concatenate tool, we currently need to use the older version '0.7.5+galaxy1' for compatability with downstream tools [How to select tool version](https://training.galaxyproject.org/training-material/faqs/galaxy/tools_change_version.html) [Issue details](https://github.com/bioconda/bioconda-recipes/issues/45164). You may find that AnnData objects saved with current versions of the AnnData library will fail." %}
-
 This tool can do several different operations – listed under ‘Function to manipulate the object’, but we want the default; “Concatenate along the observation axis”. This combines cells (observations) from multiple sample runs. 
     
 Choose the AnnData object of one of your samples in the  ‘Annotated data matrix’ dropdown. Then, choose the rest of your samples under ‘Annotated matrix to add’. Use ctrl-select / option-select to highlight multiple samples. 
