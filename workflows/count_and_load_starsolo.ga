@@ -1,6 +1,7 @@
 {
     "a_galaxy_workflow": "true",
     "annotation": "Takes fastqs and reference data, to produce a single cell counts matrix into and save in annData format - adding a column called sample with the sample name.  ",
+    "comments": [],
     "format-version": "0.1",
     "name": "scRNAseq: Count and Load with starSOLO",
     "steps": {
@@ -318,7 +319,7 @@
         },
         "9": {
             "annotation": "",
-            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/rna_starsolo/rna_starsolo/2.7.10b+galaxy2",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/rna_starsolo/rna_starsolo/2.7.11a+galaxy0",
             "errors": null,
             "id": 9,
             "input_connections": {
@@ -394,38 +395,28 @@
                 "top": 40.828125
             },
             "post_job_actions": {},
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/rna_starsolo/rna_starsolo/2.7.10b+galaxy2",
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/rna_starsolo/rna_starsolo/2.7.11a+galaxy0",
             "tool_shed_repository": {
-                "changeset_revision": "b8f5f6e87f5c",
+                "changeset_revision": "42ce70172b72",
                 "name": "rna_starsolo",
                 "owner": "iuc",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             },
-            "tool_state": "{\"outWig\": {\"outWigType\": \"None\", \"__current_case__\": 0, \"outWigStrand\": \"false\"}, \"refGenomeSource\": {\"geneSource\": \"history\", \"__current_case__\": 1, \"genomeFastaFiles\": {\"__class__\": \"RuntimeValue\"}, \"genomeSAindexNbases\": \"10\", \"sjdbGTFfile\": {\"__class__\": \"RuntimeValue\"}, \"sjdbOverhang\": \"100\"}, \"sc\": {\"solo_type\": \"CB_UMI_Simple\", \"__current_case__\": 0, \"input_types\": {\"use\": \"repeat\", \"__current_case__\": 0, \"input1\": {\"__class__\": \"RuntimeValue\"}, \"input2\": {\"__class__\": \"RuntimeValue\"}}, \"soloCBwhitelist\": {\"__class__\": \"RuntimeValue\"}, \"params\": {\"chemistry\": \"Cv3\", \"__current_case__\": 1}, \"soloBarcodeReadLength\": true, \"umidedup\": {\"soloUMIdedup\": \"1MM_All\", \"__current_case__\": 0}, \"soloCBmatchWLtype\": \"1MM_multi\"}, \"solo\": {\"soloStrand\": \"Forward\", \"soloFeatures\": \"Gene\", \"filter\": {\"filter_type\": \"cellranger2\", \"__current_case__\": 0, \"n_expected\": {\"__class__\": \"ConnectedValue\"}, \"max_perc\": \"0.99\", \"max_min_ratio\": \"10.0\", \"output_raw\": false}, \"soloOutFormatFeaturesGeneField3\": \"Gene Expression\", \"outSAMattributes\": [\"NH\", \"HI\", \"AS\", \"nM\"], \"quantModeGene\": false, \"outSAMunmapped\": false, \"outSAMmapqUnique\": \"60\", \"junction_limits\": {\"limitOutSJoneRead\": \"1000\", \"limitOutSJcollapsed\": \"1000000\", \"limitSjdbInsertNsj\": \"1000000\"}}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
-            "tool_version": "2.7.10b+galaxy2",
+            "tool_state": "{\"outWig\": {\"outWigType\": \"None\", \"__current_case__\": 0, \"outWigStrand\": \"false\"}, \"refGenomeSource\": {\"geneSource\": \"history\", \"__current_case__\": 1, \"genomeFastaFiles\": {\"__class__\": \"ConnectedValue\"}, \"genomeSAindexNbases\": \"10\", \"sjdbGTFfile\": {\"__class__\": \"ConnectedValue\"}, \"sjdbGTFfeatureExon\": \"exon\", \"sjdbOverhang\": \"100\"}, \"sc\": {\"solo_type\": \"CB_UMI_Simple\", \"__current_case__\": 0, \"input_types\": {\"use\": \"repeat\", \"__current_case__\": 0, \"input1\": {\"__class__\": \"ConnectedValue\"}, \"input2\": {\"__class__\": \"ConnectedValue\"}}, \"soloCBwhitelist\": {\"__class__\": \"ConnectedValue\"}, \"params\": {\"chemistry\": \"Cv3\", \"__current_case__\": 1}, \"soloBarcodeReadLength\": true, \"umidedup\": {\"soloUMIdedup\": \"1MM_All\", \"__current_case__\": 0}, \"soloCBmatchWLtype\": \"1MM_multi\"}, \"solo\": {\"soloStrand\": \"Forward\", \"soloFeatures\": \"Gene\", \"filter\": {\"filter_type\": \"cellranger2\", \"__current_case__\": 0, \"n_expected\": {\"__class__\": \"ConnectedValue\"}, \"max_perc\": \"0.99\", \"max_min_ratio\": \"10.0\", \"output_raw\": false}, \"soloOutFormatFeaturesGeneField3\": \"Gene Expression\", \"outSAMattributes\": [\"NH\", \"HI\", \"AS\", \"nM\"], \"quantModeGene\": false, \"outSAMunmapped\": false, \"outSAMmapqUnique\": \"60\", \"junction_limits\": {\"limitOutSJoneRead\": \"1000\", \"limitOutSJcollapsed\": \"1000000\", \"limitSjdbInsertNsj\": \"1000000\"}}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
+            "tool_version": "2.7.11a+galaxy0",
             "type": "tool",
             "uuid": "30d0e46a-7224-4511-b302-f6fe1cdce4b0",
             "when": null,
             "workflow_outputs": [
                 {
-                    "label": "RNA STARSolo on input dataset(s): Alignments",
-                    "output_name": "output_BAM",
-                    "uuid": "8f96e549-f78d-4a04-b2a5-0fcd1df99950"
-                },
-                {
-                    "label": "RNA STARSolo on input dataset(s): Barcode/Feature Statistic Summaries",
-                    "output_name": "output_stats",
-                    "uuid": "c11fa5cc-bb76-4eb8-97b7-ff8c8ee80f74"
+                    "label": "RNA STARSolo on input dataset(s): Genes filtered",
+                    "output_name": "output_genes_filtered",
+                    "uuid": "11c008ca-f9a4-4685-9110-f0f3b8465847"
                 },
                 {
                     "label": "RNA STARSolo on input dataset(s): log",
                     "output_name": "output_log",
                     "uuid": "3f6b78d6-df5d-4754-a3fd-f661b01a8f2d"
-                },
-                {
-                    "label": "RNA STARSolo on input dataset(s): Genes filtered",
-                    "output_name": "output_genes_filtered",
-                    "uuid": "11c008ca-f9a4-4685-9110-f0f3b8465847"
                 },
                 {
                     "label": "RNA STARSolo on input dataset(s): Barcodes filtered",
@@ -436,12 +427,22 @@
                     "label": "RNA STARSolo on input dataset(s): Matrix Gene Counts filtered",
                     "output_name": "output_matrix_filtered",
                     "uuid": "4b35bfcd-7eae-4647-b148-62843e40c005"
+                },
+                {
+                    "label": "RNA STARSolo on input dataset(s): Alignments",
+                    "output_name": "output_BAM",
+                    "uuid": "8f96e549-f78d-4a04-b2a5-0fcd1df99950"
+                },
+                {
+                    "label": "RNA STARSolo on input dataset(s): Barcode/Feature Statistic Summaries",
+                    "output_name": "output_stats",
+                    "uuid": "c11fa5cc-bb76-4eb8-97b7-ff8c8ee80f74"
                 }
             ]
         },
         "10": {
             "annotation": "",
-            "content_id": "toolshed.g2.bx.psu.edu/repos/ebi-gxa/scanpy_read_10x/scanpy_read_10x/1.8.1+1+galaxy0",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/ebi-gxa/scanpy_read_10x/scanpy_read_10x/1.9.3+galaxy0",
             "errors": null,
             "id": 10,
             "input_connections": {
@@ -487,15 +488,15 @@
                     "output_name": "output_h5ad"
                 }
             },
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/ebi-gxa/scanpy_read_10x/scanpy_read_10x/1.8.1+1+galaxy0",
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/ebi-gxa/scanpy_read_10x/scanpy_read_10x/1.9.3+galaxy0",
             "tool_shed_repository": {
-                "changeset_revision": "287503c35cb4",
+                "changeset_revision": "078aa23c9374",
                 "name": "scanpy_read_10x",
                 "owner": "ebi-gxa",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             },
             "tool_state": "{\"barcodes\": {\"__class__\": \"ConnectedValue\"}, \"cell_meta\": {\"__class__\": \"RuntimeValue\"}, \"gene_meta\": {\"__class__\": \"RuntimeValue\"}, \"genes\": {\"__class__\": \"ConnectedValue\"}, \"matrix\": {\"__class__\": \"ConnectedValue\"}, \"output_format\": \"anndata_h5ad\", \"var_names\": \"gene_symbols\", \"__page__\": null, \"__rerun_remap_job_id__\": null}",
-            "tool_version": "1.8.1+1+galaxy0",
+            "tool_version": "1.9.3+galaxy0",
             "type": "tool",
             "uuid": "ed90753e-ec36-406f-ad29-c5eba1cbeb1e",
             "when": null,
@@ -503,7 +504,7 @@
         },
         "11": {
             "annotation": "",
-            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.7.5+galaxy1",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.10.3+galaxy0",
             "errors": null,
             "id": 11,
             "input_connections": {
@@ -532,15 +533,15 @@
                     "output_name": "obs"
                 }
             },
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.7.5+galaxy1",
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/anndata_inspect/anndata_inspect/0.10.3+galaxy0",
             "tool_shed_repository": {
-                "changeset_revision": "ee98d611afc6",
+                "changeset_revision": "6f0d0c784f09",
                 "name": "anndata_inspect",
                 "owner": "iuc",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             },
             "tool_state": "{\"input\": {\"__class__\": \"ConnectedValue\"}, \"inspect\": {\"info\": \"obs\", \"__current_case__\": 3}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
-            "tool_version": "0.7.5+galaxy1",
+            "tool_version": "0.10.3+galaxy0",
             "type": "tool",
             "uuid": "dd8757f2-6d93-4490-ad80-459ce58ed1c8",
             "when": null,
@@ -548,7 +549,7 @@
         },
         "12": {
             "annotation": "",
-            "content_id": "toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_text_file_with_recurring_lines/1.1.0",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_text_file_with_recurring_lines/9.3+galaxy1",
             "errors": null,
             "id": 12,
             "input_connections": {
@@ -581,15 +582,15 @@
                     "output_name": "outfile"
                 }
             },
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_text_file_with_recurring_lines/1.1.0",
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_text_file_with_recurring_lines/9.3+galaxy1",
             "tool_shed_repository": {
-                "changeset_revision": "d698c222f354",
+                "changeset_revision": "fbf99087e067",
                 "name": "text_processing",
                 "owner": "bgruening",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             },
             "tool_state": "{\"token_set\": [{\"__index__\": 0, \"line\": {\"__class__\": \"ConnectedValue\"}, \"repeat_select\": {\"repeat_select_opts\": \"file\", \"__current_case__\": 1, \"infile\": {\"__class__\": \"ConnectedValue\"}}}], \"__page__\": null, \"__rerun_remap_job_id__\": null}",
-            "tool_version": "1.1.0",
+            "tool_version": "9.3+galaxy1",
             "type": "tool",
             "uuid": "81c761a8-4b71-4db4-9bad-864fdfa636f4",
             "when": null,
@@ -597,7 +598,7 @@
         },
         "13": {
             "annotation": "This step replaces the first line with a header. Because the annotated data matrix also had a header, this works. ",
-            "content_id": "toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_sed_tool/1.1.1",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_sed_tool/9.3+galaxy1",
             "errors": null,
             "id": 13,
             "input_connections": {
@@ -626,15 +627,15 @@
                     "output_name": "output"
                 }
             },
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_sed_tool/1.1.1",
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/bgruening/text_processing/tp_sed_tool/9.3+galaxy1",
             "tool_shed_repository": {
-                "changeset_revision": "d698c222f354",
+                "changeset_revision": "fbf99087e067",
                 "name": "text_processing",
                 "owner": "bgruening",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             },
             "tool_state": "{\"adv_opts\": {\"adv_opts_selector\": \"basic\", \"__current_case__\": 0}, \"code\": \"1s/.*/sample/\", \"infile\": {\"__class__\": \"ConnectedValue\"}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
-            "tool_version": "1.1.1",
+            "tool_version": "9.3+galaxy1",
             "type": "tool",
             "uuid": "a3f8b0c3-356a-46e1-89bf-3a15f88cd580",
             "when": null,
@@ -642,7 +643,7 @@
         },
         "14": {
             "annotation": "AnnData object with supplied sample id.",
-            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/anndata_manipulate/anndata_manipulate/0.7.5+galaxy1",
+            "content_id": "toolshed.g2.bx.psu.edu/repos/iuc/anndata_manipulate/anndata_manipulate/0.10.3+galaxy0",
             "errors": null,
             "id": 14,
             "input_connections": {
@@ -655,7 +656,12 @@
                     "output_name": "output"
                 }
             },
-            "inputs": [],
+            "inputs": [
+                {
+                    "description": "runtime parameter for tool Manipulate AnnData",
+                    "name": "manipulate"
+                }
+            ],
             "label": "Loaded Anndata with Sample name",
             "name": "Manipulate AnnData",
             "outputs": [
@@ -677,15 +683,15 @@
                     "output_name": "anndata"
                 }
             },
-            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/anndata_manipulate/anndata_manipulate/0.7.5+galaxy1",
+            "tool_id": "toolshed.g2.bx.psu.edu/repos/iuc/anndata_manipulate/anndata_manipulate/0.10.3+galaxy0",
             "tool_shed_repository": {
-                "changeset_revision": "3d748954434b",
+                "changeset_revision": "ed4996a16f7f",
                 "name": "anndata_manipulate",
                 "owner": "iuc",
                 "tool_shed": "toolshed.g2.bx.psu.edu"
             },
             "tool_state": "{\"input\": {\"__class__\": \"ConnectedValue\"}, \"manipulate\": {\"function\": \"add_annotation\", \"__current_case__\": 6, \"var_obs\": \"obs\", \"new_annot\": {\"__class__\": \"ConnectedValue\"}}, \"__page__\": null, \"__rerun_remap_job_id__\": null}",
-            "tool_version": "0.7.5+galaxy1",
+            "tool_version": "0.10.3+galaxy0",
             "type": "tool",
             "uuid": "bd9c53d0-41eb-4b43-b12e-2375276185eb",
             "when": null,
@@ -699,9 +705,8 @@
         }
     },
     "tags": [
-        "scRNAseq",
-        "GUCFG2galaxy"
+        "scRNAseq"
     ],
-    "uuid": "8c16fe3a-0d7f-4f72-a06c-8c2797d5b46b",
-    "version": 1
+    "uuid": "2a01f058-b728-4f82-88d4-059928bb4f02",
+    "version": 2
 }
